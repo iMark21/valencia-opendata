@@ -6,10 +6,13 @@
   "type": "module",
   "main": "dist/server.js",
   "bin": {
-    "valencia-opendata": "dist/server.js"
+    "valencia-opendata": "dist/server.js",
+    "valencia-mcp": "dist/cli.js"
   },
   "scripts": {
     "dev": "tsx src/server.ts",
+    "cli": "tsx src/cli.ts",
+    "example": "tsx",
     "build": "tsc",
     "test": "vitest run",
     "test:watch": "vitest",

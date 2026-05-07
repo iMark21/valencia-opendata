@@ -23,6 +23,7 @@ import { registerGetNeighborhoodInfoTool } from "../src/tools/get_neighborhood_i
 
 const here = dirname(fileURLToPath(import.meta.url));
 const SRC_ROOT = resolve(here, "..", "src");
+const EXAMPLES_ROOT = resolve(here, "..", "examples");
 
 const FORBIDDEN_IMPORTS = [
   "node:fs",
@@ -61,17 +62,23 @@ function payloadSize(payload: unknown): number {
   return Buffer.byteLength(JSON.stringify(payload), "utf8");
 }
 
-function listSrcFiles(): string[] {
+function listTsFiles(roots: string[]): string[] {
   const out: string[] = [];
   const walk = (dir: string) => {
-    for (const entry of readdirSync(dir)) {
+    let entries: string[];
+    try {
+      entries = readdirSync(dir);
+    } catch {
+      return; // directory may not exist (e.g. examples/ pre-VALMCP-16)
+    }
+    for (const entry of entries) {
       const p = join(dir, entry);
       const st = statSync(p);
       if (st.isDirectory()) walk(p);
       else if (entry.endsWith(".ts")) out.push(p);
     }
   };
-  walk(SRC_ROOT);
+  for (const r of roots) walk(r);
   return out;
 }
 
@@ -144,7 +151,7 @@ describe("invariant — MCP no almacena (AC6)", () => {
 
   it("source code does not import persistence libraries", () => {
     const offenders: Array<{ file: string; lib: string }> = [];
-    for (const file of listSrcFiles()) {
+    for (const file of listTsFiles([SRC_ROOT, EXAMPLES_ROOT])) {
       const text = readFileSync(file, "utf8");
       for (const lib of FORBIDDEN_IMPORTS) {
         // Match `from "lib"` or `from "lib/sub"`.
@@ -156,5 +163,18 @@ describe("invariant — MCP no almacena (AC6)", () => {
       offenders,
       `Persistence imports detected: ${JSON.stringify(offenders, null, 2)}`,
     ).toEqual([]);
+  });
+
+  it("examples write only to stdout (AC6 of VALMCP-16)", () => {
+    // grep for direct disk-write APIs. fs imports already covered above.
+    const banned = [/writeFileSync/, /appendFileSync/, /createWriteStream/, /fs\.write/];
+    const offenders: Array<{ file: string; pattern: string }> = [];
+    for (const file of listTsFiles([EXAMPLES_ROOT])) {
+      const text = readFileSync(file, "utf8");
+      for (const re of banned) {
+        if (re.test(text)) offenders.push({ file, pattern: String(re) });
+      }
+    }
+    expect(offenders).toEqual([]);
   });
 });
