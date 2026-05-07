@@ -4,6 +4,7 @@ import { ArcgisClient } from "../clients/arcgis.js";
 import { Cache } from "../cache.js";
 import { registerListDatasetsTool } from "./list_datasets.js";
 import { registerGetDatasetTool } from "./get_dataset.js";
+import { registerGetDatasetResourceTool } from "./get_dataset_resource.js";
 
 export type ToolDeps = {
   ckan: CkanClient;
@@ -22,7 +23,7 @@ export function registerAllTools(server: McpServer, deps?: ToolDeps): void {
   const d = deps ?? buildDefaultDeps();
   registerListDatasetsTool(server, d.ckan);
   registerGetDatasetTool(server, d.ckan);
-  // VALMCP-06 get_dataset_resource
+  registerGetDatasetResourceTool(server, { ckan: d.ckan });
   // VALMCP-07 query_geo_layer
   // VALMCP-08 find_geo_layers
   // VALMCP-09 full_text_search
