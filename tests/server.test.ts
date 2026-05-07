@@ -4,7 +4,7 @@ import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { createServer } from "../src/server.js";
 
 describe("MCP server bootstrap", () => {
-  it("server identifies itself as valencia-opendata v0.0.1 and registers no tools yet", async () => {
+  it("server identifies itself as valencia-opendata v0.0.1 and advertises registered tools", async () => {
     const server = createServer();
     const [serverTransport, clientTransport] =
       InMemoryTransport.createLinkedPair();
@@ -23,11 +23,12 @@ describe("MCP server bootstrap", () => {
     expect(info?.name).toBe("valencia-opendata");
     expect(info?.version).toBe("0.0.1");
 
-    // No tools registered yet (Sprint 0). The server therefore does not
-    // advertise a `tools` capability — that's the correct shape for the
-    // bootstrap milestone.
     const caps = client.getServerCapabilities();
-    expect(caps?.tools).toBeUndefined();
+    expect(caps?.tools).toBeDefined();
+
+    const { tools } = await client.listTools();
+    const names = tools.map((t) => t.name);
+    expect(names).toContain("list_datasets");
 
     await client.close();
   });
