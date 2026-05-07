@@ -5,7 +5,6 @@ import { InMemoryTransport } from "@modelcontextprotocol/sdk/inMemory.js";
 import { ArcgisClient } from "../src/clients/arcgis.js";
 import { registerGetValenbisiTool } from "../src/tools/get_valenbisi_availability.js";
 
-const integration = process.env.INTEGRATION === "1";
 
 async function callTool(args: Record<string, unknown>) {
   const arcgis = new ArcgisClient();
@@ -30,7 +29,7 @@ async function callTool(args: Record<string, unknown>) {
   }
 }
 
-describe.skipIf(!integration)(
+describe(
   "get_valenbisi_availability — integration (live geoportal)",
   () => {
     it("near city centre returns at least one open station with bikes", async () => {

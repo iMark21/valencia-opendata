@@ -1,0 +1,22 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://geoportal.valencia.es/server/rest/services/OPENDATA/Trafico/MapServer/228/query?f=json&where=1%3D1&outFields=*&returnGeometry=true&resultRecordCount=5",
+    "body": null
+  },
+  "response": {
+    "status": 200,
+    "statusText": "",
+    "headers": {
+      "access-control-allow-origin": "*",
+      "access-control-expose-headers": "Access-Control-Allow-Origin,Access-Control-Allow-Credentials",
+      "connection": "keep-alive",
+      "content-length": "2692",
+      "content-type": "application/json;charset=UTF-8",
+      "keep-alive": "timeout=60",
+      "vary": "Origin"
+    },
+    "body": "{\"displayFieldName\":\"name\",\"fieldAliases\":{\"gid\":\"gid\",\"name\":\"name\",\"number\":\"number_\",\"address\":\"address\",\"open\":\"open\",\"available\":\"available\",\"free\":\"free\",\"total\":\"total\",\"ticket\":\"ticket\",\"updated_at\":\"updated_at\",\"update_jcd\":\"update_jcd\"},\"geometryType\":\"esriGeometryPoint\",\"spatialReference\":{\"wkid\":25830,\"latestWkid\":25830},\"fields\":[{\"name\":\"gid\",\"type\":\"esriFieldTypeOID\",\"alias\":\"gid\"},{\"name\":\"name\",\"type\":\"esriFieldTypeString\",\"alias\":\"name\",\"length\":100},{\"name\":\"number\",\"type\":\"esriFieldTypeInteger\",\"alias\":\"number_\"},{\"name\":\"address\",\"type\":\"esriFieldTypeString\",\"alias\":\"address\",\"length\":200},{\"name\":\"open\",\"type\":\"esriFieldTypeString\",\"alias\":\"open\",\"length\":1},{\"name\":\"available\",\"type\":\"esriFieldTypeInteger\",\"alias\":\"available\"},{\"name\":\"free\",\"type\":\"esriFieldTypeInteger\",\"alias\":\"free\"},{\"name\":\"total\",\"type\":\"esriFieldTypeInteger\",\"alias\":\"total\"},{\"name\":\"ticket\",\"type\":\"esriFieldTypeString\",\"alias\":\"ticket\",\"length\":1},{\"name\":\"updated_at\",\"type\":\"esriFieldTypeString\",\"alias\":\"updated_at\",\"length\":19},{\"name\":\"update_jcd\",\"type\":\"esriFieldTypeDate\",\"alias\":\"update_jcd\",\"length\":8}],\"features\":[{\"attributes\":{\"gid\":902133,\"name\":\"001_GUILLEN_DE_CASTRO\",\"number\":1,\"address\":\"C/GUILLEM DE CASTRO esquina con C/NA JORDANA\",\"open\":\"T\",\"available\":0,\"free\":25,\"total\":25,\"ticket\":\"F\",\"updated_at\":\"08/05/2026 14:18:19\",\"update_jcd\":1778242434000},\"geometry\":{\"x\":725092.6520999996,\"y\":4373319.3608999997}},{\"attributes\":{\"gid\":902134,\"name\":\"002_CALLE_SALVADOR_GINER_CALLE_MUSEO\",\"number\":2,\"address\":\"Salvador Giner - C. Museo\",\"open\":\"T\",\"available\":7,\"free\":8,\"total\":15,\"ticket\":\"F\",\"updated_at\":\"08/05/2026 14:18:19\",\"update_jcd\":1778242534000},\"geometry\":{\"x\":725366.76879999973,\"y\":4373310.3479999993}},{\"attributes\":{\"gid\":902135,\"name\":\"003_PLAZA_MUSICO_LOPEZ_CHAVARRI\",\"number\":3,\"address\":\"Plaza del Musico López Chavarri\",\"open\":\"T\",\"available\":6,\"free\":14,\"total\":20,\"ticket\":\"F\",\"updated_at\":\"08/05/2026 14:18:19\",\"update_jcd\":1778242588000},\"geometry\":{\"x\":725330.17870000005,\"y\":4372969.9933000002}},{\"attributes\":{\"gid\":902136,\"name\":\"004_PLAZA_DE_LA_VIRGEN_CALLE_BAILIA\",\"number\":4,\"address\":\"Plaza de la Virgen - Bailía\",\"open\":\"T\",\"available\":8,\"free\":16,\"total\":25,\"ticket\":\"F\",\"updated_at\":\"08/05/2026 14:18:19\",\"update_jcd\":1778242657000},\"geometry\":{\"x\":725755.94440000039,\"y\":4372972.6133999992}},{\"attributes\":{\"gid\":902137,\"name\":\"005_PINTOR_LOPEZ_PZA_POETA_LLORENTE\",\"number\":5,\"address\":\"Plaza Poeta Llorente\",\"open\":\"T\",\"available\":13,\"free\":2,\"total\":15,\"ticket\":\"F\",\"updated_at\":\"08/05/2026 14:18:19\",\"update_jcd\":1778242451000},\"geometry\":{\"x\":726116.94379999954,\"y\":4372999.5851000007}}],\"exceededTransferLimit\":true}"
+  },
+  "recorded_at": "2026-05-08"
+}

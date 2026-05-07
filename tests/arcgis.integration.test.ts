@@ -1,12 +1,11 @@
 import { describe, it, expect } from "vitest";
 import { ArcgisClient } from "../src/clients/arcgis.js";
 
-const integration = process.env.INTEGRATION === "1";
 
 // Service path verified live (2026-05-08): OPENDATA folder hosts 6 MapServers
 // — MedioAmbiente, Salud, SociedadBienestar, Trafico, Turismo,
 // UrbanismoEInfraestructuras. No auth.
-describe.skipIf(!integration)("ArcgisClient — integration (live geoportal)", () => {
+describe("ArcgisClient — integration (live geoportal)", () => {
   it("listServices('OPENDATA') returns the 6 known MapServers", async () => {
     const client = new ArcgisClient();
     const listing = await client.listServices("OPENDATA");

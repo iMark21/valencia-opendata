@@ -6,7 +6,6 @@ import { CkanClient } from "../src/clients/ckan.js";
 import { registerGetDatasetResourceTool } from "../src/tools/get_dataset_resource.js";
 import { registerGetDatasetTool } from "../src/tools/get_dataset.js";
 
-const integration = process.env.INTEGRATION === "1";
 
 async function getValenBisiResourceId(): Promise<string> {
   const ckan = new CkanClient();
@@ -33,7 +32,7 @@ async function getValenBisiResourceId(): Promise<string> {
   }
 }
 
-describe.skipIf(!integration)(
+describe(
   "get_dataset_resource — integration (live portal)",
   () => {
     it("ValenBisi JSON resource → returns Geoportal hint, no schema by default", async () => {

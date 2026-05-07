@@ -1,0 +1,22 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://geoportal.valencia.es/server/rest/services/OPENDATA/Trafico/MapServer/240?f=json",
+    "body": null
+  },
+  "response": {
+    "status": 200,
+    "statusText": "",
+    "headers": {
+      "access-control-allow-origin": "*",
+      "access-control-expose-headers": "Access-Control-Allow-Origin,Access-Control-Allow-Credentials",
+      "connection": "keep-alive",
+      "content-length": "3178",
+      "content-type": "application/json;charset=UTF-8",
+      "keep-alive": "timeout=60",
+      "vary": "Origin"
+    },
+    "body": "{\"currentVersion\":10.81,\"cimVersion\":\"2.6.0\",\"id\":240,\"name\":\"Zona de Bajas Emisiones\",\"type\":\"Feature Layer\",\"description\":\"<DIV STYLE=\\\"text-align:Left;\\\"><DIV><DIV><P><SPAN>Capa para delimitar la Zonas de Bajas Emisiones<\\/SPAN><\\/P><\\/DIV><\\/DIV><\\/DIV>\",\"geometryType\":\"esriGeometryPolygon\",\"sourceSpatialReference\":{\"wkid\":25830,\"latestWkid\":25830,\"xyTolerance\":0.001,\"zTolerance\":0.001,\"mTolerance\":0.001,\"falseX\":-5120900,\"falseY\":-9998100,\"xyUnits\":10000,\"falseZ\":-100000,\"zUnits\":10000,\"falseM\":-100000,\"mUnits\":10000},\"copyrightText\":\"Servicio de Mobilitat. Ajuntament València\",\"parentLayer\":null,\"subLayers\":[],\"minScale\":0,\"maxScale\":0,\"drawingInfo\":{\"renderer\":{\"type\":\"simple\",\"symbol\":{\"type\":\"esriSFS\",\"style\":\"esriSFSSolid\",\"color\":[189,252,252,0],\"outline\":{\"type\":\"esriSLS\",\"style\":\"esriSLSSolid\",\"color\":[205,102,153,255],\"width\":2}}},\"scaleSymbols\":false,\"transparency\":0,\"labelingInfo\":null},\"defaultVisibility\":false,\"extent\":{\"xmin\":722910.0861999998,\"ymin\":4369457.6041,\"xmax\":729351.5109999999,\"ymax\":4375592.680400001,\"spatialReference\":{\"wkid\":25830,\"latestWkid\":25830,\"xyTolerance\":0.001,\"zTolerance\":0.001,\"mTolerance\":0.001,\"falseX\":-5120900,\"falseY\":-9998100,\"xyUnits\":10000,\"falseZ\":-100000,\"zUnits\":10000,\"falseM\":-100000,\"mUnits\":10000}},\"hasAttachments\":false,\"htmlPopupType\":\"esriServerHTMLPopupTypeAsHTMLText\",\"displayField\":\"zona_zbe\",\"typeIdField\":null,\"subtypeFieldName\":null,\"subtypeField\":null,\"defaultSubtypeCode\":null,\"fields\":[{\"name\":\"objectid\",\"type\":\"esriFieldTypeOID\",\"alias\":\"objectid\",\"domain\":null},{\"name\":\"zona_zbe\",\"type\":\"esriFieldTypeString\",\"alias\":\"Zona\",\"length\":254,\"domain\":null},{\"name\":\"shape\",\"type\":\"esriFieldTypeGeometry\",\"alias\":\"shape\",\"domain\":null}],\"geometryField\":{\"name\":\"shape\",\"type\":\"esriFieldTypeGeometry\",\"alias\":\"shape\"},\"indexes\":[{\"name\":\"r2241_sde_rowid_uk\",\"fields\":\"objectid\",\"isAscending\":true,\"isUnique\":true,\"description\":\"\"},{\"name\":\"a1855_ix1\",\"fields\":\"shape\",\"isAscending\":true,\"isUnique\":true,\"description\":\"\"}],\"subtypes\":[],\"relationships\":[],\"canModifyLayer\":true,\"canScaleSymbols\":false,\"hasLabels\":false,\"capabilities\":\"Query,Map,Data\",\"maxRecordCount\":2000,\"supportsStatistics\":true,\"supportsExceedsLimitStatistics\":true,\"supportsAdvancedQueries\":true,\"hasZ\":true,\"hasM\":true,\"supportedQueryFormats\":\"JSON, geoJSON, PBF\",\"isDataVersioned\":false,\"ownershipBasedAccessControlForFeatures\":{\"allowOthersToQuery\":true},\"useStandardizedQueries\":true,\"advancedQueryCapabilities\":{\"useStandardizedQueries\":true,\"supportsStatistics\":true,\"supportsPercentileStatistics\":true,\"supportsHavingClause\":true,\"supportsOrderBy\":true,\"supportsDistinct\":true,\"supportsCountDistinct\":true,\"supportsPagination\":true,\"supportsTrueCurve\":true,\"supportsQueryWithDatumTransformation\":true,\"supportsReturningQueryExtent\":true,\"supportsQueryWithDistance\":true,\"supportsSqlExpression\":true},\"supportsDatumTransformation\":true,\"dateFieldsTimeReference\":null,\"hasMetadata\":true,\"isDataArchived\":false,\"archivingInfo\":{\"supportsQueryWithHistoricMoment\":false,\"startArchivingMoment\":-1},\"supportsCoordinatesQuantization\":true,\"supportsDynamicLegends\":true,\"serviceItemId\":\"ae7a84a1c84f41b3abcaa162f8d315d3\"}"
+  },
+  "recorded_at": "2026-05-08"
+}

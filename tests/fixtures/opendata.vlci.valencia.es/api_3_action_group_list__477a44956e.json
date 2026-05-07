@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://opendata.vlci.valencia.es/api/3/action/group_list",
+    "body": null
+  },
+  "response": {
+    "status": 200,
+    "statusText": "OK",
+    "headers": {
+      "connection": "keep-alive",
+      "content-length": "451",
+      "content-type": "application/json;charset=utf-8"
+    },
+    "body": "{\"help\": \"https://opendata.vlci.valencia.es/api/3/action/help_show?name=group_list\", \"success\": true, \"result\": [\"ciencia-tecnologia\", \"comercio\", \"cultura-ocio\", \"demografia\", \"deporte\", \"economia\", \"educacion\", \"empleo\", \"energia\", \"hacienda\", \"industria\", \"legislacion-justicia\", \"medio-ambiente\", \"medio-rural-pesca\", \"salud\", \"sector-publico\", \"seguridad\", \"sociedad-bienestar\", \"transporte\", \"turismo\", \"urbanismo-infraestructuras\", \"vivienda\"]}"
+  },
+  "recorded_at": "2026-05-08"
+}

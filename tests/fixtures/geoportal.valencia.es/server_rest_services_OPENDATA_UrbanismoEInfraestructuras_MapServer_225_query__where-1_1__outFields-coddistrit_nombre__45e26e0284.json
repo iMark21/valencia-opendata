@@ -1,0 +1,22 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://geoportal.valencia.es/server/rest/services/OPENDATA/UrbanismoEInfraestructuras/MapServer/225/query?f=json&where=1%3D1&outFields=coddistrit%2Cnombre&returnGeometry=false&resultRecordCount=100",
+    "body": null
+  },
+  "response": {
+    "status": 200,
+    "statusText": "",
+    "headers": {
+      "access-control-allow-origin": "*",
+      "access-control-expose-headers": "Access-Control-Allow-Origin,Access-Control-Allow-Credentials",
+      "connection": "keep-alive",
+      "content-length": "1571",
+      "content-type": "application/json;charset=UTF-8",
+      "keep-alive": "timeout=60",
+      "vary": "Origin"
+    },
+    "body": "{\"displayFieldName\":\"nombre\",\"fieldAliases\":{\"coddistrit\":\"Código distrito\",\"nombre\":\"Nombre\"},\"fields\":[{\"name\":\"coddistrit\",\"type\":\"esriFieldTypeString\",\"alias\":\"Código distrito\",\"length\":4},{\"name\":\"nombre\",\"type\":\"esriFieldTypeString\",\"alias\":\"Nombre\",\"length\":40}],\"features\":[{\"attributes\":{\"coddistrit\":\"10\",\"nombre\":\"QUATRE CARRERES\"}},{\"attributes\":{\"coddistrit\":\"5\",\"nombre\":\"LA SAIDIA\"}},{\"attributes\":{\"coddistrit\":\"6\",\"nombre\":\"EL PLA DEL REAL\"}},{\"attributes\":{\"coddistrit\":\"1\",\"nombre\":\"CIUTAT VELLA\"}},{\"attributes\":{\"coddistrit\":\"3\",\"nombre\":\"EXTRAMURS\"}},{\"attributes\":{\"coddistrit\":\"2\",\"nombre\":\"L'EIXAMPLE\"}},{\"attributes\":{\"coddistrit\":\"12\",\"nombre\":\"CAMINS AL GRAU\"}},{\"attributes\":{\"coddistrit\":\"9\",\"nombre\":\"JESUS\"}},{\"attributes\":{\"coddistrit\":\"8\",\"nombre\":\"PATRAIX\"}},{\"attributes\":{\"coddistrit\":\"14\",\"nombre\":\"BENIMACLET\"}},{\"attributes\":{\"coddistrit\":\"13\",\"nombre\":\"ALGIROS\"}},{\"attributes\":{\"coddistrit\":\"18\",\"nombre\":\"POBLATS DE L'OEST\"}},{\"attributes\":{\"coddistrit\":\"4\",\"nombre\":\"CAMPANAR\"}},{\"attributes\":{\"coddistrit\":\"16\",\"nombre\":\"BENICALAP\"}},{\"attributes\":{\"coddistrit\":\"15\",\"nombre\":\"RASCANYA\"}},{\"attributes\":{\"coddistrit\":\"7\",\"nombre\":\"L'OLIVERETA\"}},{\"attributes\":{\"coddistrit\":\"19\",\"nombre\":\"POBLATS DEL SUD\"}},{\"attributes\":{\"coddistrit\":\"11\",\"nombre\":\"POBLATS MARITIMS\"}},{\"attributes\":{\"coddistrit\":\"17\",\"nombre\":\"POBLATS DEL NORD\"}},{\"attributes\":{\"coddistrit\":\"17\",\"nombre\":\"POBLATS DEL NORD\"}},{\"attributes\":{\"coddistrit\":\"17\",\"nombre\":\"POBLATS DEL NORD\"}},{\"attributes\":{\"coddistrit\":\"17\",\"nombre\":\"POBLATS DEL NORD\"}}]}"
+  },
+  "recorded_at": "2026-05-08"
+}

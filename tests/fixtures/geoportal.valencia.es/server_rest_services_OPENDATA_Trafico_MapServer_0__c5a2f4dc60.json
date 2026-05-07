@@ -1,0 +1,22 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://geoportal.valencia.es/server/rest/services/OPENDATA/Trafico/MapServer/0?f=json",
+    "body": null
+  },
+  "response": {
+    "status": 200,
+    "statusText": "",
+    "headers": {
+      "access-control-allow-origin": "*",
+      "access-control-expose-headers": "Access-Control-Allow-Origin,Access-Control-Allow-Credentials",
+      "connection": "keep-alive",
+      "content-length": "3092",
+      "content-type": "application/json;charset=UTF-8",
+      "keep-alive": "timeout=60",
+      "vary": "Origin"
+    },
+    "body": "{\"currentVersion\":10.81,\"cimVersion\":\"2.6.0\",\"id\":0,\"name\":\"Perímetre Camions / Perímetro Camiones\",\"type\":\"Feature Layer\",\"description\":\"Perímetro de restricción a la circulación de camiones de 7 a 22 h y masa máxima superior a 12 t.  La prohibición incluye las vías que componen dicha poligonal.\",\"geometryType\":\"esriGeometryPolygon\",\"sourceSpatialReference\":{\"wkid\":25830,\"latestWkid\":25830,\"xyTolerance\":0.001,\"zTolerance\":0.001,\"mTolerance\":0.001,\"falseX\":-5120900,\"falseY\":-9998100,\"xyUnits\":10000,\"falseZ\":-100000,\"zUnits\":10000,\"falseM\":-100000,\"mUnits\":10000},\"copyrightText\":\"\",\"parentLayer\":null,\"subLayers\":[],\"minScale\":0,\"maxScale\":0,\"referenceScale\":5000.0,\"drawingInfo\":{\"renderer\":{\"type\":\"simple\",\"symbol\":{\"type\":\"esriSFS\",\"style\":\"esriSFSSolid\",\"color\":[191,196,252,0],\"outline\":{\"type\":\"esriSLS\",\"style\":\"esriSLSSolid\",\"color\":[102,119,205,255],\"width\":2}}},\"scaleSymbols\":true,\"transparency\":0,\"labelingInfo\":null},\"defaultVisibility\":false,\"extent\":{\"xmin\":722416.4967999998,\"ymin\":4369096.602700001,\"xmax\":730229.3360000001,\"ymax\":4375594.2765,\"spatialReference\":{\"wkid\":25830,\"latestWkid\":25830,\"xyTolerance\":0.001,\"zTolerance\":0.001,\"mTolerance\":0.001,\"falseX\":-5120900,\"falseY\":-9998100,\"xyUnits\":10000,\"falseZ\":-100000,\"zUnits\":10000,\"falseM\":-100000,\"mUnits\":10000}},\"hasAttachments\":false,\"htmlPopupType\":\"esriServerHTMLPopupTypeAsHTMLText\",\"displayField\":\"DESCRIPCION\",\"typeIdField\":null,\"subtypeFieldName\":null,\"subtypeField\":null,\"defaultSubtypeCode\":null,\"fields\":[{\"name\":\"objectid\",\"type\":\"esriFieldTypeOID\",\"alias\":\"OBJECTID\",\"domain\":null},{\"name\":\"descripcion\",\"type\":\"esriFieldTypeString\",\"alias\":\"Descripción\",\"length\":254,\"domain\":null},{\"name\":\"shape\",\"type\":\"esriFieldTypeGeometry\",\"alias\":\"SHAPE\",\"domain\":null}],\"geometryField\":{\"name\":\"shape\",\"type\":\"esriFieldTypeGeometry\",\"alias\":\"SHAPE\"},\"indexes\":[{\"name\":\"a980_ix1\",\"fields\":\"shape\",\"isAscending\":true,\"isUnique\":true,\"description\":\"\"}],\"subtypes\":[],\"relationships\":[],\"canModifyLayer\":true,\"canScaleSymbols\":true,\"hasLabels\":false,\"capabilities\":\"Query,Map,Data\",\"maxRecordCount\":2000,\"supportsStatistics\":true,\"supportsExceedsLimitStatistics\":true,\"supportsAdvancedQueries\":true,\"supportedQueryFormats\":\"JSON, geoJSON, PBF\",\"isDataVersioned\":false,\"ownershipBasedAccessControlForFeatures\":{\"allowOthersToQuery\":true},\"useStandardizedQueries\":true,\"advancedQueryCapabilities\":{\"useStandardizedQueries\":true,\"supportsStatistics\":true,\"supportsPercentileStatistics\":true,\"supportsHavingClause\":true,\"supportsOrderBy\":true,\"supportsDistinct\":true,\"supportsCountDistinct\":true,\"supportsPagination\":true,\"supportsTrueCurve\":true,\"supportsQueryWithDatumTransformation\":true,\"supportsReturningQueryExtent\":true,\"supportsQueryWithDistance\":true,\"supportsSqlExpression\":true},\"supportsDatumTransformation\":true,\"dateFieldsTimeReference\":null,\"hasMetadata\":true,\"isDataArchived\":false,\"archivingInfo\":{\"supportsQueryWithHistoricMoment\":false,\"startArchivingMoment\":-1},\"supportsCoordinatesQuantization\":true,\"supportsDynamicLegends\":true,\"serviceItemId\":\"ae7a84a1c84f41b3abcaa162f8d315d3\"}"
+  },
+  "recorded_at": "2026-05-08"
+}

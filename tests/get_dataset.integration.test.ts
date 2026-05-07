@@ -5,7 +5,6 @@ import { InMemoryTransport } from "@modelcontextprotocol/sdk/inMemory.js";
 import { CkanClient } from "../src/clients/ckan.js";
 import { registerGetDatasetTool } from "../src/tools/get_dataset.js";
 
-const integration = process.env.INTEGRATION === "1";
 
 async function callTool(id: string) {
   const ckan = new CkanClient();
@@ -30,7 +29,7 @@ async function callTool(id: string) {
   }
 }
 
-describe.skipIf(!integration)("get_dataset — integration (live portal)", () => {
+describe("get_dataset — integration (live portal)", () => {
   it("ValenBisi → returns metadata + related_layers pointing to Trafico/228", async () => {
     const out = (await callTool(
       "valenbisi-disponibilitat-valenbisi-dsiponibilidad",

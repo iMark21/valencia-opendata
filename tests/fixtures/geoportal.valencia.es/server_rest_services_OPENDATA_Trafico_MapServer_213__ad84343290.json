@@ -1,0 +1,22 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://geoportal.valencia.es/server/rest/services/OPENDATA/Trafico/MapServer/213?f=json",
+    "body": null
+  },
+  "response": {
+    "status": 200,
+    "statusText": "",
+    "headers": {
+      "access-control-allow-origin": "*",
+      "access-control-expose-headers": "Access-Control-Allow-Origin,Access-Control-Allow-Credentials",
+      "connection": "keep-alive",
+      "content-length": "2943",
+      "content-type": "application/json;charset=UTF-8",
+      "keep-alive": "timeout=60",
+      "vary": "Origin"
+    },
+    "body": "{\"currentVersion\":10.81,\"cimVersion\":\"2.6.0\",\"id\":213,\"name\":\"Estacionament Nocturn Permés BUS / Estacionamiento Nocturno Permitido BUS\",\"type\":\"Feature Layer\",\"description\":\"Estacionament Nocturn Permés BUS / Estacionamiento Nocturno Permitido BUS\",\"geometryType\":\"esriGeometryPolyline\",\"sourceSpatialReference\":{\"wkid\":25830,\"latestWkid\":25830,\"xyTolerance\":0.001,\"zTolerance\":0.001,\"mTolerance\":0.001,\"falseX\":-5120900,\"falseY\":-9998100,\"xyUnits\":10000,\"falseZ\":-100000,\"zUnits\":10000,\"falseM\":-100000,\"mUnits\":10000},\"copyrightText\":\"\",\"parentLayer\":null,\"subLayers\":[],\"minScale\":150000,\"maxScale\":0,\"drawingInfo\":{\"renderer\":{\"type\":\"simple\",\"symbol\":{\"type\":\"esriSLS\",\"style\":\"esriSLSSolid\",\"color\":[56,168,0,255],\"width\":4},\"label\":\" Estacionament Nocturn Permés BUS / Estacionamiento Nocturno Permitido BUS\"},\"scaleSymbols\":false,\"transparency\":0,\"labelingInfo\":null},\"defaultVisibility\":false,\"extent\":{\"xmin\":724560.1363000004,\"ymin\":4370681.122300001,\"xmax\":728274.4945999999,\"ymax\":4375228.3364,\"spatialReference\":{\"wkid\":25830,\"latestWkid\":25830,\"xyTolerance\":0.001,\"zTolerance\":0.001,\"mTolerance\":0.001,\"falseX\":-5120900,\"falseY\":-9998100,\"xyUnits\":10000,\"falseZ\":-100000,\"zUnits\":10000,\"falseM\":-100000,\"mUnits\":10000}},\"hasAttachments\":false,\"htmlPopupType\":\"esriServerHTMLPopupTypeAsHTMLText\",\"displayField\":\"st_length(the_geom)\",\"typeIdField\":null,\"subtypeFieldName\":null,\"subtypeField\":null,\"defaultSubtypeCode\":null,\"fields\":[{\"name\":\"the_geom\",\"type\":\"esriFieldTypeGeometry\",\"alias\":\"SHAPE\",\"domain\":null},{\"name\":\"objectid\",\"type\":\"esriFieldTypeOID\",\"alias\":\"objectid\",\"domain\":null}],\"geometryField\":{\"name\":\"the_geom\",\"type\":\"esriFieldTypeGeometry\",\"alias\":\"SHAPE\"},\"indexes\":[{\"name\":\"a975_ix1\",\"fields\":\"the_geom\",\"isAscending\":true,\"isUnique\":true,\"description\":\"\"}],\"subtypes\":[],\"relationships\":[],\"canModifyLayer\":true,\"canScaleSymbols\":false,\"hasLabels\":false,\"capabilities\":\"Query,Map,Data\",\"maxRecordCount\":2000,\"supportsStatistics\":true,\"supportsExceedsLimitStatistics\":true,\"supportsAdvancedQueries\":true,\"supportedQueryFormats\":\"JSON, geoJSON, PBF\",\"isDataVersioned\":false,\"ownershipBasedAccessControlForFeatures\":{\"allowOthersToQuery\":true},\"useStandardizedQueries\":true,\"advancedQueryCapabilities\":{\"useStandardizedQueries\":true,\"supportsStatistics\":true,\"supportsPercentileStatistics\":true,\"supportsHavingClause\":true,\"supportsOrderBy\":true,\"supportsDistinct\":true,\"supportsCountDistinct\":true,\"supportsPagination\":true,\"supportsTrueCurve\":true,\"supportsQueryWithDatumTransformation\":true,\"supportsReturningQueryExtent\":true,\"supportsQueryWithDistance\":true,\"supportsSqlExpression\":true},\"supportsDatumTransformation\":true,\"dateFieldsTimeReference\":null,\"hasMetadata\":true,\"isDataArchived\":false,\"archivingInfo\":{\"supportsQueryWithHistoricMoment\":false,\"startArchivingMoment\":-1},\"supportsCoordinatesQuantization\":true,\"supportsDynamicLegends\":true,\"serviceItemId\":\"ae7a84a1c84f41b3abcaa162f8d315d3\"}"
+  },
+  "recorded_at": "2026-05-08"
+}

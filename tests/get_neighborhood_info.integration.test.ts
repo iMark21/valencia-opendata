@@ -5,7 +5,6 @@ import { InMemoryTransport } from "@modelcontextprotocol/sdk/inMemory.js";
 import { ArcgisClient } from "../src/clients/arcgis.js";
 import { registerGetNeighborhoodInfoTool } from "../src/tools/get_neighborhood_info.js";
 
-const integration = process.env.INTEGRATION === "1";
 
 async function callTool(args: Record<string, unknown>) {
   const arcgis = new ArcgisClient();
@@ -30,7 +29,7 @@ async function callTool(args: Record<string, unknown>) {
   }
 }
 
-describe.skipIf(!integration)(
+describe(
   "get_neighborhood_info — integration (live geoportal)",
   () => {
     it("list_all returns ~88 València neighborhoods with district names", async () => {

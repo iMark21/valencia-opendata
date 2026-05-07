@@ -1,0 +1,22 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://geoportal.valencia.es/server/rest/services/OPENDATA/Trafico/MapServer/197?f=json",
+    "body": null
+  },
+  "response": {
+    "status": 200,
+    "statusText": "",
+    "headers": {
+      "access-control-allow-origin": "*",
+      "access-control-expose-headers": "Access-Control-Allow-Origin,Access-Control-Allow-Credentials",
+      "connection": "keep-alive",
+      "content-length": "3166",
+      "content-type": "application/json;charset=UTF-8",
+      "keep-alive": "timeout=60",
+      "vary": "Origin"
+    },
+    "body": "{\"currentVersion\":10.81,\"cimVersion\":\"2.6.0\",\"id\":197,\"name\":\"Aparcaments no Regulats / Aparcamientos no Regulados\",\"type\":\"Feature Layer\",\"description\":\"Ubicación de los aparcamientos no regulados\",\"geometryType\":\"esriGeometryPolyline\",\"sourceSpatialReference\":{\"wkid\":25830,\"latestWkid\":25830,\"xyTolerance\":0.001,\"zTolerance\":0.001,\"mTolerance\":0.001,\"falseX\":-5120900,\"falseY\":-9998100,\"xyUnits\":10000,\"falseZ\":-100000,\"zUnits\":10000,\"falseM\":-100000,\"mUnits\":10000},\"copyrightText\":\"\",\"parentLayer\":null,\"subLayers\":[],\"minScale\":5999.9999999996,\"maxScale\":0,\"drawingInfo\":{\"renderer\":{\"type\":\"simple\",\"symbol\":{\"type\":\"esriSLS\",\"style\":\"esriSLSSolid\",\"color\":[197,0,255,255],\"width\":2},\"label\":\"Aparcaments no Regulats / Aparcamientos no Regulados\"},\"scaleSymbols\":false,\"transparency\":0,\"labelingInfo\":null},\"defaultVisibility\":false,\"extent\":{\"xmin\":721100.6710000001,\"ymin\":4351281.710000001,\"xmax\":734901.4709999999,\"ymax\":4381019.571,\"spatialReference\":{\"wkid\":25830,\"latestWkid\":25830,\"xyTolerance\":0.001,\"zTolerance\":0.001,\"mTolerance\":0.001,\"falseX\":-5120900,\"falseY\":-9998100,\"xyUnits\":10000,\"falseZ\":-100000,\"zUnits\":10000,\"falseM\":-100000,\"mUnits\":10000}},\"hasAttachments\":false,\"htmlPopupType\":\"esriServerHTMLPopupTypeAsHTMLText\",\"displayField\":\"calle\",\"typeIdField\":null,\"subtypeFieldName\":null,\"subtypeField\":null,\"defaultSubtypeCode\":null,\"fields\":[{\"name\":\"gid\",\"type\":\"esriFieldTypeOID\",\"alias\":\"OBJECTID\",\"domain\":null},{\"name\":\"calle\",\"type\":\"esriFieldTypeString\",\"alias\":\"Carrer / Calle\",\"length\":150,\"domain\":null},{\"name\":\"tipocalle\",\"type\":\"esriFieldTypeString\",\"alias\":\"Tipus Carrer / Tipo calle\",\"length\":20,\"domain\":null},{\"name\":\"the_geom\",\"type\":\"esriFieldTypeGeometry\",\"alias\":\"Shape\",\"domain\":null}],\"geometryField\":{\"name\":\"the_geom\",\"type\":\"esriFieldTypeGeometry\",\"alias\":\"Shape\"},\"indexes\":[{\"name\":\"r1173_sde_rowid_uk\",\"fields\":\"gid\",\"isAscending\":true,\"isUnique\":true,\"description\":\"\"},{\"name\":\"a1002_ix1\",\"fields\":\"the_geom\",\"isAscending\":true,\"isUnique\":true,\"description\":\"\"}],\"subtypes\":[],\"relationships\":[],\"canModifyLayer\":true,\"canScaleSymbols\":false,\"hasLabels\":false,\"capabilities\":\"Query,Map,Data\",\"maxRecordCount\":2000,\"supportsStatistics\":true,\"supportsExceedsLimitStatistics\":true,\"supportsAdvancedQueries\":true,\"supportedQueryFormats\":\"JSON, geoJSON, PBF\",\"isDataVersioned\":false,\"ownershipBasedAccessControlForFeatures\":{\"allowOthersToQuery\":true},\"useStandardizedQueries\":true,\"advancedQueryCapabilities\":{\"useStandardizedQueries\":true,\"supportsStatistics\":true,\"supportsPercentileStatistics\":true,\"supportsHavingClause\":true,\"supportsOrderBy\":true,\"supportsDistinct\":true,\"supportsCountDistinct\":true,\"supportsPagination\":true,\"supportsTrueCurve\":true,\"supportsQueryWithDatumTransformation\":true,\"supportsReturningQueryExtent\":true,\"supportsQueryWithDistance\":true,\"supportsSqlExpression\":true},\"supportsDatumTransformation\":true,\"dateFieldsTimeReference\":null,\"hasMetadata\":true,\"isDataArchived\":false,\"archivingInfo\":{\"supportsQueryWithHistoricMoment\":false,\"startArchivingMoment\":-1},\"supportsCoordinatesQuantization\":true,\"supportsDynamicLegends\":true,\"serviceItemId\":\"ae7a84a1c84f41b3abcaa162f8d315d3\"}"
+  },
+  "recorded_at": "2026-05-08"
+}

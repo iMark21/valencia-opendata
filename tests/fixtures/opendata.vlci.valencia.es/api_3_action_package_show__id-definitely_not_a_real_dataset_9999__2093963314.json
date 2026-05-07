@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://opendata.vlci.valencia.es/api/3/action/package_show?id=definitely-not-a-real-dataset-9999",
+    "body": null
+  },
+  "response": {
+    "status": 404,
+    "statusText": "NOT FOUND",
+    "headers": {
+      "connection": "keep-alive",
+      "content-length": "172",
+      "content-type": "application/json;charset=utf-8"
+    },
+    "body": "{\"help\": \"https://opendata.vlci.valencia.es/api/3/action/help_show?name=package_show\", \"error\": {\"__type\": \"Not Found Error\", \"message\": \"No encontrado\"}, \"success\": false}"
+  },
+  "recorded_at": "2026-05-08"
+}

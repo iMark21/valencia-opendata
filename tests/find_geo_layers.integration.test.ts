@@ -5,7 +5,6 @@ import { InMemoryTransport } from "@modelcontextprotocol/sdk/inMemory.js";
 import { ArcgisClient } from "../src/clients/arcgis.js";
 import { registerFindGeoLayersTool } from "../src/tools/find_geo_layers.js";
 
-const integration = process.env.INTEGRATION === "1";
 
 async function callTool(args: Record<string, unknown>) {
   const arcgis = new ArcgisClient();
@@ -30,7 +29,7 @@ async function callTool(args: Record<string, unknown>) {
   }
 }
 
-describe.skipIf(!integration)(
+describe(
   "find_geo_layers — integration (live geoportal)",
   () => {
     it("no args → 6 OPENDATA services with layer counts", async () => {

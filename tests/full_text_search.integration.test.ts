@@ -5,7 +5,6 @@ import { InMemoryTransport } from "@modelcontextprotocol/sdk/inMemory.js";
 import { CkanClient } from "../src/clients/ckan.js";
 import { registerFullTextSearchTool } from "../src/tools/full_text_search.js";
 
-const integration = process.env.INTEGRATION === "1";
 
 async function callTool(args: Record<string, unknown>) {
   const ckan = new CkanClient();
@@ -30,7 +29,7 @@ async function callTool(args: Record<string, unknown>) {
   }
 }
 
-describe.skipIf(!integration)(
+describe(
   "full_text_search — integration (live portal)",
   () => {
     it("'calidad aire' returns air-quality datasets", async () => {

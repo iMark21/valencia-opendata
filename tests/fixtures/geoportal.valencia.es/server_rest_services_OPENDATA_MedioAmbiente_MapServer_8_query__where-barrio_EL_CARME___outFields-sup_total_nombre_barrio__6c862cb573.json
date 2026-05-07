@@ -1,0 +1,22 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://geoportal.valencia.es/server/rest/services/OPENDATA/MedioAmbiente/MapServer/8/query?f=json&where=barrio%3D%27EL+CARME%27&outFields=sup_total%2Cnombre%2Cbarrio&returnGeometry=false&resultRecordCount=200",
+    "body": null
+  },
+  "response": {
+    "status": 200,
+    "statusText": "",
+    "headers": {
+      "access-control-allow-origin": "*",
+      "access-control-expose-headers": "Access-Control-Allow-Origin,Access-Control-Allow-Credentials",
+      "connection": "keep-alive",
+      "content-length": "668",
+      "content-type": "application/json;charset=UTF-8",
+      "keep-alive": "timeout=60",
+      "vary": "Origin"
+    },
+    "body": "{\"displayFieldName\":\"st_area(shape)\",\"fieldAliases\":{\"sup_total\":\"Superficie Total\",\"nombre\":\"Nom / Nombre\",\"barrio\":\"Barri / Barrio\"},\"fields\":[{\"name\":\"sup_total\",\"type\":\"esriFieldTypeDouble\",\"alias\":\"Superficie Total\"},{\"name\":\"nombre\",\"type\":\"esriFieldTypeString\",\"alias\":\"Nom / Nombre\",\"length\":255},{\"name\":\"barrio\",\"type\":\"esriFieldTypeString\",\"alias\":\"Barri / Barrio\",\"length\":50}],\"features\":[{\"attributes\":{\"sup_total\":324.0,\"nombre\":\"HORT D'EN CENDRA\",\"barrio\":\"EL CARME\"}},{\"attributes\":{\"sup_total\":93.0,\"nombre\":\"MORELLA C - RAGA C\",\"barrio\":\"EL CARME\"}},{\"attributes\":{\"sup_total\":2263.3,\"nombre\":\"TRASERA IVAM - PATI OBERT IVAM\",\"barrio\":\"EL CARME\"}}]}"
+  },
+  "recorded_at": "2026-05-08"
+}

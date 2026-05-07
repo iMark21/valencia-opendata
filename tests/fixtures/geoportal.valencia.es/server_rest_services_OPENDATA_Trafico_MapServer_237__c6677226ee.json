@@ -1,0 +1,22 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://geoportal.valencia.es/server/rest/services/OPENDATA/Trafico/MapServer/237?f=json",
+    "body": null
+  },
+  "response": {
+    "status": 200,
+    "statusText": "",
+    "headers": {
+      "access-control-allow-origin": "*",
+      "access-control-expose-headers": "Access-Control-Allow-Origin,Access-Control-Allow-Credentials",
+      "connection": "keep-alive",
+      "content-length": "2196",
+      "content-type": "application/json;charset=UTF-8",
+      "keep-alive": "timeout=60",
+      "vary": "Origin"
+    },
+    "body": "{\"currentVersion\":10.81,\"cimVersion\":\"2.6.0\",\"id\":237,\"name\":\"Ocupació via pública / Ocupación vía pública\",\"type\":\"Group Layer\",\"description\":\"Ocupación vía pública\",\"geometryType\":null,\"copyrightText\":\"\",\"parentLayer\":null,\"subLayers\":[{\"id\":209,\"name\":\"Ocupació via pública / Ocupación vía pública\"},{\"id\":235,\"name\":\"Obres / Obras\"},{\"id\":234,\"name\":\"Mudances / Mudanzas\"},{\"id\":233,\"name\":\"Festejos\"},{\"id\":232,\"name\":\"Itineraris Reservats / Itinerarios Reservados\"}],\"minScale\":100000,\"maxScale\":0,\"defaultVisibility\":false,\"extent\":{\"xmin\":0,\"ymin\":0,\"xmax\":734933.6717999997,\"ymax\":4381002.9738,\"spatialReference\":{\"wkid\":25830,\"latestWkid\":25830,\"xyTolerance\":0.001,\"zTolerance\":0.001,\"mTolerance\":0.001,\"falseX\":-5120900,\"falseY\":-9998100,\"xyUnits\":10000,\"falseZ\":-100000,\"zUnits\":10000,\"falseM\":-100000,\"mUnits\":10000}},\"hasAttachments\":false,\"htmlPopupType\":\"esriServerHTMLPopupTypeNone\",\"displayField\":\"\",\"typeIdField\":null,\"subtypeFieldName\":null,\"subtypeField\":null,\"defaultSubtypeCode\":null,\"fields\":null,\"geometryField\":{},\"indexes\":[],\"subtypes\":[],\"relationships\":[],\"canModifyLayer\":false,\"canScaleSymbols\":true,\"hasLabels\":false,\"capabilities\":\"Query,Map\",\"supportsStatistics\":false,\"supportsExceedsLimitStatistics\":false,\"supportsAdvancedQueries\":false,\"supportedQueryFormats\":\"JSON, geoJSON, PBF\",\"isDataVersioned\":false,\"ownershipBasedAccessControlForFeatures\":{\"allowOthersToQuery\":true},\"useStandardizedQueries\":true,\"advancedQueryCapabilities\":{\"useStandardizedQueries\":true,\"supportsStatistics\":false,\"supportsPercentileStatistics\":false,\"supportsHavingClause\":false,\"supportsOrderBy\":false,\"supportsDistinct\":false,\"supportsCountDistinct\":false,\"supportsPagination\":false,\"supportsTrueCurve\":true,\"supportsQueryWithDatumTransformation\":true,\"supportsReturningQueryExtent\":true,\"supportsQueryWithDistance\":true,\"supportsSqlExpression\":false},\"supportsDatumTransformation\":true,\"dateFieldsTimeReference\":null,\"hasMetadata\":true,\"isDataArchived\":false,\"archivingInfo\":{\"supportsQueryWithHistoricMoment\":false,\"startArchivingMoment\":-1},\"supportsCoordinatesQuantization\":true,\"supportsDynamicLegends\":false,\"serviceItemId\":\"ae7a84a1c84f41b3abcaa162f8d315d3\"}"
+  },
+  "recorded_at": "2026-05-08"
+}

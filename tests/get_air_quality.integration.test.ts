@@ -5,7 +5,6 @@ import { InMemoryTransport } from "@modelcontextprotocol/sdk/inMemory.js";
 import { ArcgisClient } from "../src/clients/arcgis.js";
 import { registerGetAirQualityTool } from "../src/tools/get_air_quality.js";
 
-const integration = process.env.INTEGRATION === "1";
 
 async function callTool(args: Record<string, unknown>) {
   const arcgis = new ArcgisClient();
@@ -30,7 +29,7 @@ async function callTool(args: Record<string, unknown>) {
   }
 }
 
-describe.skipIf(!integration)(
+describe(
   "get_air_quality — integration (live geoportal)",
   () => {
     it("returns at least 7 València stations with WGS84 coords near (39.47, -0.37)", async () => {

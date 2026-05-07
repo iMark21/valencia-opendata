@@ -5,9 +5,8 @@ import { InMemoryTransport } from "@modelcontextprotocol/sdk/inMemory.js";
 import { CkanClient } from "../src/clients/ckan.js";
 import { registerListDatasetsTool } from "../src/tools/list_datasets.js";
 
-const integration = process.env.INTEGRATION === "1";
 
-describe.skipIf(!integration)("list_datasets — integration (live portal)", () => {
+describe("list_datasets — integration (live portal)", () => {
   it("default invocation returns 20 datasets and total≈294", async () => {
     const ckan = new CkanClient();
     const server = new McpServer({ name: "test", version: "0.0.0" });

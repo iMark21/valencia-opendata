@@ -5,7 +5,6 @@ import { InMemoryTransport } from "@modelcontextprotocol/sdk/inMemory.js";
 import { ArcgisClient } from "../src/clients/arcgis.js";
 import { registerGetTrafficStateTool } from "../src/tools/get_traffic_state.js";
 
-const integration = process.env.INTEGRATION === "1";
 
 async function callTool(args: Record<string, unknown>) {
   const arcgis = new ArcgisClient();
@@ -30,7 +29,7 @@ async function callTool(args: Record<string, unknown>) {
   }
 }
 
-describe.skipIf(!integration)(
+describe(
   "get_traffic_state — integration (live geoportal)",
   () => {
     it("scope=cameras near centre returns cameras with viewer URLs", async () => {
