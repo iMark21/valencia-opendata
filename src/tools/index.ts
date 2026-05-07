@@ -13,6 +13,7 @@ import { registerGetValenbisiTool } from "./get_valenbisi_availability.js";
 import { registerGetTrafficStateTool } from "./get_traffic_state.js";
 import { registerGetNeighborhoodInfoTool } from "./get_neighborhood_info.js";
 import { registerGetNeighborhoodPulseTool } from "./get_neighborhood_pulse.js";
+import { registerGetEmtStopsTool } from "./get_emt_stops.js";
 
 export type ToolDeps = {
   ckan: CkanClient;
@@ -40,4 +41,5 @@ export function registerAllTools(server: McpServer, deps?: ToolDeps): void {
   registerGetTrafficStateTool(server, d.arcgis);
   registerGetNeighborhoodInfoTool(server, { arcgis: d.arcgis, ckan: d.ckan });
   registerGetNeighborhoodPulseTool(server, d.arcgis);
+  registerGetEmtStopsTool(server, d.arcgis);
 }
