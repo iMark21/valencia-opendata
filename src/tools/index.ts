@@ -10,6 +10,7 @@ import { registerFindGeoLayersTool } from "./find_geo_layers.js";
 import { registerFullTextSearchTool } from "./full_text_search.js";
 import { registerGetAirQualityTool } from "./get_air_quality.js";
 import { registerGetValenbisiTool } from "./get_valenbisi_availability.js";
+import { registerGetTrafficStateTool } from "./get_traffic_state.js";
 
 export type ToolDeps = {
   ckan: CkanClient;
@@ -34,5 +35,6 @@ export function registerAllTools(server: McpServer, deps?: ToolDeps): void {
   registerFullTextSearchTool(server, d.ckan);
   registerGetAirQualityTool(server, d.arcgis);
   registerGetValenbisiTool(server, d.arcgis);
-  // VALMCP-12..14 curated tools
+  registerGetTrafficStateTool(server, d.arcgis);
+  // VALMCP-13..14 curated tools
 }
