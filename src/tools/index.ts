@@ -7,6 +7,7 @@ import { registerGetDatasetTool } from "./get_dataset.js";
 import { registerGetDatasetResourceTool } from "./get_dataset_resource.js";
 import { registerQueryGeoLayerTool } from "./query_geo_layer.js";
 import { registerFindGeoLayersTool } from "./find_geo_layers.js";
+import { registerFullTextSearchTool } from "./full_text_search.js";
 
 export type ToolDeps = {
   ckan: CkanClient;
@@ -28,6 +29,6 @@ export function registerAllTools(server: McpServer, deps?: ToolDeps): void {
   registerGetDatasetResourceTool(server, { ckan: d.ckan });
   registerQueryGeoLayerTool(server, d.arcgis);
   registerFindGeoLayersTool(server, d.arcgis);
-  // VALMCP-09 full_text_search
+  registerFullTextSearchTool(server, d.ckan);
   // VALMCP-10..14 curated tools
 }
