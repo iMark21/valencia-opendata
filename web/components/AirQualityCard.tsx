@@ -1,0 +1,128 @@
+"use client";
+
+const MONO = "'Courier New', ui-monospace, 'Cascadia Code', monospace";
+
+type Reading = {
+  pollutant: string;
+  value: number;
+  unit: string;
+};
+
+type AirStation = {
+  name: string;
+  air_quality_label?: string | null;
+  readings: Reading[];
+};
+
+export function extractAirStations(name: string, result: unknown): AirStation[] | null {
+  if (name !== "get_air_quality" || !result || typeof result !== "object") return null;
+  const r = result as Record<string, unknown>;
+  if (!Array.isArray(r.stations) || r.stations.length === 0) return null;
+  return r.stations as AirStation[];
+}
+
+// Simplified EAQI hourly thresholds: [fair, poor, bad] in µg/m³ (CO in mg/m³)
+const THRESHOLDS: Record<string, [number, number, number]> = {
+  no2:  [40,  100, 200],
+  pm10: [20,  50,  100],
+  pm25: [10,  25,  50],
+  o3:   [60,  120, 180],
+  so2:  [100, 200, 350],
+  co:   [4,   10,  20],
+};
+
+const LEVELS = {
+  good: { bg: "rgba(22,163,74,0.09)",  border: "rgba(22,163,74,0.22)",  text: "#16a34a" },
+  fair: { bg: "rgba(217,119,6,0.09)",  border: "rgba(217,119,6,0.22)",  text: "#d97706" },
+  poor: { bg: "rgba(234,88,12,0.09)",  border: "rgba(234,88,12,0.22)",  text: "#ea580c" },
+  bad:  { bg: "rgba(220,38,38,0.09)",  border: "rgba(220,38,38,0.22)",  text: "#dc2626" },
+  n_a:  { bg: "rgba(0,0,0,0.04)",      border: "rgba(0,0,0,0.09)",      text: "#9A9590" },
+} as const;
+
+type Level = keyof typeof LEVELS;
+
+function level(pollutant: string, value: number): Level {
+  const t = THRESHOLDS[pollutant.toLowerCase()];
+  if (!t) return "n_a";
+  if (value < t[0]) return "good";
+  if (value < t[1]) return "fair";
+  if (value < t[2]) return "poor";
+  return "bad";
+}
+
+const LABELS: Record<string, string> = {
+  no2: "NO₂", pm10: "PM10", pm25: "PM2.5", o3: "O₃", so2: "SO₂", co: "CO",
+};
+
+const LEVEL_LABEL: Record<Level, string> = {
+  good: "Bona", fair: "Acceptable", poor: "Dolenta", bad: "Molt dolenta", n_a: "—",
+};
+
+function overallLevel(readings: Reading[]): Level {
+  const order: Level[] = ["good", "fair", "poor", "bad"];
+  let worst: Level = "good";
+  for (const r of readings) {
+    const l = level(r.pollutant, r.value);
+    if (l === "n_a") continue;
+    if (order.indexOf(l) > order.indexOf(worst)) worst = l;
+  }
+  return worst;
+}
+
+export default function AirQualityCard({ stations }: { stations: AirStation[] }) {
+  return (
+    <div style={{ marginTop: "14px" }}>
+      <div style={{ fontFamily: MONO, fontSize: "8px", color: "#B0ABA5", letterSpacing: "1.8px", textTransform: "uppercase", marginBottom: "8px" }}>
+        Qualitat de l&apos;aire · RVVCCA
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+        {stations.map((s, i) => {
+          const overall = s.readings.length > 0 ? overallLevel(s.readings) : "n_a";
+          const c = LEVELS[overall];
+          return (
+            <div key={i} style={{
+              background: "#FAFAF8",
+              border: "1px solid rgba(0,0,0,0.07)",
+              borderLeft: `3px solid ${c.border}`,
+              borderRadius: "4px 8px 8px 4px",
+              padding: "10px 14px",
+            }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "8px" }}>
+                <span style={{ fontFamily: MONO, fontSize: "10.5px", fontWeight: 600, color: "#3A3530" }}>
+                  {s.name}
+                </span>
+                <span style={{
+                  fontFamily: MONO, fontSize: "8.5px", fontWeight: 700,
+                  padding: "2px 7px", borderRadius: "3px",
+                  background: c.bg, border: `1px solid ${c.border}`, color: c.text,
+                  letterSpacing: "0.5px",
+                }}>
+                  {s.air_quality_label ?? LEVEL_LABEL[overall]}
+                </span>
+              </div>
+              {s.readings.length > 0 ? (
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "5px" }}>
+                  {s.readings.map((r, ri) => {
+                    const lv = level(r.pollutant, r.value);
+                    const rc = LEVELS[lv];
+                    return (
+                      <span key={ri} style={{
+                        fontFamily: MONO, fontSize: "10px", fontWeight: 600,
+                        padding: "3px 8px", borderRadius: "3px",
+                        background: rc.bg, border: `1px solid ${rc.border}`, color: rc.text,
+                      }}>
+                        {LABELS[r.pollutant] ?? r.pollutant.toUpperCase()} {r.value} <span style={{ fontWeight: 400, opacity: 0.75 }}>{r.unit}</span>
+                      </span>
+                    );
+                  })}
+                </div>
+              ) : (
+                <span style={{ fontFamily: MONO, fontSize: "10px", color: "#C0BCB6" }}>Sense lectures disponibles</span>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}

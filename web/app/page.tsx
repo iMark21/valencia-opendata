@@ -3,8 +3,12 @@
 import { useState, useRef, useEffect, useCallback, lazy, Suspense } from "react";
 import type { MapPoint } from "@/components/MapCard";
 import { extractMapPoints } from "@/components/MapCard";
+import { extractValenBisiStations } from "@/components/ValenBisiCard";
+import { extractAirStations } from "@/components/AirQualityCard";
 
 const MapCard = lazy(() => import("@/components/MapCard"));
+const ValenBisiCard = lazy(() => import("@/components/ValenBisiCard"));
+const AirQualityCard = lazy(() => import("@/components/AirQualityCard"));
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 interface ToolCallState {
@@ -810,11 +814,33 @@ export default function ChatPage() {
                           )}
                           {!msg.isStreaming && (() => {
                             const allPoints = msg.toolCalls.flatMap((tc) => tc.mapPoints ?? []);
-                            return allPoints.length > 0 ? (
-                              <Suspense fallback={<div style={{ height: 220, background: "rgba(0,80,160,0.04)", borderRadius: "8px", marginTop: "12px" }} />}>
-                                <MapCard points={allPoints} />
-                              </Suspense>
-                            ) : null;
+
+                            const valenbisiTc = msg.toolCalls.find((tc) => tc.name === "get_valenbisi_availability" && tc.result !== undefined);
+                            const valenbisiStations = valenbisiTc ? extractValenBisiStations(valenbisiTc.name, valenbisiTc.result) : null;
+
+                            const airTc = msg.toolCalls.find((tc) => tc.name === "get_air_quality" && tc.result !== undefined);
+                            const airStations = airTc ? extractAirStations(airTc.name, airTc.result) : null;
+
+                            if (allPoints.length === 0 && !valenbisiStations && !airStations) return null;
+                            return (
+                              <>
+                                {allPoints.length > 0 && (
+                                  <Suspense fallback={<div style={{ height: 220, background: "rgba(0,80,160,0.04)", borderRadius: "8px", marginTop: "12px" }} />}>
+                                    <MapCard points={allPoints} />
+                                  </Suspense>
+                                )}
+                                {valenbisiStations && (
+                                  <Suspense fallback={null}>
+                                    <ValenBisiCard stations={valenbisiStations} />
+                                  </Suspense>
+                                )}
+                                {airStations && (
+                                  <Suspense fallback={null}>
+                                    <AirQualityCard stations={airStations} />
+                                  </Suspense>
+                                )}
+                              </>
+                            );
                           })()}
                         </>
                       )}
