@@ -16,6 +16,8 @@
 | VALMCP-25 | Web demo completo: OpenRouter, geocoder, diseño Senyera, markdown tables | 26 may 2026 |
 | VALMCP-26 | Leaflet mini-mapa inline (ValenBisi, EMT, aire) | 26 may 2026 |
 | VALMCP-27 | Panel 294 datasets: accordion lateral + chips categoría empty state | 26 may 2026 |
+| VALMCP-37 | `AirQualityCard`: badge coloreado (Bona/Acceptable/Dolenta/Molt dolenta) + chips EAQI por contaminante | 26 may 2026 |
+| VALMCP-38 | `ValenBisiCard`: número grande bicis + gauge bar available/total + badge muelles | 26 may 2026 |
 
 ---
 
@@ -50,12 +52,12 @@
 | VALMCP-35 | Hacer repo `iMark21/valencia-mcp` público en GitHub | P0 — BLOQUEANTE candidatura |
 | VALMCP-36 | `npm publish` (requiere VALMCP-30..32 + VALMCP-35) | P0 |
 
-### 31 may — Cards visuales
+### 31 may — Cards visuales ✅
 
 | ID | Tarea | Prioridad |
 |----|-------|-----------|
-| VALMCP-37 | `AirQualityCard`: badge coloreado (verde/amarillo/naranja/rojo) por umbral OMS | P1 |
-| VALMCP-38 | `ValenBisiCard`: barra gauge `available/total` bicicletas | P1 |
+| VALMCP-37 | ~~`AirQualityCard`: badge coloreado por umbral OMS~~ · **completado 26 may** | ✅ |
+| VALMCP-38 | ~~`ValenBisiCard`: barra gauge `available/total` bicicletas~~ · **completado 26 may** | ✅ |
 
 ### 1 jun — Export + Atribución
 
@@ -104,4 +106,4 @@
 
 ---
 
-_Actualizado: 26 may 2026_
+_Actualizado: 26 may 2026 (noche) — VALMCP-37/38 adelantadas al 26 may_
