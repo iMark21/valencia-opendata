@@ -50,8 +50,7 @@ COORDENADAS CONOCIDAS (usa directamente, sin llamar geocode_address):
 // Models to try in order on quota/rate errors
 const MODELS = [
   "openai/gpt-oss-120b:free",                  // Primary: fast, reliable tool calling
-  "openrouter/owl-alpha",                       // Fallback: OpenRouter native, 1M ctx
-  "meta-llama/llama-3.3-70b-instruct:free",    // Last resort: Llama 3.3
+  "meta-llama/llama-3.3-70b-instruct:free",    // Fallback: reliable tool calling
 ];
 
 const MAX_TOOL_ROUNDS = 8;

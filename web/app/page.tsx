@@ -507,7 +507,11 @@ export default function ChatPage() {
   }, [messages, isLoading]);
 
   const exportConversation = useCallback(() => {
-    const date = new Date().toLocaleDateString("es-ES", { year: "numeric", month: "long", day: "numeric" });
+    const locale = lang === "val" ? "ca-ES" : "es-ES";
+    const date = new Date().toLocaleDateString(locale, { year: "numeric", month: "long", day: "numeric" });
+    const exportedOn = lang === "val" ? "Exportat el" : "Exportado el";
+    const sourceLabel = lang === "val" ? "Font" : "Fuente";
+    const tagline = lang === "val" ? "Dades obertes · Ajuntament de València" : "Datos abiertos · Ajuntament de València";
     const msgsHtml = messages.map((msg) => {
       if (msg.role === "user") {
         return `<div class="msg user"><div class="user-bubble">${escapeHtml(msg.content)}</div></div>`;
@@ -517,12 +521,12 @@ export default function ChatPage() {
         return `<span class="source">✓ ${meta.label}</span>`;
       }).join("");
       const attr = msg.toolCalls.length > 0
-        ? `<div class="attribution">Fuente: Ajuntament de València · CC BY 4.0 · opendata.vlci.valencia.es</div>`
+        ? `<div class="attribution">${sourceLabel}: Ajuntament de València · CC BY 4.0 · opendata.vlci.valencia.es</div>`
         : "";
       return `<div class="msg assistant"><div class="assistant-card">${sources ? `<div class="sources">${sources}</div>` : ""}<div class="content">${markdownToHtml(msg.content)}</div>${attr}</div></div>`;
     }).join("\n");
 
-    const html = `<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>valencIA — ${date}</title><style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Courier New',monospace;background:#F2EFE9;color:#1A1918}.stripe{height:3px;display:flex}.s1{flex:1;background:#0050A0}.s2{flex:2;background:#E6A800}.s3{flex:2;background:#C8102E}header{background:rgba(242,239,233,0.96);border-bottom:1px solid rgba(0,0,0,0.07);padding:12px 24px}.logo{font-family:Georgia,serif;font-size:22px}.lt{font-weight:400;color:#2A2724}.li{font-weight:700;color:#C8102E}.tagline{font-size:8px;color:#A8A49E;letter-spacing:1.8px;text-transform:uppercase;margin-top:2px}.meta{font-size:9px;color:#C0BCB6;letter-spacing:.8px;text-transform:uppercase;margin-top:6px}main{max-width:740px;margin:0 auto;padding:24px 16px;display:flex;flex-direction:column;gap:16px}.msg{display:flex;flex-direction:column}.msg.user{align-items:flex-end}.msg.assistant{align-items:flex-start;width:100%}.user-bubble{max-width:min(72%,520px);padding:10px 16px;background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:16px 16px 4px 16px;font-size:13.5px;line-height:1.6}.assistant-card{width:100%;padding:14px 18px;background:#fff;border:1px solid rgba(0,0,0,0.07);border-left:3px solid #0050A0;border-radius:4px 14px 14px 14px;font-size:13.5px;line-height:1.75}.sources{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid rgba(0,0,0,0.06)}.source{font-size:9px;color:#16a34a;background:rgba(22,163,74,0.07);border:1px solid rgba(22,163,74,0.18);border-radius:3px;padding:1px 7px}.attribution{margin-top:10px;padding-top:8px;border-top:1px solid rgba(0,0,0,0.05);font-size:9px;color:#C0BCB6;letter-spacing:.5px}.content p{margin-top:10px}.content p:first-child{margin-top:0}.content h1,.content h2,.content h3{font-weight:700;margin:14px 0 4px}.content h1{font-size:15px}.content h2{font-size:13.5px}.content h3{font-size:12.5px}.content ul{padding-left:1.3em;line-height:1.8;margin:10px 0}.content table{border-collapse:collapse;width:100%;font-size:11.5px;margin:12px 0;border:1px solid rgba(0,80,160,.12)}.content th{text-align:left;padding:7px 12px;border-bottom:1.5px solid rgba(0,80,160,.18);color:#0050A0;font-size:9.5px;letter-spacing:.6px;text-transform:uppercase;background:rgba(0,80,160,.05)}.content td{padding:7px 12px;border-bottom:1px solid rgba(0,0,0,.05)}.content strong{font-weight:700;color:#111}.content em{color:#555}footer{border-top:1px solid rgba(0,0,0,0.07);padding:16px 24px;text-align:center;font-size:8.5px;color:#C0BCB6;letter-spacing:.8px;text-transform:uppercase;margin-top:24px}a{color:#C0BCB6}</style></head><body><div class="stripe"><div class="s1"></div><div class="s2"></div><div class="s3"></div><div class="s2"></div><div class="s3"></div></div><header><div class="logo"><span class="lt">valenc</span><span class="li">IA</span></div><div class="tagline">Datos abiertos · Ajuntament de València</div><div class="meta">Exportado el ${date}</div></header><main>${msgsHtml}</main><footer>CC BY 4.0 · Ajuntament de València · <a href="https://opendata.vlci.valencia.es">opendata.vlci.valencia.es</a></footer></body></html>`;
+    const html = `<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>valencÍA — ${date}</title><style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Courier New',monospace;background:#F2EFE9;color:#1A1918}.stripe{height:3px;display:flex}.s1{flex:1;background:#0050A0}.s2{flex:2;background:#E6A800}.s3{flex:2;background:#C8102E}header{background:rgba(242,239,233,0.96);border-bottom:1px solid rgba(0,0,0,0.07);padding:12px 24px}.logo{font-family:Georgia,serif;font-size:22px}.lt{font-weight:400;color:#2A2724}.li{font-weight:700;color:#C8102E}.tagline{font-size:8px;color:#A8A49E;letter-spacing:1.8px;text-transform:uppercase;margin-top:2px}.meta{font-size:9px;color:#C0BCB6;letter-spacing:.8px;text-transform:uppercase;margin-top:6px}main{max-width:740px;margin:0 auto;padding:24px 16px;display:flex;flex-direction:column;gap:16px}.msg{display:flex;flex-direction:column}.msg.user{align-items:flex-end}.msg.assistant{align-items:flex-start;width:100%}.user-bubble{max-width:min(72%,520px);padding:10px 16px;background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:16px 16px 4px 16px;font-size:13.5px;line-height:1.6}.assistant-card{width:100%;padding:14px 18px;background:#fff;border:1px solid rgba(0,0,0,0.07);border-left:3px solid #0050A0;border-radius:4px 14px 14px 14px;font-size:13.5px;line-height:1.75}.sources{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid rgba(0,0,0,0.06)}.source{font-size:9px;color:#16a34a;background:rgba(22,163,74,0.07);border:1px solid rgba(22,163,74,0.18);border-radius:3px;padding:1px 7px}.attribution{margin-top:10px;padding-top:8px;border-top:1px solid rgba(0,0,0,0.05);font-size:9px;color:#C0BCB6;letter-spacing:.5px}.content p{margin-top:10px}.content p:first-child{margin-top:0}.content h1,.content h2,.content h3{font-weight:700;margin:14px 0 4px}.content h1{font-size:15px}.content h2{font-size:13.5px}.content h3{font-size:12.5px}.content ul{padding-left:1.3em;line-height:1.8;margin:10px 0}.content table{border-collapse:collapse;width:100%;font-size:11.5px;margin:12px 0;border:1px solid rgba(0,80,160,.12)}.content th{text-align:left;padding:7px 12px;border-bottom:1.5px solid rgba(0,80,160,.18);color:#0050A0;font-size:9.5px;letter-spacing:.6px;text-transform:uppercase;background:rgba(0,80,160,.05)}.content td{padding:7px 12px;border-bottom:1px solid rgba(0,0,0,.05)}.content strong{font-weight:700;color:#111}.content em{color:#555}footer{border-top:1px solid rgba(0,0,0,0.07);padding:16px 24px;text-align:center;font-size:8.5px;color:#C0BCB6;letter-spacing:.8px;text-transform:uppercase;margin-top:24px}a{color:#C0BCB6}</style></head><body><div class="stripe"><div class="s1"></div><div class="s2"></div><div class="s3"></div><div class="s2"></div><div class="s3"></div></div><header><div class="logo"><span class="lt">valenc</span><span class="li">IA</span></div><div class="tagline">${tagline}</div><div class="meta">${exportedOn} ${date}</div></header><main>${msgsHtml}</main><footer>CC BY 4.0 · Ajuntament de València · <a href="https://opendata.vlci.valencia.es">opendata.vlci.valencia.es</a></footer></body></html>`;
 
     const blob = new Blob([html], { type: "text/html;charset=utf-8" });
     const url = URL.createObjectURL(blob);
@@ -533,7 +537,7 @@ export default function ChatPage() {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
-  }, [messages]);
+  }, [messages, lang]);
 
   const handleKey = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMessage(input); }
@@ -913,7 +917,7 @@ export default function ChatPage() {
                                 )}
                                 {airStations && (
                                   <Suspense fallback={null}>
-                                    <AirQualityCard stations={airStations} />
+                                    <AirQualityCard stations={airStations} lang={lang} />
                                   </Suspense>
                                 )}
                               </>

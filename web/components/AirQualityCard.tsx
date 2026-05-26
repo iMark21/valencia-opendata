@@ -54,8 +54,9 @@ const LABELS: Record<string, string> = {
   no2: "NO₂", pm10: "PM10", pm25: "PM2.5", o3: "O₃", so2: "SO₂", co: "CO",
 };
 
-const LEVEL_LABEL: Record<Level, string> = {
-  good: "Bona", fair: "Acceptable", poor: "Dolenta", bad: "Molt dolenta", n_a: "—",
+const LEVEL_LABEL: Record<"es" | "val", Record<Level, string>> = {
+  val: { good: "Bona",   fair: "Acceptable", poor: "Dolenta",  bad: "Molt dolenta", n_a: "—" },
+  es:  { good: "Buena",  fair: "Aceptable",  poor: "Deficiente", bad: "Muy deficiente", n_a: "—" },
 };
 
 function overallLevel(readings: Reading[]): Level {
@@ -69,11 +70,14 @@ function overallLevel(readings: Reading[]): Level {
   return worst;
 }
 
-export default function AirQualityCard({ stations }: { stations: AirStation[] }) {
+export default function AirQualityCard({ stations, lang = "val" }: { stations: AirStation[]; lang?: "es" | "val" }) {
+  const labels = LEVEL_LABEL[lang];
+  const header = lang === "val" ? "Qualitat de l’aire · RVVCCA" : "Calidad del aire · RVVCCA";
+  const noData = lang === "val" ? "Sense lectures disponibles" : "Sin lecturas disponibles";
   return (
     <div style={{ marginTop: "14px" }}>
       <div style={{ fontFamily: MONO, fontSize: "8px", color: "#B0ABA5", letterSpacing: "1.8px", textTransform: "uppercase", marginBottom: "8px" }}>
-        Qualitat de l&apos;aire · RVVCCA
+        {header}
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
         {stations.map((s, i) => {
@@ -97,7 +101,7 @@ export default function AirQualityCard({ stations }: { stations: AirStation[] })
                   background: c.bg, border: `1px solid ${c.border}`, color: c.text,
                   letterSpacing: "0.5px",
                 }}>
-                  {s.air_quality_label ?? LEVEL_LABEL[overall]}
+                  {s.air_quality_label ?? labels[overall]}
                 </span>
               </div>
               {s.readings.length > 0 ? (
@@ -117,7 +121,7 @@ export default function AirQualityCard({ stations }: { stations: AirStation[] })
                   })}
                 </div>
               ) : (
-                <span style={{ fontFamily: MONO, fontSize: "10px", color: "#C0BCB6" }}>Sense lectures disponibles</span>
+                <span style={{ fontFamily: MONO, fontSize: "10px", color: "#C0BCB6" }}>{noData}</span>
               )}
             </div>
           );
