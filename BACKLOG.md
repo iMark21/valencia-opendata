@@ -59,12 +59,12 @@
 | VALMCP-37 | ~~`AirQualityCard`: badge coloreado por umbral OMS~~ · **completado 26 may** | ✅ |
 | VALMCP-38 | ~~`ValenBisiCard`: barra gauge `available/total` bicicletas~~ · **completado 26 may** | ✅ |
 
-### 1 jun — Export + Atribución
+### 1 jun — Export + Atribución ✅
 
 | ID | Tarea | Prioridad |
 |----|-------|-----------|
-| VALMCP-39 | Exportar conversación como HTML estático (CC BY 4.0, track periodismo) | P1 |
-| VALMCP-40 | Footer fijo en burbuja asistente: "Fuente: Ajuntament de València, CC BY 4.0" | P2 |
+| VALMCP-39 | ~~Exportar conversación como HTML estático (CC BY 4.0, track periodismo)~~ · **completado 27 may** | ✅ |
+| VALMCP-40 | ~~Footer fijo en burbuja asistente: "Fuente: Ajuntament de València, CC BY 4.0"~~ · **completado 27 may** | ✅ |
 
 ### 2 jun — Vídeo demo
 
@@ -106,4 +106,4 @@
 
 ---
 
-_Actualizado: 27 may 2026 (noche) — VALMCP-29..34 completados; VALMCP-28 movido a publish day (2 jun)_
+_Actualizado: 27 may 2026 (noche) — VALMCP-29..34 + 39/40 completados; VALMCP-28 movido a publish day (2 jun)_
