@@ -23,12 +23,12 @@
 
 ## 📅 Sprint Publicación — por días
 
-### 27 may — Deploy + Mobile
+### 27 may — Deploy + Mobile ✅
 
 | ID | Tarea | Prioridad |
 |----|-------|-----------|
-| VALMCP-28 | Deploy web demo en Vercel (conectar repo, env var OPENROUTER_API_KEY) | P0 |
-| VALMCP-29 | Responsive mobile: media queries para input area, bubbles, sidebar bottom-sheet | P0 |
+| VALMCP-28 | Deploy web demo en Vercel (conectar repo, env var OPENROUTER_API_KEY) | P0 — movido a publish day (2 jun) |
+| VALMCP-29 | ~~Responsive mobile: media queries para input area, bubbles, sidebar bottom-sheet~~ · **completado 27 may** | ✅ |
 
 ### 28 may — Packaging npm
 
@@ -106,4 +106,4 @@
 
 ---
 
-_Actualizado: 26 may 2026 (noche) — VALMCP-37/38 adelantadas al 26 may_
+_Actualizado: 27 may 2026 — VALMCP-29 completado; VALMCP-28 movido a publish day (2 jun)_
