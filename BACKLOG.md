@@ -2,7 +2,7 @@
 
 > Concurso Premios Datos Abiertos y Periodismo de Datos València IV  
 > Deadline hard: **8 jun 2026** · Buffer: **5 jun 2026**  
-> Hoy: 26 may 2026 · Días restantes al buffer: **10**
+> Hoy: 27 may 2026 · Días restantes al buffer: **9**
 
 ---
 
@@ -45,12 +45,19 @@
 | VALMCP-33 | ~~README raíz orientado a evaluador del concurso (sección "Por qué open data", demo link, licencia)~~ · **completado 27 may** | ✅ |
 | VALMCP-34 | ~~GitHub Actions CI: `npm test` + `npm run build` en push a develop/main~~ · **completado 27 may** | ✅ |
 
-### 30 may — Repo público + npm publish
+### 30 may — Docs web + convenciones ✅
+
+| ID | Tarea | Prioridad |
+|----|-------|-----------|
+| VALMCP-52 | ~~`web/AGENTS.md` — context completo para agentes IA (arq, bridge, restricciones, convenciones)~~ · **completado 27 may** | ✅ |
+
+### 2 jun — Publish day (repo público + npm + Vercel)
 
 | ID | Tarea | Prioridad |
 |----|-------|-----------|
 | VALMCP-35 | Hacer repo `iMark21/valencia-mcp` público en GitHub | P0 — BLOQUEANTE candidatura |
 | VALMCP-36 | `npm publish` (requiere VALMCP-30..32 + VALMCP-35) | P0 |
+| VALMCP-28 | Deploy web demo en Vercel (env var OPENROUTER_API_KEY, build cmd monorepo) | P0 |
 
 ### 31 may — Cards visuales ✅
 
@@ -106,4 +113,4 @@
 
 ---
 
-_Actualizado: 27 may 2026 (noche) — VALMCP-29..34 + 39/40 + 42 completados; vídeo descartado (no requerido); VALMCP-28/35/36/43/44/45 pendientes publish day_
+_Actualizado: 27 may 2026 (noche) — VALMCP-29..34 + 39/40 + 42 + 52 completados; vídeo descartado (no requerido); VALMCP-35/36/28/43/44/45 pendientes publish day (2 jun)_
