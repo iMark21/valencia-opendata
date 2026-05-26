@@ -72,12 +72,12 @@
 |----|-------|-----------|
 | VALMCP-41 | Vídeo demo 2-3 min via PitchReel: queries reales, mapa, dataset panel | ~~P1~~ — **NO requerido por bases** (movido a 🧊 backlog) |
 
-### 3 jun — Memoria candidatura
+### 3 jun — Memoria candidatura ✅
 
 | ID | Tarea | Prioridad |
 |----|-------|-----------|
-| VALMCP-42 | Redactar memoria de candidatura (descripción técnica, impacto, open data) | P0 |
-| VALMCP-43 | Adjuntos: capturas demo, link repo público, link web demo, link npm | P0 |
+| VALMCP-42 | ~~Redactar memoria de candidatura (descripción técnica, impacto, open data)~~ · **completado 27 may** | ✅ |
+| VALMCP-43 | Adjuntos: link repo público, link web demo, link npm — pendiente de publish day (2 jun) | ⏳ |
 
 ### 4 jun — Buffer review
 
@@ -106,4 +106,4 @@
 
 ---
 
-_Actualizado: 27 may 2026 (noche) — VALMCP-29..34 + 39/40 completados; VALMCP-28 movido a publish day (2 jun)_
+_Actualizado: 27 may 2026 (noche) — VALMCP-29..34 + 39/40 + 42 completados; vídeo descartado (no requerido); VALMCP-28/35/36/43/44/45 pendientes publish day_
