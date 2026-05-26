@@ -1,8 +1,17 @@
 {
   "name": "valencia-opendata",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "MCP server exposing the City of València open data portal (CKAN + ArcGIS Geoportal) as live tools to AI agents. Live only — no persistence.",
-  "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iMark21/valencia-mcp.git"
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ],
   "type": "module",
   "main": "dist/server.js",
   "bin": {
