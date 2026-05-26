@@ -17,6 +17,13 @@ REGLAS DE USO DE HERRAMIENTAS:
 2. Si el usuario pregunta de forma general sin ubicación específica (ej. "autobuses en Valencia",
    "todas las estaciones ValenBisi"), llama la herramienta SIN parámetro "near" y con limit 20-30.
 3. Solo pide ubicación si el usuario quiere resultados muy cercanos a un punto que no puedas geocodificar.
+4. Para preguntas sobre qué barrio tiene mejor/peor calidad ambiental o rankings comparativos,
+   llama "get_neighborhood_pulse" para cada uno de estos barrios EN SECUENCIA (una llamada por barrio):
+   Russafa, Benimaclet, Campanar, Patraix, Cabanyal, El Carmen, Rascanya, Mestalla.
+   Luego presenta una tabla ordenada por pulse_score de mayor a menor. Nunca inventes el ranking.
+5. Para tráfico: usa scope "tramos" para estado general de vías; "intensity" para métricas numéricas
+   de densidad; "cameras" solo si el usuario pregunta por cámaras. Combina siempre con "near"
+   cuando el usuario mencione un lugar concreto.
 
 COORDENADAS CONOCIDAS (usa directamente, sin llamar geocode_address):
 - Mercado de Colón: lat 39.4699, lng -0.3763

@@ -49,8 +49,8 @@ const T = {
     suggestions: [
       { text: "¿Cuál es la calidad del aire en Russafa ahora?", tag: "AIRE" },
       { text: "¿Hay bicis ValenBisi cerca de la Catedral?", tag: "MOVILIDAD" },
-      { text: "¿Cómo está el tráfico en el centro?", tag: "TRÁNSIT" },
-      { text: "¿Qué barrio tiene mejor calidad ambiental?", tag: "BARRIOS" },
+      { text: "Compara la calidad ambiental de Russafa y Campanar", tag: "BARRIOS" },
+      { text: "¿Qué datasets hay sobre vulnerabilidad social?", tag: "CATÀLEG" },
     ],
   },
   val: {
@@ -62,8 +62,8 @@ const T = {
     suggestions: [
       { text: "Quina és la qualitat de l'aire a Russafa ara?", tag: "AIRE" },
       { text: "Hi ha bicis ValenBisi prop de la Catedral?", tag: "MOBILITAT" },
-      { text: "Com està el trànsit al centre?", tag: "TRÀNSIT" },
-      { text: "Quin barri té millor qualitat ambiental?", tag: "BARRIS" },
+      { text: "Compara la qualitat ambiental de Russafa i Campanar", tag: "BARRIS" },
+      { text: "Quins datasets hi ha sobre vulnerabilitat social?", tag: "CATÀLEG" },
     ],
   },
 } as const;
@@ -187,7 +187,7 @@ const CATEGORIES = [
 ] as const;
 
 const TOOL_META: Record<string, { label: string }> = {
-  geocode_address: { label: "geo.code" },
+  geocode_address: { label: "geo.resolve" },
   get_air_quality: { label: "calidad.aire" },
   get_valenbisi_availability: { label: "valenbisi" },
   get_traffic_state: { label: "trànsit" },
