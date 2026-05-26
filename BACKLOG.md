@@ -70,7 +70,7 @@
 
 | ID | Tarea | Prioridad |
 |----|-------|-----------|
-| VALMCP-41 | Vídeo demo 2-3 min via PitchReel: queries reales, mapa, dataset panel | P1 |
+| VALMCP-41 | Vídeo demo 2-3 min via PitchReel: queries reales, mapa, dataset panel | ~~P1~~ — **NO requerido por bases** (movido a 🧊 backlog) |
 
 ### 3 jun — Memoria candidatura
 
