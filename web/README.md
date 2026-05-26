@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# valencIA — web demo
 
-## Getting Started
+Interfaz de chat Next.js para el servidor MCP `valencia-opendata`. Consume los 294 datasets abiertos del Ayuntamiento de València en tiempo real vía OpenRouter.
 
-First, run the development server:
+## Requisitos
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js ≥ 20
+- Clave de API de [OpenRouter](https://openrouter.ai) con créditos activos
+- El paquete MCP compilado: `cd .. && npm run build`
+
+## Arrancar en local
+
+```sh
+# Desde la raíz del monorepo:
+npm install && npm run build
+
+# Desde web/:
+cd web
+npm install
+cp .env.example .env.local          # añade tu OPENROUTER_API_KEY
+npm run dev                          # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Variables de entorno
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Variable | Descripción |
+|----------|-------------|
+| `OPENROUTER_API_KEY` | **Obligatoria.** Clave de OpenRouter para el LLM. |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Estructura
 
-## Learn More
+```
+web/
+├── app/
+│   ├── api/chat/route.ts   # SSE endpoint: LLM + tool calls MCP
+│   ├── page.tsx            # UI completa del chat
+│   └── globals.css         # Estilos globales + responsive
+├── components/
+│   ├── AirQualityCard.tsx  # Card inline calidad del aire (EAQI)
+│   ├── ValenBisiCard.tsx   # Card inline disponibilidad ValenBisi
+│   └── MapCard.tsx         # Mini-mapa Leaflet inline
+└── lib/
+    ├── mcp-bridge.ts       # Conecta Next.js con el MCP (InMemoryTransport)
+    ├── geocoder.ts         # Geocodificación Nominatim
+    ├── openrouter-tools.ts # Definición de tools para OpenRouter
+    └── types.ts
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Arquitectura
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+El API route `/api/chat` instancia el servidor MCP directamente en proceso (sin subprocess ni red local) usando `InMemoryTransport` del SDK de MCP. Cada tool call va directo al portal CKAN o al Geoportal ArcGIS.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+Browser → SSE → /api/chat → mcp-bridge (InMemoryTransport) → CKAN / Geoportal
+```
 
-## Deploy on Vercel
+## Datos
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Solo se consumen fuentes oficiales del Ayuntamiento de València bajo CC BY 4.0:
+- Portal CKAN: `opendata.vlci.valencia.es`
+- Geoportal ArcGIS: `geoportal.valencia.es`
