@@ -84,3 +84,13 @@ textarea { resize: none; }
 .empty-enter {
   animation: fade-in 0.35s ease forwards;
 }
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .header-tagline  { display: none; }
+  .datasets-label  { display: none; }
+  .new-query-btn   { display: none !important; }
+  .suggestions-grid { grid-template-columns: 1fr !important; }
+  .input-footer    { display: none !important; }
+  .sidebar-panel   { width: 100% !important; }
+}

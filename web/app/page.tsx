@@ -502,7 +502,7 @@ export default function ChatPage() {
               <span style={{ fontWeight: 400, color: "#2A2724" }}>valenc</span>
               <span style={{ fontWeight: 700, color: RED, letterSpacing: "-1px" }}>IA</span>
             </div>
-            <div style={{ fontFamily: MONO, fontSize: "8px", color: "#A8A49E", letterSpacing: "1.8px", textTransform: "uppercase", marginTop: "2px" }}>
+            <div className="header-tagline" style={{ fontFamily: MONO, fontSize: "8px", color: "#A8A49E", letterSpacing: "1.8px", textTransform: "uppercase", marginTop: "2px" }}>
               {t.taglineHeader}
             </div>
           </div>
@@ -527,7 +527,7 @@ export default function ChatPage() {
                 <rect x="1" y="1" width="4" height="4" rx="0.5" /><rect x="7" y="1" width="4" height="4" rx="0.5" />
                 <rect x="1" y="7" width="4" height="4" rx="0.5" /><rect x="7" y="7" width="4" height="4" rx="0.5" />
               </svg>
-              294 datasets
+              <span className="datasets-label">294 datasets</span>
             </button>
 
             {/* Language toggle */}
@@ -553,6 +553,7 @@ export default function ChatPage() {
 
             {messages.length > 0 && (
               <button
+                className="new-query-btn"
                 onClick={() => { setMessages([]); setIsLoading(false); }}
                 style={{ fontFamily: MONO, background: "transparent", border: "1px solid rgba(0,0,0,0.1)", color: "#A8A49E", padding: "4px 11px", borderRadius: "4px", fontSize: "10px", cursor: "pointer", letterSpacing: "0.5px", transition: "all 0.15s" }}
                 onMouseEnter={(e) => { e.currentTarget.style.color = RED; e.currentTarget.style.borderColor = `rgba(200,16,46,0.3)`; }}
@@ -596,7 +597,7 @@ export default function ChatPage() {
 
             {/* Suggestion cards */}
             <div style={{ width: "100%", maxWidth: "620px" }}>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
+              <div className="suggestions-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
                 {t.suggestions.map((s) => (
                   <button
                     key={s.text}
@@ -933,7 +934,7 @@ export default function ChatPage() {
             </button>
           </div>
 
-          <p style={{ fontFamily: MONO, textAlign: "center", fontSize: "8.5px", color: "#C0BCB6", margin: "7px 0 0", letterSpacing: "0.8px", textTransform: "uppercase" }}>
+          <p className="input-footer" style={{ fontFamily: MONO, textAlign: "center", fontSize: "8.5px", color: "#C0BCB6", margin: "7px 0 0", letterSpacing: "0.8px", textTransform: "uppercase" }}>
             CC BY 4.0 · Ajuntament de València ·{" "}
             <a href="https://opendata.vlci.valencia.es" target="_blank" rel="noopener noreferrer" style={{ color: "#C0BCB6", textDecoration: "none" }}>
               opendata.vlci.valencia.es
@@ -949,7 +950,7 @@ export default function ChatPage() {
           style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.15)", zIndex: 40, backdropFilter: "blur(1px)" }}
         />
       )}
-      <div style={{
+      <div className="sidebar-panel" style={{
         position: "fixed", top: 0, right: 0, height: "100dvh", width: "300px", zIndex: 50,
         background: "#FAFAF8", borderLeft: "1px solid rgba(0,0,0,0.08)",
         boxShadow: sidebarOpen ? "-4px 0 20px rgba(0,0,0,0.08)" : "none",
