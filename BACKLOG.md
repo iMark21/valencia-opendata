@@ -38,12 +38,12 @@
 | VALMCP-31 | ~~Crear `LICENSE` (MIT), añadir `"license": "MIT"` y `"repository"` en package.json~~ · **completado 27 may** | ✅ |
 | VALMCP-32 | ~~Eliminar `"private": true`, bump versión `0.0.1 → 0.1.0`~~ · **completado 27 may** | ✅ |
 
-### 29 may — README evaluador + CI
+### 29 may — README evaluador + CI ✅
 
 | ID | Tarea | Prioridad |
 |----|-------|-----------|
 | VALMCP-33 | ~~README raíz orientado a evaluador del concurso (sección "Por qué open data", demo link, licencia)~~ · **completado 27 may** | ✅ |
-| VALMCP-34 | GitHub Actions CI: `npm test` + `npm run build` en push a develop/main | P1 |
+| VALMCP-34 | ~~GitHub Actions CI: `npm test` + `npm run build` en push a develop/main~~ · **completado 27 may** | ✅ |
 
 ### 30 may — Repo público + npm publish
 
@@ -106,4 +106,4 @@
 
 ---
 
-_Actualizado: 27 may 2026 (noche) — VALMCP-29..33 completados; VALMCP-28 movido a publish day (2 jun)_
+_Actualizado: 27 may 2026 (noche) — VALMCP-29..34 completados; VALMCP-28 movido a publish day (2 jun)_
