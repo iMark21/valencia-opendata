@@ -5,7 +5,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/iMark21/valencia-mcp.git"
+    "url": "https://github.com/iMark21/valencia-opendata.git"
   },
   "files": [
     "dist/",

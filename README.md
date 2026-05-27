@@ -96,7 +96,7 @@ valencia-opendata
 
 **Opción C — desde el código fuente:**
 ```sh
-git clone https://github.com/iMark21/valencia-mcp.git
+git clone https://github.com/iMark21/valencia-opendata.git
 cd valencia-mcp
 npm install && npm run build
 node dist/server.js

@@ -3,7 +3,7 @@
 **Convocatoria:** Premios de Proyectos de Datos Abiertos y Periodismo de Datos — València IV edición 2026
 **Categoría:** Proyectos de Datos Abiertos
 **Proyecto:** valencIA — Asistente de IA para los datos abiertos del Ayuntamiento de València
-**Repositorio:** https://github.com/iMark21/valencia-mcp
+**Repositorio:** https://github.com/iMark21/valencia-opendata
 **Demo web:** https://valencia-mcp.vercel.app
 **Paquete npm:** https://www.npmjs.com/package/valencia-opendata
 **Licencia:** MIT · Datos: CC BY 4.0 Ajuntament de València
