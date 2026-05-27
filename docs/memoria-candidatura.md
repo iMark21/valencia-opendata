@@ -44,7 +44,7 @@ valencIA: [invoca get_valenbisi_availability con radio 500 m]
 
 ### Lo que lo hace diferente
 
-- **Primer servidor MCP** para el portal de datos abiertos de València. No existe ningún proyecto equivalente en el ecosistema MCP para ningún ayuntamiento español.
+- **Primer servidor MCP** para el portal municipal de València.
 - **Protocolo abierto**: cualquier cliente compatible (no solo un producto comercial) puede conectarse. El ciudadano no queda atado a ninguna plataforma.
 - **Live, no snapshot**: cada consulta resuelve contra el portal en tiempo real. Los datos son los del momento, no una copia desactualizada.
 - **Sin API keys, sin registro**: el portal municipal no requiere autenticación. valencIA tampoco. Cualquiera puede usarlo instalando un paquete npm.
@@ -75,6 +75,10 @@ Cada respuesta de valencIA incluye la URL exacta del dataset o capa que la origi
 
 La web demo ofrece interfaz en **español y valenciano**. Las sugerencias de consulta, los textos de la interfaz y los mensajes del sistema están completamente localizados en ambas lenguas.
 
+### Accesibilidad técnica
+
+La interfaz cumple **WCAG 2.1 nivel AA**: foco visible para navegación con teclado, etiquetas ARIA semánticas, contraste de texto corregido, soporte de lectores de pantalla, sincronización del atributo `lang` del documento con el idioma seleccionado y respeto a `prefers-reduced-motion` para usuarios con sensibilidad vestibular.
+
 ---
 
 ## 4. Viabilidad y sostenibilidad
@@ -90,7 +94,7 @@ La web demo ofrece interfaz en **español y valenciano**. Las sugerencias de con
 
 - Código abierto bajo licencia MIT: cualquier desarrollador puede auditar, mejorar y contribuir.
 - El diseño "pointer, not bytes" hace que el servidor sea resiliente a cambios en el tamaño o estructura de los datasets: devuelve URLs con metadata en lugar de descargar datos pesados.
-- Los fixtures de tests versionados permiten detectar cambios en las APIs del portal y regrebar de forma controlada.
+- Los fixtures de tests versionados permiten detectar cambios en las APIs del portal y regrabar de forma controlada.
 
 ### Escalabilidad
 
@@ -156,6 +160,9 @@ La interfaz web es una aplicación Next.js con diseño inspirado en la Senyera (
 - Panel lateral con los 294 datasets organizados por categoría
 - Interfaz en español y valenciano
 - Diseño responsive (móvil y escritorio)
+- Accesibilidad WCAG 2.1 AA (foco visible, ARIA semántico, contraste corregido, `prefers-reduced-motion`)
+- Compartición de consultas por URL `?q=…` para reproducibilidad por terceros
+- Persistencia local del historial (sin servidor: el ciudadano controla sus datos)
 - Exportación de la conversación como HTML autocontenido con atribución CC BY 4.0
 
 ---
@@ -167,8 +174,9 @@ La interfaz web es una aplicación Next.js con diseño inspirado en la Senyera (
 | Promover los beneficios de la transparencia | Cada respuesta cita la fuente exacta y la licencia CC BY 4.0 |
 | Fomentar la reutilización de la información | 12 herramientas que cubren las principales temáticas del portal |
 | Dar a conocer el portal de datos abiertos municipal | El panel de 294 datasets y cada respuesta dirigen al portal |
-| Fomentar herramientas innovadoras | Primer servidor MCP para un portal municipal español |
+| Fomentar herramientas innovadoras | Primer servidor MCP para el portal municipal de València |
 | Conocer la ciudad a partir de los datos | Barrios, movilidad, medio ambiente, infraestructura en lenguaje natural |
+| Reproducibilidad y verificación | Cualquier consulta es compartible por URL; el código y los datos son auditables |
 
 ---
 
