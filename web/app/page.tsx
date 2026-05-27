@@ -524,10 +524,11 @@ export default function ChatPage() {
         }
       }
     } catch (err) {
-      patch((m) => ({ ...m, content: `⚠️ Error de connexió: ${String(err)}`, isStreaming: false }));
+      const label = lang === "val" ? "Error de connexió" : "Error de conexión";
+      patch((m) => ({ ...m, content: `⚠️ ${label}: ${String(err)}`, isStreaming: false }));
       setIsLoading(false);
     }
-  }, [messages, isLoading, userLocation]);
+  }, [messages, isLoading, userLocation, lang]);
 
   useEffect(() => { sendMessageRef.current = sendMessage; }, [sendMessage]);
 
@@ -736,11 +737,17 @@ export default function ChatPage() {
               <button
                 className="new-query-btn"
                 onClick={() => { setMessages([]); setIsLoading(false); clearPersisted(); }}
-                style={{ fontFamily: MONO, background: "transparent", border: "1px solid rgba(0,0,0,0.1)", color: "#6B6560", padding: "4px 11px", borderRadius: "4px", fontSize: "10px", cursor: "pointer", letterSpacing: "0.5px", transition: "all 0.15s" }}
+                title={t.newQuery}
+                aria-label={t.newQuery}
+                style={{ fontFamily: MONO, background: "transparent", border: "1px solid rgba(0,0,0,0.1)", color: "#6B6560", padding: "4px 11px", borderRadius: "4px", fontSize: "10px", cursor: "pointer", letterSpacing: "0.5px", transition: "all 0.15s", display: "flex", alignItems: "center", gap: "5px" }}
                 onMouseEnter={(e) => { e.currentTarget.style.color = RED; e.currentTarget.style.borderColor = `rgba(200,16,46,0.3)`; }}
                 onMouseLeave={(e) => { e.currentTarget.style.color = "#6B6560"; e.currentTarget.style.borderColor = "rgba(0,0,0,0.1)"; }}
               >
-                {t.newQuery}
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M3 12a9 9 0 1 0 3-6.7" />
+                  <polyline points="3 4 3 10 9 10" />
+                </svg>
+                <span className="new-query-label">{t.newQuery}</span>
               </button>
             )}
           </div>
@@ -947,7 +954,7 @@ export default function ChatPage() {
                                 const done = tc.summary !== undefined;
                                 const meta = TOOL_META[tc.name] ?? { label: tc.name };
                                 return (
-                                  <div key={tc.id} style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "11.5px" }}>
+                                  <div key={tc.id} className="activity-line" style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "11.5px", minWidth: 0 }}>
                                     <span style={{ width: "14px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                                       {done
                                         ? <span style={{ fontSize: "9px", color: "#16a34a", fontWeight: 900 }}>✓</span>
@@ -1048,7 +1055,7 @@ export default function ChatPage() {
       {/* ── Input ─────────────────────────────────────────────────────────── */}
       <div style={{ padding: "10px 16px 16px", background: "rgba(242,239,233,0.97)", borderTop: "1px solid rgba(0,0,0,0.07)", flexShrink: 0, backdropFilter: "blur(8px)" }}>
         <div style={{ maxWidth: "740px", margin: "0 auto" }}>
-          <div style={{
+          <div className="input-row" style={{
             display: "flex", alignItems: "flex-end", gap: "0",
             background: "#FFFFFF",
             border: `1.5px solid ${focused ? RED : "rgba(0,0,0,0.1)"}`,
@@ -1074,6 +1081,7 @@ export default function ChatPage() {
 
             {/* Geolocation button */}
             <button
+              className="icon-btn"
               onClick={requestGeolocation}
               disabled={isLoading || geoLoading}
               title={userLocation ? `Ubicación activa (${userLocation.lat.toFixed(3)}, ${userLocation.lng.toFixed(3)})` : "Usar mi ubicación"}
@@ -1106,6 +1114,7 @@ export default function ChatPage() {
             </button>
 
             <button
+              className="send-btn"
               onClick={() => sendMessage(input)}
               disabled={isLoading || !input.trim()}
               aria-label="Enviar consulta"
