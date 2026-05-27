@@ -131,10 +131,19 @@ textarea { resize: none; }
 
 /* ── Responsive ──────────────────────────────────────────────────────────── */
 @media (max-width: 640px) {
-  .header-tagline  { display: none; }
-  .datasets-label  { display: none; }
-  .new-query-btn   { display: none !important; }
+  .header-tagline   { display: none; }
+  .datasets-label   { display: none; }
+  .new-query-btn    { display: none !important; }
+  .export-btn       { display: none !important; }
   .suggestions-grid { grid-template-columns: 1fr !important; }
-  .input-footer    { display: none !important; }
-  .sidebar-panel   { width: 100% !important; }
+  .input-footer     { display: none !important; }
+  .sidebar-panel    { width: 100% !important; }
+
+  /* prevent long words / URLs from breaking layout */
+  .msg-bubble,
+  .msg-card {
+    overflow-wrap: break-word;
+    word-break: break-word;
+    min-width: 0;
+  }
 }

@@ -718,6 +718,7 @@ export default function ChatPage() {
                 onClick={exportConversation}
                 title="Exportar conversación"
                 aria-label="Exportar conversación como HTML"
+                className="export-btn"
                 style={{
                   background: "transparent", border: "1px solid rgba(0,0,0,0.1)",
                   color: "#6B6560", padding: "4px 9px", borderRadius: "4px",
@@ -747,7 +748,7 @@ export default function ChatPage() {
       </header>
 
       {/* ── Messages ──────────────────────────────────────────────────────── */}
-      <div style={{ flex: 1, overflowY: "auto", padding: "24px 16px", display: "flex", flexDirection: "column" }}>
+      <div style={{ flex: 1, overflowY: "auto", padding: "24px 16px", display: "flex", flexDirection: "column", minWidth: 0 }}>
         {messages.length === 0 ? (
 
           /* ── Empty state ──────────────────────────────────────────────── */
@@ -885,7 +886,7 @@ export default function ChatPage() {
               >
                 {msg.role === "user" ? (
                   /* User bubble */
-                  <div style={{
+                  <div className="msg-bubble" style={{
                     maxWidth: "min(72%, 520px)",
                     padding: "10px 16px",
                     background: "#FFFFFF",
@@ -896,13 +897,15 @@ export default function ChatPage() {
                     fontSize: "13.5px",
                     lineHeight: 1.6,
                     color: "#1A1918",
+                    overflowWrap: "break-word",
+                    wordBreak: "break-word",
                   }}>
                     {msg.content}
                   </div>
                 ) : (
                   /* Assistant card */
-                  <div style={{ width: "100%" }}>
-                    <div style={{
+                  <div style={{ width: "100%", minWidth: 0 }}>
+                    <div className="msg-card" style={{
                       padding: "14px 18px",
                       background: "#FFFFFF",
                       border: "1px solid rgba(0,0,0,0.07)",
@@ -913,6 +916,8 @@ export default function ChatPage() {
                       fontSize: "13.5px",
                       lineHeight: 1.75,
                       color: "#2A2724",
+                      overflowWrap: "break-word",
+                      wordBreak: "break-word",
                     }}>
 
                       {/* ── Activity log (while tools run, no content yet) ── */}
