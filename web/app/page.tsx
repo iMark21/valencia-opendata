@@ -385,6 +385,40 @@ function TypingCursor() {
   );
 }
 
+// ─── Conversation persistence ────────────────────────────────────────────────
+const STORAGE_KEY = "valencIA:conversation:v1";
+
+interface PersistedState { messages: Message[]; lang: Lang }
+
+function loadPersisted(): PersistedState | null {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as Partial<PersistedState>;
+    if (!Array.isArray(parsed.messages)) return null;
+    const lang: Lang = parsed.lang === "es" ? "es" : "val";
+    const messages = parsed.messages
+      .filter((m): m is Message => !!m && typeof m === "object" && (m.role === "user" || m.role === "assistant"))
+      .map((m) => ({ ...m, isStreaming: false, toolCalls: Array.isArray(m.toolCalls) ? m.toolCalls : [] }));
+    return { messages, lang };
+  } catch {
+    return null;
+  }
+}
+
+function savePersisted(state: PersistedState) {
+  try {
+    const trimmed = state.messages.map((m) => ({ ...m, isStreaming: false }));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ ...state, messages: trimmed }));
+  } catch {
+    /* quota / disabled — silent */
+  }
+}
+
+function clearPersisted() {
+  try { localStorage.removeItem(STORAGE_KEY); } catch { /* ignore */ }
+}
+
 // ─── Main component ───────────────────────────────────────────────────────────
 export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -523,20 +557,36 @@ export default function ChatPage() {
 
   useEffect(() => { sendMessageRef.current = sendMessage; }, [sendMessage]);
 
-  // Auto-load query from URL on first mount (?q=...&lang=val|es)
+  // Mount: shared link ?q= takes precedence; otherwise hydrate from localStorage
   useEffect(() => {
     if (sharedQueryFiredRef.current) return;
     const params = new URLSearchParams(window.location.search);
     const sharedLang = params.get("lang");
-    if (sharedLang === "val" || sharedLang === "es") setLang(sharedLang);
     const q = params.get("q");
     if (q && q.trim()) {
       sharedQueryFiredRef.current = true;
+      if (sharedLang === "val" || sharedLang === "es") setLang(sharedLang);
       // Defer so sendMessageRef is populated and lang state has propagated
       setTimeout(() => sendMessageRef.current?.(q.trim()), 0);
+      return;
+    }
+    const persisted = loadPersisted();
+    if (persisted) {
+      setLang(persisted.lang);
+      setMessages(persisted.messages);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Persist conversation on changes (skip while streaming to avoid noisy writes)
+  useEffect(() => {
+    if (isLoading) return;
+    if (messages.length === 0) {
+      clearPersisted();
+      return;
+    }
+    savePersisted({ messages, lang });
+  }, [messages, lang, isLoading]);
 
   const shareConversation = useCallback(async () => {
     const lastUser = [...messages].reverse().find((m) => m.role === "user");
@@ -711,7 +761,7 @@ export default function ChatPage() {
             {messages.length > 0 && (
               <button
                 className="new-query-btn"
-                onClick={() => { setMessages([]); setIsLoading(false); }}
+                onClick={() => { setMessages([]); setIsLoading(false); clearPersisted(); }}
                 style={{ fontFamily: MONO, background: "transparent", border: "1px solid rgba(0,0,0,0.1)", color: "#6B6560", padding: "4px 11px", borderRadius: "4px", fontSize: "10px", cursor: "pointer", letterSpacing: "0.5px", transition: "all 0.15s" }}
                 onMouseEnter={(e) => { e.currentTarget.style.color = RED; e.currentTarget.style.borderColor = `rgba(200,16,46,0.3)`; }}
                 onMouseLeave={(e) => { e.currentTarget.style.color = "#6B6560"; e.currentTarget.style.borderColor = "rgba(0,0,0,0.1)"; }}
