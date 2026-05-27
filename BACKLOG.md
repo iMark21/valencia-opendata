@@ -100,6 +100,14 @@
 | VALMCP-53 | ~~Rama `main` creada desde `develop`, tags v1.0.0/v1.0.1, Vercel production branch → `main` via GitHub default branch~~ · **completado 28 may** | ✅ |
 | VALMCP-54 | ~~v1.0.1 — responsive mobile (`overflow-wrap`, `min-width`, export btn oculto) + OG/Twitter card (`opengraph-image.tsx`, `metadataBase`, `twitter:card`)~~ · **completado 28 may** | ✅ |
 
+### 28 may — UX polish post-1.0.1 (v1.0.2 / v1.0.3 / v1.0.4) ✅
+
+| ID | Tarea | Prioridad |
+|----|-------|-----------|
+| VALMCP-55 | ~~v1.0.2 — default branch GitHub → `develop`; botón "Nueva consulta" visible en móvil como icono; input/activity-log responsive; `maxDuration=60` en `/api/chat` (corrige cliff 10s Vercel Hobby), budget tracking 55s + retry transitorio; system prompt regla idioma ES/VAL reforzada; error de conexión respeta `lang`~~ · **completado 28 may** | ✅ |
+| VALMCP-56 | ~~v1.0.3 — tipografía híbrida Raleway (next/font/google) + Courier: SANS para chat bubbles, sugerencias, textarea, sidebar queries, tablas; MONO conservado en logo, labels uppercase, tool names, atribución fuente. Body 13.5→15px, headings markdown 12.5→14.5px, contraste #2A2724→#1A1918~~ · **completado 28 may** | ✅ |
+| VALMCP-57 | ~~v1.0.4 — `AirQualityCard`/`ValenBisiCard` migradas a Raleway (nombre estación SANS 14.5px, badge sin truncar, chips MONO 12px). Meta-labels uppercase del empty state y header subidas (8→10-11px, color #5A5550→#3A3530). i18n: "explora per tema", "Generant resposta", "Consultant dades", "Font" en VAL~~ · **completado 28 may** | ✅ |
+
 ---
 
 ### 28 may — Accesibilidad + Share + Historial ✅
@@ -122,4 +130,4 @@
 
 ---
 
-_Actualizado: 28 may 2026 — candidatura AD.TR.15 presentada; recibo firmado conservado fuera del repositorio._
+_Actualizado: 28 may 2026 — candidatura AD.TR.15 presentada; recibo firmado conservado fuera del repositorio. v1.0.4 live (UX polish: tipografía Raleway + cards legibles + i18n empty state)._
