@@ -636,7 +636,7 @@ export default function ChatPage() {
               <span style={{ color: "#2A2724" }}>valenc</span>
               <span style={{ fontWeight: 700, color: RED, letterSpacing: "-1px" }}>IA</span>
             </h1>
-            <p className="header-tagline" style={{ fontFamily: MONO, fontSize: "8px", color: "#6B6560", letterSpacing: "1.8px", textTransform: "uppercase", marginTop: "2px", margin: 0 }}>
+            <p className="header-tagline" style={{ fontFamily: MONO, fontSize: "10px", color: "#4A453F", letterSpacing: "1.5px", textTransform: "uppercase", marginTop: "3px", margin: 0, fontWeight: 600 }}>
               {t.taglineHeader}
             </p>
           </div>
@@ -650,14 +650,14 @@ export default function ChatPage() {
               aria-expanded={sidebarOpen}
               aria-controls="datasets-panel"
               style={{
-                fontFamily: MONO, fontSize: "9px", letterSpacing: "0.8px", textTransform: "uppercase",
-                padding: "4px 10px", cursor: "pointer",
+                fontFamily: MONO, fontSize: "10.5px", letterSpacing: "0.6px", textTransform: "uppercase",
+                padding: "5px 11px", cursor: "pointer",
                 background: sidebarOpen ? `rgba(0,80,160,0.1)` : "rgba(255,255,255,0.6)",
-                border: `1px solid ${sidebarOpen ? `rgba(0,80,160,0.3)` : "rgba(0,0,0,0.1)"}`,
-                color: sidebarOpen ? BLUE : "#6B6560",
-                borderRadius: "4px", fontWeight: sidebarOpen ? 700 : 400,
+                border: `1px solid ${sidebarOpen ? `rgba(0,80,160,0.3)` : "rgba(0,0,0,0.12)"}`,
+                color: sidebarOpen ? BLUE : "#3A3530",
+                borderRadius: "4px", fontWeight: sidebarOpen ? 700 : 600,
                 transition: "all 0.15s",
-                display: "flex", alignItems: "center", gap: "5px",
+                display: "flex", alignItems: "center", gap: "6px",
               }}
             >
               <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
@@ -676,12 +676,12 @@ export default function ChatPage() {
                   aria-pressed={lang === l}
                   aria-label={l === "val" ? "Valenciano" : "Castellano"}
                   style={{
-                    fontFamily: MONO, fontSize: "9px", letterSpacing: "0.8px", textTransform: "uppercase",
-                    padding: "4px 9px", cursor: "pointer", border: "none",
+                    fontFamily: MONO, fontSize: "10.5px", letterSpacing: "0.6px", textTransform: "uppercase",
+                    padding: "5px 11px", cursor: "pointer", border: "none",
                     borderRight: i === 0 ? "1px solid rgba(0,0,0,0.08)" : "none",
                     background: lang === l ? (l === "val" ? `rgba(0,80,160,0.1)` : "rgba(200,16,46,0.09)") : "transparent",
-                    color: lang === l ? (l === "val" ? BLUE : RED) : "#6B6560",
-                    fontWeight: lang === l ? 700 : 400,
+                    color: lang === l ? (l === "val" ? BLUE : RED) : "#3A3530",
+                    fontWeight: lang === l ? 700 : 600,
                     transition: "all 0.15s",
                   }}
                 >
@@ -740,9 +740,9 @@ export default function ChatPage() {
                 onClick={() => { setMessages([]); setIsLoading(false); clearPersisted(); }}
                 title={t.newQuery}
                 aria-label={t.newQuery}
-                style={{ fontFamily: MONO, background: "transparent", border: "1px solid rgba(0,0,0,0.1)", color: "#6B6560", padding: "4px 11px", borderRadius: "4px", fontSize: "10px", cursor: "pointer", letterSpacing: "0.5px", transition: "all 0.15s", display: "flex", alignItems: "center", gap: "5px" }}
+                style={{ fontFamily: MONO, background: "transparent", border: "1px solid rgba(0,0,0,0.12)", color: "#3A3530", padding: "5px 12px", borderRadius: "4px", fontSize: "11px", cursor: "pointer", letterSpacing: "0.4px", transition: "all 0.15s", display: "flex", alignItems: "center", gap: "6px", fontWeight: 600 }}
                 onMouseEnter={(e) => { e.currentTarget.style.color = RED; e.currentTarget.style.borderColor = `rgba(200,16,46,0.3)`; }}
-                onMouseLeave={(e) => { e.currentTarget.style.color = "#6B6560"; e.currentTarget.style.borderColor = "rgba(0,0,0,0.1)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = "#3A3530"; e.currentTarget.style.borderColor = "rgba(0,0,0,0.12)"; }}
               >
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M3 12a9 9 0 1 0 3-6.7" />
@@ -768,7 +768,7 @@ export default function ChatPage() {
                 <span style={{ fontWeight: 300, color: "#3A3530" }}>valenc</span>
                 <span style={{ fontWeight: 700, color: RED, letterSpacing: "-4px" }}>IA</span>
               </div>
-              <div style={{ fontFamily: MONO, fontSize: "10px", color: "#5A5550", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "20px" }}>
+              <div style={{ fontFamily: MONO, fontSize: "12px", color: "#3A3530", letterSpacing: "2px", textTransform: "uppercase", marginBottom: "22px", fontWeight: 600 }}>
                 {t.taglineHero}
               </div>
               {/* Senyera divider */}
@@ -779,7 +779,7 @@ export default function ChatPage() {
                 <div style={{ width: "36px", height: "3px", background: YELLOW }} />
                 <div style={{ width: "36px", height: "3px", background: RED }} />
               </div>
-              <div style={{ fontFamily: MONO, fontSize: "9px", color: "#6B6560", letterSpacing: "2px", marginTop: "12px" }}>
+              <div style={{ fontFamily: MONO, fontSize: "11px", color: "#4A453F", letterSpacing: "1.8px", marginTop: "14px", fontWeight: 600 }}>
                 294 DATASETS OBERTS
               </div>
             </div>
@@ -812,7 +812,7 @@ export default function ChatPage() {
                       e.currentTarget.style.borderColor = "rgba(0,0,0,0.08)";
                     }}
                   >
-                    <div style={{ fontFamily: MONO, fontSize: "8.5px", color: RED, letterSpacing: "1.5px", textTransform: "uppercase", marginBottom: "7px", fontWeight: 600 }}>
+                    <div style={{ fontFamily: MONO, fontSize: "10.5px", color: RED, letterSpacing: "1.4px", textTransform: "uppercase", marginBottom: "8px", fontWeight: 700 }}>
                       {s.tag}
                     </div>
                     <div style={{ fontFamily: SANS, fontSize: "15px", lineHeight: 1.45, color: "#1A1918", fontWeight: 500 }}>
@@ -825,8 +825,8 @@ export default function ChatPage() {
 
             {/* ── Category chips + accordion ──────────────────────────── */}
             <div style={{ width: "100%", maxWidth: "620px", marginTop: "24px" }}>
-              <div style={{ fontFamily: MONO, fontSize: "8px", color: "#6B6560", letterSpacing: "2px", textTransform: "uppercase", marginBottom: "10px", textAlign: "center" }}>
-                o explora por tema
+              <div style={{ fontFamily: MONO, fontSize: "10.5px", color: "#4A453F", letterSpacing: "1.6px", textTransform: "uppercase", marginBottom: "12px", textAlign: "center", fontWeight: 600 }}>
+                {lang === "val" ? "o explora per tema" : "o explora por tema"}
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", justifyContent: "center", marginBottom: openCategory ? "10px" : "0" }}>
                 {CATEGORIES.map((cat) => {
@@ -836,16 +836,16 @@ export default function ChatPage() {
                       key={cat.id}
                       onClick={() => setOpenCategory(active ? null : cat.id)}
                       style={{
-                        fontFamily: MONO, fontSize: "9px", letterSpacing: "1.2px", textTransform: "uppercase",
-                        padding: "4px 10px", cursor: "pointer", borderRadius: "4px",
-                        border: `1px solid ${active ? cat.color : "rgba(0,0,0,0.1)"}`,
+                        fontFamily: MONO, fontSize: "10.5px", letterSpacing: "1.1px", textTransform: "uppercase",
+                        padding: "5px 12px", cursor: "pointer", borderRadius: "4px",
+                        border: `1px solid ${active ? cat.color : "rgba(0,0,0,0.12)"}`,
                         background: active ? `${cat.color}14` : "rgba(255,255,255,0.7)",
-                        color: active ? cat.color : "#5A5550",
-                        fontWeight: active ? 700 : 400,
+                        color: active ? cat.color : "#3A3530",
+                        fontWeight: active ? 700 : 600,
                         transition: "all 0.15s",
                       }}
                       onMouseEnter={(e) => { if (!active) { e.currentTarget.style.borderColor = cat.color; e.currentTarget.style.color = cat.color; } }}
-                      onMouseLeave={(e) => { if (!active) { e.currentTarget.style.borderColor = "rgba(0,0,0,0.1)"; e.currentTarget.style.color = "#5A5550"; } }}
+                      onMouseLeave={(e) => { if (!active) { e.currentTarget.style.borderColor = "rgba(0,0,0,0.12)"; e.currentTarget.style.color = "#3A3530"; } }}
                     >
                       {cat.label[lang]}
                     </button>
@@ -940,15 +940,15 @@ export default function ChatPage() {
                               {allDone ? (
                                 <>
                                   <TypingCursor />
-                                  <span style={{ fontSize: "9px", color: "#6B6560", letterSpacing: "1.8px", textTransform: "uppercase", marginLeft: "2px" }}>
-                                    Generando respuesta
+                                  <span style={{ fontFamily: MONO, fontSize: "11px", color: "#3A3530", letterSpacing: "1.4px", textTransform: "uppercase", marginLeft: "2px", fontWeight: 600 }}>
+                                    {lang === "val" ? "Generant resposta" : "Generando respuesta"}
                                   </span>
                                 </>
                               ) : (
                                 <>
                                   <span style={{ display: "inline-block", width: "5px", height: "5px", background: YELLOW, borderRadius: "50%", animation: "pulse-dot 1.1s ease-in-out infinite" }} />
-                                  <span style={{ fontSize: "9px", color: "#6B6560", letterSpacing: "1.8px", textTransform: "uppercase" }}>
-                                    Consultando datos
+                                  <span style={{ fontFamily: MONO, fontSize: "11px", color: "#3A3530", letterSpacing: "1.4px", textTransform: "uppercase", fontWeight: 600 }}>
+                                    {lang === "val" ? "Consultant dades" : "Consultando datos"}
                                   </span>
                                 </>
                               )}
@@ -965,9 +965,9 @@ export default function ChatPage() {
                                         : <Spinner />
                                       }
                                     </span>
-                                    <span style={{ fontWeight: 600, color: done ? "#16a34a" : "#7A5E00" }}>{meta.label}</span>
+                                    <span style={{ fontFamily: MONO, fontWeight: 700, fontSize: "12.5px", color: done ? "#16a34a" : "#7A5E00" }}>{meta.label}</span>
                                     {tc.summary && (
-                                      <span style={{ color: "#6B6560", fontSize: "10.5px" }}>· {tc.summary}</span>
+                                      <span style={{ fontFamily: SANS, color: "#3A3530", fontSize: "12.5px", fontWeight: 500 }}>· {tc.summary}</span>
                                     )}
                                   </div>
                                 );
@@ -991,13 +991,14 @@ export default function ChatPage() {
                                 const meta = TOOL_META[tc.name] ?? { label: tc.name };
                                 return (
                                   <span key={tc.id} style={{
-                                    fontFamily: MONO, fontSize: "9px",
+                                    fontFamily: MONO, fontSize: "11px",
                                     color: "#16a34a",
                                     background: "rgba(22,163,74,0.07)",
                                     border: "1px solid rgba(22,163,74,0.18)",
                                     borderRadius: "3px",
-                                    padding: "1px 7px",
-                                    letterSpacing: "0.3px",
+                                    padding: "2px 8px",
+                                    letterSpacing: "0.2px",
+                                    fontWeight: 600,
                                   }}>
                                     ✓ {meta.label}
                                   </span>
@@ -1040,8 +1041,8 @@ export default function ChatPage() {
                             );
                           })()}
                           {!msg.isStreaming && msg.toolCalls.length > 0 && (
-                            <div style={{ marginTop: "10px", paddingTop: "8px", borderTop: "1px solid rgba(0,0,0,0.05)", fontFamily: MONO, fontSize: "9px", color: "#6B6560", letterSpacing: "0.5px" }}>
-                              Fuente: Ajuntament de València · CC BY 4.0 · opendata.vlci.valencia.es
+                            <div style={{ marginTop: "12px", paddingTop: "9px", borderTop: "1px solid rgba(0,0,0,0.06)", fontFamily: MONO, fontSize: "11px", color: "#4A453F", letterSpacing: "0.3px", fontWeight: 500 }}>
+                              {lang === "val" ? "Font" : "Fuente"}: Ajuntament de València · CC BY 4.0 · opendata.vlci.valencia.es
                             </div>
                           )}
                         </>
@@ -1142,7 +1143,7 @@ export default function ChatPage() {
             </button>
           </div>
 
-          <p className="input-footer" style={{ fontFamily: MONO, textAlign: "center", fontSize: "8.5px", color: "#6B6560", margin: "7px 0 0", letterSpacing: "0.8px", textTransform: "uppercase" }}>
+          <p className="input-footer" style={{ fontFamily: MONO, textAlign: "center", fontSize: "10px", color: "#4A453F", margin: "8px 0 0", letterSpacing: "0.6px", textTransform: "uppercase", fontWeight: 500 }}>
             CC BY 4.0 · Ajuntament de València ·{" "}
             <a href="https://opendata.vlci.valencia.es" target="_blank" rel="noopener noreferrer" style={{ color: "#6B6560", textDecoration: "none" }}>
               opendata.vlci.valencia.es
@@ -1178,7 +1179,7 @@ export default function ChatPage() {
         {/* Sidebar header */}
         <div style={{ padding: "14px 16px 10px", borderBottom: "1px solid rgba(0,0,0,0.07)", flexShrink: 0 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "10px" }}>
-            <h2 id="datasets-panel-title" style={{ fontFamily: MONO, fontSize: "9px", color: BLUE, letterSpacing: "1.8px", textTransform: "uppercase", fontWeight: 700, margin: 0 }}>
+            <h2 id="datasets-panel-title" style={{ fontFamily: MONO, fontSize: "11px", color: BLUE, letterSpacing: "1.5px", textTransform: "uppercase", fontWeight: 700, margin: 0 }}>
               294 datasets oberts
             </h2>
             <button
@@ -1233,7 +1234,7 @@ export default function ChatPage() {
                   onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(0,0,0,0.025)"; }}
                   onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; }}
                 >
-                  <span style={{ fontFamily: MONO, fontSize: "9.5px", fontWeight: 700, letterSpacing: "1.2px", textTransform: "uppercase", color: cat.color }}>
+                  <span style={{ fontFamily: MONO, fontSize: "11.5px", fontWeight: 700, letterSpacing: "1.1px", textTransform: "uppercase", color: cat.color }}>
                     {catLabel}
                   </span>
                   {!sidebarSearch && (
@@ -1270,9 +1271,9 @@ export default function ChatPage() {
 
         {/* Sidebar footer */}
         <div style={{ padding: "10px 16px", borderTop: "1px solid rgba(0,0,0,0.07)", flexShrink: 0 }}>
-          <p style={{ fontFamily: MONO, fontSize: "8px", color: "#6B6560", margin: 0, letterSpacing: "0.8px", lineHeight: 1.6 }}>
+          <p style={{ fontFamily: MONO, fontSize: "10px", color: "#4A453F", margin: 0, letterSpacing: "0.5px", lineHeight: 1.7, fontWeight: 500 }}>
             CC BY 4.0 · Ajuntament de València<br />
-            <a href="https://opendata.vlci.valencia.es" target="_blank" rel="noopener noreferrer" style={{ color: "#6B6560" }}>opendata.vlci.valencia.es</a>
+            <a href="https://opendata.vlci.valencia.es" target="_blank" rel="noopener noreferrer" style={{ color: "#4A453F" }}>opendata.vlci.valencia.es</a>
           </p>
         </div>
       </div>

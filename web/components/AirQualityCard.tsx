@@ -1,6 +1,7 @@
 "use client";
 
 const MONO = "'Courier New', ui-monospace, 'Cascadia Code', monospace";
+const SANS = "var(--font-sans), 'Raleway', system-ui, -apple-system, 'Segoe UI', sans-serif";
 
 type Reading = {
   pollutant: string;
@@ -76,7 +77,7 @@ export default function AirQualityCard({ stations, lang = "val" }: { stations: A
   const noData = lang === "val" ? "Sense lectures disponibles" : "Sin lecturas disponibles";
   return (
     <div style={{ marginTop: "14px" }}>
-      <div style={{ fontFamily: MONO, fontSize: "8px", color: "#6B6560", letterSpacing: "1.8px", textTransform: "uppercase", marginBottom: "8px" }}>
+      <div style={{ fontFamily: MONO, fontSize: "10.5px", color: "#4A453F", letterSpacing: "1.5px", textTransform: "uppercase", marginBottom: "10px", fontWeight: 600 }}>
         {header}
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
@@ -91,17 +92,17 @@ export default function AirQualityCard({ stations, lang = "val" }: { stations: A
               borderRadius: "4px 8px 8px 4px",
               padding: "10px 14px",
             }}>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "8px" }}>
-                <span style={{ fontFamily: MONO, fontSize: "10.5px", fontWeight: 600, color: "#3A3530" }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "10px", gap: "8px", flexWrap: "wrap" }}>
+                <span style={{ fontFamily: SANS, fontSize: "14.5px", fontWeight: 700, color: "#1A1918" }}>
                   {s.name}
                 </span>
                 <span style={{
-                  fontFamily: MONO, fontSize: "8.5px", fontWeight: 700,
-                  padding: "2px 7px", borderRadius: "3px",
+                  fontFamily: SANS, fontSize: "11.5px", fontWeight: 600,
+                  padding: "3px 9px", borderRadius: "4px",
                   background: c.bg, border: `1px solid ${c.border}`, color: c.text,
-                  letterSpacing: "0.5px",
+                  whiteSpace: "nowrap",
                 }}>
-                  {s.air_quality_label ?? labels[overall]}
+                  {labels[overall]}
                 </span>
               </div>
               {s.readings.length > 0 ? (
@@ -111,17 +112,18 @@ export default function AirQualityCard({ stations, lang = "val" }: { stations: A
                     const rc = LEVELS[lv];
                     return (
                       <span key={ri} style={{
-                        fontFamily: MONO, fontSize: "10px", fontWeight: 600,
-                        padding: "3px 8px", borderRadius: "3px",
+                        fontFamily: MONO, fontSize: "12px", fontWeight: 700,
+                        padding: "4px 9px", borderRadius: "4px",
                         background: rc.bg, border: `1px solid ${rc.border}`, color: rc.text,
+                        letterSpacing: "0.2px",
                       }}>
-                        {LABELS[r.pollutant] ?? r.pollutant.toUpperCase()} {r.value} <span style={{ fontWeight: 400, opacity: 0.75 }}>{r.unit}</span>
+                        {LABELS[r.pollutant] ?? r.pollutant.toUpperCase()} {r.value} <span style={{ fontWeight: 500, opacity: 0.85 }}>{r.unit}</span>
                       </span>
                     );
                   })}
                 </div>
               ) : (
-                <span style={{ fontFamily: MONO, fontSize: "10px", color: "#6B6560" }}>{noData}</span>
+                <span style={{ fontFamily: SANS, fontSize: "13px", color: "#4A453F" }}>{noData}</span>
               )}
             </div>
           );
