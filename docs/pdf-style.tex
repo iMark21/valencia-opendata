@@ -1,0 +1,109 @@
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+
+\definecolor{SenyeraBlue}{HTML}{004C97}
+\definecolor{SenyeraYellow}{HTML}{F9D616}
+\definecolor{SenyeraRed}{HTML}{D22630}
+\definecolor{Ink}{HTML}{20242A}
+\definecolor{Muted}{HTML}{667085}
+\definecolor{Rule}{HTML}{D9E0EA}
+
+\setlength{\fboxsep}{0pt}
+\setlength{\parskip}{0.55em}
+\setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{1.18}
+
+\newcommand{\senyeraFlag}{%
+  \begin{tikzpicture}[x=9.2cm,y=5.2cm]
+    \fill[SenyeraBlue] (0,0) rectangle (0.24,1);
+    \fill[SenyeraRed] (0.24,0) rectangle (0.29,1);
+    \fill[SenyeraYellow] (0.29,0.0000) rectangle (1,0.1111);
+    \fill[SenyeraRed]    (0.29,0.1111) rectangle (1,0.2222);
+    \fill[SenyeraYellow] (0.29,0.2222) rectangle (1,0.3333);
+    \fill[SenyeraRed]    (0.29,0.3333) rectangle (1,0.4444);
+    \fill[SenyeraYellow] (0.29,0.4444) rectangle (1,0.5556);
+    \fill[SenyeraRed]    (0.29,0.5556) rectangle (1,0.6667);
+    \fill[SenyeraYellow] (0.29,0.6667) rectangle (1,0.7778);
+    \fill[SenyeraRed]    (0.29,0.7778) rectangle (1,0.8889);
+    \fill[SenyeraYellow] (0.29,0.8889) rectangle (1,1.0000);
+    \foreach \y in {0.13,0.31,0.50,0.69,0.87}{
+      \draw[SenyeraYellow,line width=0.8pt] (0.045,\y-0.045)
+        .. controls (0.095,\y-0.015) and (0.095,\y+0.015) .. (0.045,\y+0.045);
+      \draw[SenyeraYellow,line width=0.8pt] (0.13,\y-0.045)
+        .. controls (0.080,\y-0.015) and (0.080,\y+0.015) .. (0.13,\y+0.045);
+      \fill[SenyeraYellow] (0.087,\y) circle[radius=0.011];
+    }
+    \foreach \y in {0.12,0.25,0.38,0.50,0.62,0.75,0.88}{
+      \fill[SenyeraYellow] (0.257,\y) circle[radius=0.006];
+      \fill[white] (0.276,\y) circle[radius=0.006];
+    }
+    \draw[Rule,line width=0.4pt] (0,0) rectangle (1,1);
+  \end{tikzpicture}%
+}
+
+\newcommand{\senyeraAccent}{%
+  {\color{SenyeraBlue}\rule{0.26\textwidth}{3pt}}%
+  {\color{SenyeraYellow}\rule{0.37\textwidth}{3pt}}%
+  {\color{SenyeraRed}\rule{0.37\textwidth}{3pt}}%
+}
+
+\titleformat{\section}
+  {\Large\bfseries\color{Ink}}
+  {\thesection.}{0.75em}{}
+  [\vspace{0.15em}{\color{Rule}\titlerule}]
+\titleformat{\subsection}
+  {\large\bfseries\color{Ink}}
+  {\thesubsection.}{0.65em}{}
+\titlespacing*{\section}{0pt}{1.5em}{0.8em}
+\titlespacing*{\subsection}{0pt}{1.0em}{0.35em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{Muted}valencIA}
+\fancyhead[R]{\small\color{Muted}Memoria de candidatura}
+\fancyfoot[C]{\small\color{Muted}\thepage}
+\renewcommand{\headrulewidth}{0.25pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\AtBeginDocument{\hypersetup{colorlinks=true, linkcolor=Ink, urlcolor=Ink, citecolor=Ink}}
+\let\oldtableofcontents\tableofcontents
+\renewcommand{\tableofcontents}{\begingroup\hypersetup{linkcolor=Ink}\oldtableofcontents\endgroup\clearpage}
+
+\renewcommand{\maketitle}{
+  \begin{titlepage}
+  \thispagestyle{empty}
+  \vspace*{0.25cm}
+  \begin{center}
+  \senyeraFlag
+  \end{center}
+  \vspace{1.3cm}
+  {\Huge\bfseries\color{Ink} valencIA\par}
+  \vspace{0.35cm}
+  {\Large\color{Ink} Chatbot público y servidor MCP instalable para los datos abiertos del Ayuntamiento de València\par}
+  \vspace{1.35cm}
+  {\large\bfseries\color{Ink} Memoria resumen y dossier del proyecto\par}
+  \vspace{0.35cm}
+  {\normalsize\color{Muted} Premios para proyectos de datos abiertos y periodismo de datos del Ayuntamiento de València · Edición 2026\par}
+  \vspace{0.8cm}
+  {\normalsize\color{Ink} Categoría: Proyectos de Datos Abiertos\par}
+  \vfill
+  \begin{flushleft}
+  \normalsize
+  \textbf{Persona solicitante y autora}\\
+  Michel Marques\\[0.55cm]
+  \textbf{Proyecto implantado}\\
+  Interfaz conversacional: https://valencia-mcp.vercel.app\\
+  Repositorio: https://github.com/iMark21/valencia-opendata\\
+  Paquete npm: https://www.npmjs.com/package/valencia-opendata\\[0.55cm]
+  \textbf{Fecha}\\
+  28 de mayo de 2026
+  \end{flushleft}
+  \vspace{0.8cm}
+  {\color{Rule}\rule{\textwidth}{1pt}}\par
+  \vspace{0.18cm}
+  \senyeraAccent\par
+  \end{titlepage}
+}

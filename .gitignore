@@ -6,3 +6,7 @@ dist/
 tmp/
 coverage/
 .DS_Store
+docs/*.pdf
+docs/*DNI*
+docs/*sede*
+Recibo_instancia_*.pdf

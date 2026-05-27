@@ -12,7 +12,6 @@ const nearSchema = {
   required: ["lat", "lng"],
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const TOOL_DECLARATIONS: FunctionDeclaration[] = ([
   {
     name: "geocode_address",

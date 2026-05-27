@@ -2,7 +2,7 @@
 
 > Concurso Premios Datos Abiertos y Periodismo de Datos València IV  
 > Deadline hard: **8 jun 2026** · Buffer: **5 jun 2026**  
-> Hoy: 27 may 2026 · Días restantes al buffer: **9**
+> Presentado electrónicamente el **28 may 2026** mediante AD.TR.15.
 
 ---
 
@@ -13,7 +13,7 @@
 | VALMCP-01..17 | Tools MCP: aire, ValenBisi, tráfico, EMT, barris, pulse, CKAN, ArcGIS | may 2026 |
 | VALMCP-18 | README usuario final + multi-cliente | may 2026 |
 | VALMCP-19..24 | CLI local, test harness (142 tests, 32 files), build dist | may 2026 |
-| VALMCP-25 | Web demo completo: OpenRouter, geocoder, diseño Senyera, markdown tables | 26 may 2026 |
+| VALMCP-25 | Chatbot web completo: OpenRouter, geocoder, diseño Senyera, markdown tables | 26 may 2026 |
 | VALMCP-26 | Leaflet mini-mapa inline (ValenBisi, EMT, aire) | 26 may 2026 |
 | VALMCP-27 | Panel 294 datasets: accordion lateral + chips categoría empty state | 26 may 2026 |
 | VALMCP-37 | `AirQualityCard`: badge coloreado (Bona/Acceptable/Dolenta/Molt dolenta) + chips EAQI por contaminante | 26 may 2026 |
@@ -27,7 +27,7 @@
 
 | ID | Tarea | Prioridad |
 |----|-------|-----------|
-| VALMCP-28 | Deploy web demo en Vercel (conectar repo, env var OPENROUTER_API_KEY) | P0 — movido a publish day (2 jun) |
+| VALMCP-28 | Deploy chatbot web en Vercel (conectar repo, env var OPENROUTER_API_KEY) | P0 — movido a publish day (2 jun) |
 | VALMCP-29 | ~~Responsive mobile: media queries para input area, bubbles, sidebar bottom-sheet~~ · **completado 27 may** | ✅ |
 
 ### 28 may — Packaging npm ✅
@@ -55,9 +55,9 @@
 
 | ID | Tarea | Prioridad |
 |----|-------|-----------|
-| VALMCP-35 | ~~Hacer repo `iMark21/valencia-mcp` público en GitHub~~ · **completado 28 may** | ✅ |
+| VALMCP-35 | ~~Hacer repo `iMark21/valencia-opendata` público en GitHub~~ · **completado 28 may** | ✅ |
 | VALMCP-36 | ~~`npm publish` → `valencia-opendata@1.0.0` en npm~~ · **completado 28 may** | ✅ |
-| VALMCP-28 | ~~Deploy web demo en Vercel — https://valencia-mcp.vercel.app~~ · **completado 28 may** | ✅ |
+| VALMCP-28 | ~~Deploy chatbot web en Vercel — https://valencia-mcp.vercel.app~~ · **completado 28 may** | ✅ |
 
 ### 31 may — Cards visuales ✅
 
@@ -84,19 +84,14 @@
 | ID | Tarea | Prioridad |
 |----|-------|-----------|
 | VALMCP-42 | ~~Redactar memoria de candidatura (descripción técnica, impacto, open data)~~ · **completado 27 may** | ✅ |
-| VALMCP-43 | ~~Adjuntos: link repo público, link web demo, link npm — URLs definitivas en memoria~~ · **completado 28 may** | ✅ |
+| VALMCP-43 | ~~Adjuntos: link repo público, link chatbot web, link npm — URLs definitivas en memoria~~ · **completado 28 may** | ✅ |
 
-### 4 jun — Buffer review
-
-| ID | Tarea | Prioridad |
-|----|-------|-----------|
-| VALMCP-44 | Review final: repo público ✓, npm ✓, web demo live ✓, memoria ✓ | P0 |
-
-### 5 jun — PRESENTACIÓN ⚑
+### 28 may — Revisión final y presentación ✅
 
 | ID | Tarea | Prioridad |
 |----|-------|-----------|
-| VALMCP-45 | Cargar solicitud en sede.valencia.es · Procedimiento: **AD.TR.15** | P0 — DEADLINE BUFFER |
+| VALMCP-44 | ~~Review final: repo público ✓, npm ✓, chatbot web live ✓, memoria ✓~~ · **completado 28 may** | ✅ |
+| VALMCP-45 | ~~Cargar solicitud en sede.valencia.es · Procedimiento: **AD.TR.15**~~ · **presentado 28 may** | ✅ |
 
 ---
 
@@ -120,4 +115,4 @@
 
 ---
 
-_Actualizado: 28 may 2026 — VALMCP-28/35/36/43/46/47/49 completados; pendiente: VALMCP-44 (review 4 jun) + VALMCP-45 (presentación 5 jun)_
+_Actualizado: 28 may 2026 — candidatura AD.TR.15 presentada; recibo firmado conservado fuera del repositorio._

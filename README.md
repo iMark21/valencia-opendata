@@ -17,7 +17,7 @@
 
 Dos formas de usarlo, según lo que necesites:
 
-### 1. Una **web demo** abierta a cualquiera
+### 1. Un **chatbot web** abierto a cualquiera
 
 Entra en [valencia-mcp.vercel.app](https://valencia-mcp.vercel.app) y pregunta. No hace falta registrarse, no hace falta instalar nada, no hace falta saber qué es una API.
 
@@ -97,7 +97,7 @@ valencia-opendata
 **Opción C — desde el código fuente:**
 ```sh
 git clone https://github.com/iMark21/valencia-opendata.git
-cd valencia-mcp
+cd valencia-opendata
 npm install && npm run build
 node dist/server.js
 ```
@@ -203,7 +203,7 @@ Los tests funcionan en modo **record/replay**: `npm test` lee fixtures versionad
 - **Pointer, no bytes.** Para datos pesados (CSVs históricos, GTFS) la tool devuelve URL + tamaño + frescura. El cliente decide si descarga.
 - **Solo CKAN + Geoportal.** CC BY 4.0 declarada en ambas fuentes.
 
-### Accesibilidad (web demo)
+### Accesibilidad (chatbot web)
 
 La interfaz cumple **WCAG 2.1 nivel AA**: foco visible, ARIA semántico, contraste corregido, soporte de teclado completo, sincronización del atributo `lang` con el idioma seleccionado y respeto a `prefers-reduced-motion`.
 

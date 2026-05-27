@@ -21,7 +21,7 @@ export async function geocodeAddress(query: string): Promise<GeoPoint | null> {
     `&viewbox=${VALENCIA_VIEWBOX}&bounded=1`;
 
   const res = await fetch(url, {
-    headers: { "User-Agent": "valencIA-demo/1.0 (open data contest)" },
+    headers: { "User-Agent": "valencIA-chatbot/1.0 (open data contest)" },
   });
 
   if (!res.ok) return null;

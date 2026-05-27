@@ -7,10 +7,10 @@ the 294 open datasets of the Ajuntament de València (CKAN + Geoportal ArcGIS, C
 
 ## Monorepo layout
 
-This `web/` directory lives inside `valencia-mcp/` (monorepo root). The MCP server is at `../src/`.
+This `web/` directory lives inside the `valencia-opendata` monorepo root. The MCP server is at `../src/`.
 
 ```
-valencia-mcp/          ← monorepo root (npm workspace)
+valencia-opendata/     ← monorepo root (npm workspace)
 ├── src/               ← MCP server source
 ├── dist/              ← compiled MCP (npm run build from root)
 └── web/               ← this Next.js app

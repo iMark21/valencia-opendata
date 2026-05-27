@@ -1,190 +1,276 @@
-# Memoria de candidatura
-
-**Convocatoria:** Premios de Proyectos de Datos Abiertos y Periodismo de Datos — València IV edición 2026
-**Categoría:** Proyectos de Datos Abiertos
-**Proyecto:** valencIA — Asistente de IA para los datos abiertos del Ayuntamiento de València
-**Repositorio:** https://github.com/iMark21/valencia-opendata
-**Demo web:** https://valencia-mcp.vercel.app
-**Paquete npm:** https://www.npmjs.com/package/valencia-opendata
-**Licencia:** MIT · Datos: CC BY 4.0 Ajuntament de València
-
+---
+title: "valencIA"
+subtitle: "Chatbot público y servidor MCP instalable para los datos abiertos del Ayuntamiento de València"
+author: "Michel Marques"
+date: "28 de mayo de 2026"
+lang: es-ES
 ---
 
-## 1. Descripción del proyecto
+# Ficha de candidatura
 
-**valencIA** es un servidor de inteligencia artificial que conecta cualquier asistente de IA —Claude, Cursor, Continue.dev, VS Code— al portal de datos abiertos del Ayuntamiento de València, permitiendo que cualquier ciudadano consulte esos datos en lenguaje natural, sin conocimientos técnicos y sin necesidad de instalar nada.
+| Campo | Información |
+|---|---|
+| Convocatoria | Premios para proyectos de datos abiertos y periodismo de datos del Ayuntamiento de València, edición 2026 |
+| Categoría | Proyectos de Datos Abiertos |
+| Título del proyecto | valencIA |
+| Subtítulo | Chatbot público y servidor MCP instalable para consultar los datos abiertos del Ayuntamiento de València desde cualquier IA compatible |
+| Persona solicitante | Michel Marques |
+| Tipo de persona | Persona física |
+| Autores | Michel Marques |
+| Representante | No aplica |
+| Identificación | Se consigna únicamente en el formulario oficial de la Sede Electrónica |
+| Ámbito territorial | Municipio de València |
+| Estado del proyecto | Implantado y accesible públicamente |
+| Estado de candidatura | Presentada electrónicamente el 28 de mayo de 2026 mediante el procedimiento AD.TR.15 |
+| Interfaz conversacional pública | <https://valencia-mcp.vercel.app> |
+| Repositorio público | <https://github.com/iMark21/valencia-opendata> |
+| Paquete npm | <https://www.npmjs.com/package/valencia-opendata> |
+| Licencia del código | MIT |
+| Licencia de los datos reutilizados | Creative Commons Atribución 4.0 Internacional, Ajuntament de València |
 
-El proyecto implementa el estándar abierto **Model Context Protocol (MCP)**, desarrollado para que los modelos de lenguaje puedan acceder a fuentes de datos externas de forma estructurada y trazable. valencIA expone **12 herramientas** que cubren las principales temáticas del portal municipal: calidad del aire, bicicletas ValenBisi, tráfico, transporte EMT, información de barrios y descubrimiento del catálogo completo de **294 datasets**.
+![Pantalla principal de valencIA](../web/public/screenshots/hero.png){width=92%}
 
-La propuesta se complementa con una **web demo** accesible desde cualquier navegador, que demuestra las capacidades del sistema sin requerir ninguna configuración por parte del usuario.
+# Resumen ejecutivo
 
----
+**valencIA** es una herramienta abierta que permite consultar los datos abiertos del Ayuntamiento de València mediante preguntas en lenguaje natural, en castellano o valenciano, sin conocimientos técnicos previos.
 
-## 2. Originalidad e innovación
+La propuesta lleva al ámbito municipal una experiencia que la ciudadanía ya reconoce en asistentes conversacionales como ChatGPT: preguntar de forma natural y recibir una respuesta inmediata. La diferencia es clave: valencIA no es un chatbot genérico, sino una IA acotada a València, conectada a fuentes oficiales del Ayuntamiento y diseñada para responder con datos trazables, mapas, tablas, tarjetas visuales y enlaces de verificación.
 
-### La barrera que resuelve
+El proyecto combina dos piezas:
 
-El portal de datos abiertos del Ayuntamiento de València es una de las iniciativas de transparencia más completas de España. Sin embargo, acceder a un dato concreto —por ejemplo, la calidad del aire en Russafa en este momento— requiere hoy conocer la existencia del portal, encontrar el dataset correcto entre 294 opciones, entender su estructura, hacer una llamada a la API y interpretar la respuesta.
+- Una **interfaz conversacional pública** que cualquier persona puede usar desde el navegador, sin registro y sin instalación.
+- Un **servidor Model Context Protocol (MCP)** publicado como paquete npm, instalable con `npx -y valencia-opendata`, que permite conectar cualquier IA compatible con MCP al portal municipal de datos abiertos.
 
-Esta cadena de pasos excluye al ciudadano medio. Los datos están publicados, son libres, son actuales, pero son inaccesibles en la práctica.
+El objetivo principal es reducir la distancia entre los conjuntos de datos publicados y las preguntas reales de la ciudadanía. En lugar de exigir que la persona usuaria conozca CKAN, ArcGIS, APIs, formatos GeoJSON o identificadores de capas, valencIA interpreta la pregunta, invoca la herramienta adecuada, consulta la fuente oficial en tiempo real y devuelve una respuesta verificable con atribución y enlace a la fuente.
 
-### La solución
+El sistema cubre actualmente **294 datasets del portal CKAN** y diversas capas del Geoportal ArcGIS municipal. Incluye herramientas específicas para calidad del aire, ValenBisi, tráfico, EMT, información de barrios, búsqueda textual y descubrimiento de capas geográficas.
 
-valencIA traslada esa cadena de pasos al modelo de IA. El ciudadano formula su pregunta en español o en valenciano; el sistema invoca la herramienta adecuada contra el portal oficial, obtiene el dato en tiempo real y devuelve una respuesta con contexto, unidades y atribución de fuente.
+La web no es una maqueta ni una página promocional: es el producto en uso. Funciona como un ChatGPT municipal especializado en datos abiertos de València. Además, el mismo motor se distribuye como servidor MCP instalable para que cualquier cliente de IA compatible pueda reutilizar las herramientas desde Claude Desktop, Cursor, Continue.dev, VS Code u otros entornos. La persona usuaria escribe una pregunta cotidiana y el sistema responde con datos oficiales, mapas, tablas, tarjetas visuales y enlaces de verificación.
 
-```
-Usuario: "¿Cuántos ValenBisi libres hay cerca de la Catedral?"
+# Interfaz conversacional y ejemplos de uso
 
-valencIA: [invoca get_valenbisi_availability con radio 500 m]
-          "Hay 3 estaciones ValenBisi a menos de 500 m de la Catedral:
-           · Plaça de la Reina (5 bicis / 12 muelles)
-           · Carrer de la Pau (2 bicis / 8 muelles)
-           · Plaça de l'Ajuntament (8 bicis / 15 muelles)
-           Fuente: Ajuntament de València · CC BY 4.0"
-```
+El valor diferencial de valencIA se percibe al interactuar con la web pública. La interfaz permite formular preguntas como se harían a una persona experta en datos municipales, pero conservando trazabilidad técnica y fuente oficial.
 
-### Lo que lo hace diferente
+Esto cambia la relación de la ciudadanía con el portal de datos abiertos. Ya no hace falta saber qué dataset buscar, qué capa ArcGIS contiene una estación, qué recurso tiene formato GeoJSON o cómo interpretar una respuesta JSON. valencIA convierte ese proceso técnico en una conversación: pregunta, herramienta, dato oficial, explicación y fuente.
 
-- **Primer servidor MCP** para el portal municipal de València.
-- **Protocolo abierto**: cualquier cliente compatible (no solo un producto comercial) puede conectarse. El ciudadano no queda atado a ninguna plataforma.
-- **Live, no snapshot**: cada consulta resuelve contra el portal en tiempo real. Los datos son los del momento, no una copia desactualizada.
-- **Sin API keys, sin registro**: el portal municipal no requiere autenticación. valencIA tampoco. Cualquiera puede usarlo instalando un paquete npm.
+| Pregunta del usuario | Qué resuelve valencIA | Evidencia visible |
+|---|---|---|
+| "Quina és la qualitat de l'aire a Russafa ara?" | Localiza la estación de referencia, obtiene contaminantes y presenta una valoración comprensible. | Tabla de valores, tarjeta de calidad del aire y atribución al Geoportal. |
+| "Hi ha ValenBisi prop de la Catedral?" | Geocodifica el punto, busca estaciones cercanas y compara bicis y muelles disponibles. | Mapa, listado de estaciones y tarjeta de disponibilidad. |
+| "Compara la qualitat ambiental de Russafa i Campanar" | Calcula un pulso ambiental compuesto combinando capas de aire, verde urbano, ruido y vulnerabilidad. | Comparación por barrio y explicación de los factores usados. |
+| "Quins datasets hi ha sobre vulnerabilitat social?" | Busca en el catálogo CKAN y devuelve conjuntos relevantes con formatos y enlaces. | Resultados filtrados, metadatos y URLs del portal. |
+| "Qué buses pasan cerca de la Estación del Norte?" | Consulta paradas EMT cercanas y muestra líneas disponibles. | Paradas, líneas y enlace a información operativa. |
+| "Estado del tráfico ahora mismo en el centro" | Consulta tramos y capas de tráfico municipal. | Intensidad, cámaras disponibles y fuente de cada capa. |
 
----
+Estos ejemplos demuestran que el proyecto no se limita a publicar código: entrega una experiencia ciudadana completa. Una persona puede entrar, preguntar, comprobar el origen del dato y compartir la consulta sin instalar nada.
 
-## 3. Valor público e impacto social y urbano
+## Pruebas verificables
 
-### Democratización del acceso
+El jurado puede comprobar el funcionamiento del proyecto directamente:
 
-Los datos abiertos solo cumplen su promesa democrática cuando son realmente accesibles. valencIA elimina la brecha entre el técnico que sabe leer una API y el ciudadano que solo quiere saber si el aire de su barrio está limpio antes de salir a correr.
+- **Prueba ciudadana inmediata:** abrir <https://valencia-mcp.vercel.app> y formular cualquiera de las preguntas anteriores.
+- **Prueba técnica reproducible:** instalar el servidor con `npx -y valencia-opendata` y conectarlo a un cliente MCP compatible.
+- **Prueba de fuente:** cada respuesta muestra atribución y URLs de CKAN o Geoportal ArcGIS del Ayuntamiento de València.
+- **Prueba de calidad:** el repositorio incluye 142 tests automáticos y flujo de CI público.
+- **Prueba de reutilización:** el código está publicado bajo licencia MIT y el paquete npm permite integrarlo en otros asistentes o herramientas.
+- **Prueba de comunicación:** las consultas pueden compartirse mediante URL y exportarse como HTML autocontenido.
 
-Casos de uso concretos con impacto ciudadano:
+![Consulta de ValenBisi con mapa y datos estructurados](../web/public/screenshots/query-map.png){width=84%}
 
-| Perfil | Consulta | Dato obtenido |
-|--------|----------|---------------|
-| Residente | "¿Está el aire de Benimaclet dentro de los límites de la OMS?" | NO₂, PM10, PM2.5 live + comparativa límite OMS |
-| Ciclista | "¿Hay bicis ValenBisi libres cerca del Mercado Central?" | Disponibilidad por estación en tiempo real |
-| Periodista | "¿Qué barrio tiene peor calidad ambiental compuesta?" | Ranking de barrios por pulso ambiental (aire + verde + ruido + vulnerabilidad) |
-| Investigador | "¿Qué datasets hay sobre vivienda pública y cuáles tienen formato GeoJSON?" | Catálogo filtrado con metadata y URLs de descarga |
-| Vecino | "Compara la renta per cápita de Russafa y Campanar" | Datos socioeconómicos del CKAN |
+![Consulta de calidad del aire con tarjeta visual](../web/public/screenshots/card-air.png){width=84%}
 
-### Impacto sobre el portal municipal
+# Objetivos
 
-Cada respuesta de valencIA incluye la URL exacta del dataset o capa que la originó. El sistema actúa como un **amplificador de visibilidad** del portal: el ciudadano descubre recursos que de otra forma nunca habría encontrado.
+Los objetivos del proyecto son:
 
-### Accesibilidad lingüística
+1. **Democratizar el acceso a los datos abiertos de València.** Permitir que cualquier persona consulte información municipal sin tener que entender estructuras técnicas, APIs o formatos de datos.
+2. **Dar mayor visibilidad al portal municipal de datos abiertos.** Cada respuesta enlaza a la fuente oficial y muestra la atribución correspondiente.
+3. **Promover una reutilización trazable y verificable.** Las respuestas se construyen a partir de llamadas a CKAN y al Geoportal ArcGIS, no a partir de datos inventados o copias opacas.
+4. **Facilitar el trabajo de ciudadanía, periodistas, asociaciones, personal investigador y perfiles técnicos.** El proyecto sirve tanto para preguntas cotidianas como para exploración de datasets.
+5. **Demostrar el potencial de los estándares abiertos aplicados a la inteligencia artificial.** El uso de MCP evita depender de una plataforma cerrada y facilita que otros clientes reutilicen la misma infraestructura.
+6. **Crear una base replicable para otras administraciones.** La arquitectura puede adaptarse a otros portales CKAN o ArcGIS con un coste reducido.
 
-La web demo ofrece interfaz en **español y valenciano**. Las sugerencias de consulta, los textos de la interfaz y los mensajes del sistema están completamente localizados en ambas lenguas.
+# Metodología
 
-### Accesibilidad técnica
+## Fuentes utilizadas
 
-La interfaz cumple **WCAG 2.1 nivel AA**: foco visible para navegación con teclado, etiquetas ARIA semánticas, contraste de texto corregido, soporte de lectores de pantalla, sincronización del atributo `lang` del documento con el idioma seleccionado y respeto a `prefers-reduced-motion` para usuarios con sensibilidad vestibular.
+valencIA consume exclusivamente fuentes oficiales del Ayuntamiento de València:
 
----
+| Fuente | Uso dentro del proyecto |
+|---|---|
+| Portal CKAN `opendata.vlci.valencia.es` | Catálogo de datasets, metadatos, recursos descargables, formatos y organizaciones |
+| Geoportal ArcGIS `geoportal.valencia.es` | Capas geográficas, calidad del aire, ValenBisi, tráfico, EMT y barrios |
 
-## 4. Viabilidad y sostenibilidad
+No se realiza scraping de páginas municipales. Cuando un recurso no debe descargarse automáticamente por tamaño, formato o naturaleza de la fuente, la herramienta devuelve un enlace y metadatos para que la persona usuaria pueda acceder al dato original.
 
-### Técnica
+## Arquitectura técnica
 
-- **Sin dependencias de pago**: ni el portal municipal ni el modelo de IA base requieren API keys para el funcionamiento del servidor MCP. La web demo usa OpenRouter como capa de abstracción.
-- **Coste operativo mínimo**: el servidor MCP funciona en local en el equipo del usuario (instalación npm) o puede desplegarse en cualquier servidor Node.js. No hay base de datos ni infraestructura compleja.
-- **Tests automáticos**: 142 tests en modo record/replay garantizan que el sistema sigue funcionando aunque cambien las APIs upstream. El pipeline de CI (GitHub Actions) ejecuta build y tests en cada commit.
-- **Node.js ≥ 20**: plataforma estable con soporte a largo plazo.
+El proyecto está implementado en Node.js y TypeScript. La arquitectura separa el motor de datos y la interfaz:
 
-### Mantenimiento
+- **Servidor MCP:** expone herramientas reutilizables por clientes de IA.
+- **Interfaz conversacional web:** aplicación Next.js que muestra chat en streaming, resultados estructurados, mapas y tarjetas visuales.
+- **Tests automáticos:** 142 pruebas en modo record/replay para verificar comportamiento sin depender de la red durante la ejecución ordinaria.
+- **CI pública:** GitHub Actions ejecuta compilación y tests.
+- **Publicación abierta:** código en GitHub, paquete en npm e interfaz desplegada en Vercel.
 
-- Código abierto bajo licencia MIT: cualquier desarrollador puede auditar, mejorar y contribuir.
-- El diseño "pointer, not bytes" hace que el servidor sea resiliente a cambios en el tamaño o estructura de los datasets: devuelve URLs con metadata en lugar de descargar datos pesados.
-- Los fixtures de tests versionados permiten detectar cambios en las APIs del portal y regrabar de forma controlada.
+## Flujo de consulta
 
-### Escalabilidad
+1. La persona usuaria formula una pregunta en castellano o valenciano.
+2. El sistema identifica qué herramienta necesita: aire, ValenBisi, barrios, datasets, tráfico, EMT u otra.
+3. La herramienta consulta la fuente oficial en tiempo real.
+4. La respuesta muestra el dato, el contexto, la atribución y la URL de origen.
+5. Si procede, la interfaz añade mapa, tabla, tarjeta visual o enlace compartible.
 
-El protocolo MCP permite añadir nuevas herramientas sin modificar el cliente. Cuando el portal incorpore nuevos datasets relevantes, se puede añadir cobertura con un cambio mínimo en el servidor, sin tocar la interfaz de usuario ni ningún cliente existente.
+# Conclusiones y resultados
 
----
+El proyecto se encuentra implantado y disponible públicamente:
 
-## 5. Carácter colaborativo
+- Interfaz conversacional operativa: <https://valencia-mcp.vercel.app>
+- Repositorio público: <https://github.com/iMark21/valencia-opendata>
+- Paquete npm publicado: <https://www.npmjs.com/package/valencia-opendata>
 
-### Protocolo abierto
+Las capacidades principales son:
 
-valencIA no es un producto de un proveedor concreto. El Model Context Protocol es un estándar abierto que cualquier desarrollador puede implementar y cualquier cliente compatible puede consumir. Esto significa que el trabajo realizado beneficia a todo el ecosistema, no solo a los usuarios de una herramienta concreta.
+| Área | Resultado |
+|---|---|
+| Catálogo de datos | Consulta de 294 datasets con filtros por tema, formato y organización |
+| Calidad del aire | Lectura de estaciones, contaminantes y valoración visual por umbrales |
+| ValenBisi | Disponibilidad de bicicletas y muelles por estación y proximidad |
+| Tráfico | Estado de tramos, intensidad y cámaras disponibles |
+| EMT | Paradas, líneas y enlaces a información de llegada |
+| Barrios | Geometría, distrito, área y pulso ambiental compuesto |
+| Accesibilidad | Interfaz bilingüe y cumplimiento de criterios WCAG 2.1 AA |
+| Reproducibilidad | Consultas compartibles por URL y exportación de conversaciones como HTML |
 
-### Código abierto
+# Originalidad y grado de innovación
 
-El repositorio completo está publicado en GitHub bajo licencia MIT. Cualquier ciudadano, asociación, periodista o administración pública puede:
+valencIA introduce un enfoque innovador en la reutilización de datos abiertos municipales porque combina datos urbanos oficiales, IA conversacional y un protocolo abierto de integración.
 
-- Usar valencIA sin restricciones
-- Auditar el código y verificar que solo se accede al portal oficial
-- Proponer mejoras o añadir cobertura de nuevos datasets
-- Hacer un fork y adaptarlo a otro portal de datos abiertos
+Sus elementos diferenciales son:
 
-### Potencial de réplica
+- **Primer servidor MCP específico para el portal de datos abiertos de València.**
+- **Consulta en lenguaje natural** sobre datasets municipales, sin exigir conocimiento técnico.
+- **Datos en tiempo real**, no una copia estática ni un resumen precargado.
+- **Interoperabilidad mediante estándar abierto.** Cualquier cliente compatible con MCP puede conectarse al servidor.
+- **Herramientas visuales dentro de la respuesta.** La web no se limita a texto: muestra mapas, tablas, tarjetas de aire y tarjetas de disponibilidad ValenBisi.
+- **Trazabilidad estricta.** Cada respuesta enlaza a la fuente oficial y conserva la atribución CC BY 4.0.
 
-La arquitectura de valencIA es agnóstica al portal subyacente. Con adaptaciones menores podría conectarse a otros portales CKAN de otras ciudades o comunidades autónomas. El modelo puede replicarse en cualquier administración que publique datos en CKAN o ArcGIS.
+La innovación no consiste solo en aplicar IA, sino en hacerlo con una arquitectura verificable: la IA no sustituye al dato oficial, sino que actúa como interfaz para acceder a él.
 
-### Atribución y trazabilidad
+# Valor público e impacto social y urbano
 
-Cada respuesta del sistema incluye la atribución CC BY 4.0 y la URL de la fuente, lo que facilita la verificación independiente y cumple con los términos de la licencia del portal.
+La principal aportación pública del proyecto es convertir datos técnicamente disponibles en información realmente accesible.
 
----
+## Casos de uso ciudadanos
 
-## 6. Aspectos técnicos destacados
+| Perfil | Consulta posible | Valor obtenido |
+|---|---|---|
+| Residente | "¿Cómo está el aire ahora en Russafa?" | Información ambiental comprensible antes de salir a correr o pasear |
+| Ciclista | "¿Hay ValenBisi libres cerca del Mercado Central?" | Decisión de movilidad inmediata |
+| Vecina o vecino | "Dime qué datos hay de mi barrio" | Descubrimiento de información urbana local |
+| Periodista | "Qué datasets hay sobre vivienda, movilidad o contaminación" | Punto de partida para piezas de investigación |
+| Asociación | "Compara barrios por indicadores ambientales" | Apoyo para diagnóstico territorial |
+| Desarrollador o investigadora | "Dame recursos GeoJSON sobre movilidad" | Ahorro de tiempo en exploración técnica |
 
-### Las 12 herramientas
+## Impacto sobre la transparencia
 
-| Herramienta | Fuente |
-|-------------|--------|
-| `list_datasets` — catálogo con filtros | CKAN |
-| `get_dataset` — metadata + recursos | CKAN |
-| `get_dataset_resource` — URL + esquema + frescura | CKAN |
-| `full_text_search` — búsqueda full-text en 294 datasets | CKAN |
-| `find_geo_layers` — descubrimiento de capas ArcGIS | Geoportal |
-| `query_geo_layer` — query sobre cualquier capa | Geoportal |
-| `get_air_quality` — NO₂/PM10/PM2.5/O₃ en tiempo real | Geoportal capa 156 |
-| `get_valenbisi_availability` — bicis y muelles libres | Geoportal capa 228 |
-| `get_traffic_state` — tramos, intensidad, cámaras | Geoportal OPENDATA/Trafico |
-| `get_neighborhood_info` — geometría, distrito, área | Geoportal capa 224 |
-| `get_neighborhood_pulse` — score ambiental compuesto | Multicapa |
-| `get_emt_stops` — paradas EMT con líneas | Geoportal capa 226 |
+Cada interacción aumenta la utilidad práctica del portal de datos abiertos. valencIA no oculta la fuente: la muestra. Esto refuerza la confianza en la información municipal y facilita que la ciudadanía compruebe, comparta y reutilice los datos.
 
-### Garantías de fuente
+## Accesibilidad
 
-El sistema implementa una política estricta: **solo se consumen CKAN y el Geoportal ArcGIS**, ambos con licencia CC BY 4.0 declarada. No se scrapea ninguna web municipal aunque la información sea pública. Para datos a los que no se puede acceder via API oficial, la herramienta devuelve un `pointer_url` y el usuario decide si accede directamente.
+La web incorpora:
 
-### Web demo
+- Interfaz en castellano y valenciano.
+- Navegación por teclado.
+- Foco visible.
+- Etiquetas ARIA semánticas.
+- Contraste revisado.
+- Respeto a `prefers-reduced-motion`.
+- Persistencia local de historial, sin cuenta de usuario.
 
-La interfaz web es una aplicación Next.js con diseño inspirado en la Senyera (azul, amarillo, rojo). Incluye:
+# Viabilidad, sostenibilidad y calidad del tratamiento de los datos
 
-- Chat en streaming con visualización del progreso de las herramientas
-- Mapa Leaflet inline con puntos de interés (estaciones ValenBisi, EMT, calidad de aire)
-- Cards visuales para calidad del aire (índice EAQI por contaminante) y ValenBisi (gauge de disponibilidad)
-- Panel lateral con los 294 datasets organizados por categoría
-- Interfaz en español y valenciano
-- Diseño responsive (móvil y escritorio)
-- Accesibilidad WCAG 2.1 AA (foco visible, ARIA semántico, contraste corregido, `prefers-reduced-motion`)
-- Compartición de consultas por URL `?q=…` para reproducibilidad por terceros
-- Persistencia local del historial (sin servidor: el ciudadano controla sus datos)
-- Exportación de la conversación como HTML autocontenido con atribución CC BY 4.0
+## Viabilidad técnica
 
----
+El proyecto ya está en producción y requiere una infraestructura mínima:
 
-## 7. Relación con los objetivos del concurso
+- El servidor MCP puede ejecutarse localmente con `npx -y valencia-opendata`.
+- No necesita base de datos.
+- No almacena datos personales en servidor.
+- Los datos se consultan directamente contra las fuentes oficiales.
+- La interfaz conversacional pública está desplegada y funcionando.
 
-| Objetivo de la convocatoria | Respuesta del proyecto |
-|----------------------------|------------------------|
-| Promover los beneficios de la transparencia | Cada respuesta cita la fuente exacta y la licencia CC BY 4.0 |
-| Fomentar la reutilización de la información | 12 herramientas que cubren las principales temáticas del portal |
-| Dar a conocer el portal de datos abiertos municipal | El panel de 294 datasets y cada respuesta dirigen al portal |
-| Fomentar herramientas innovadoras | Primer servidor MCP para el portal municipal de València |
-| Conocer la ciudad a partir de los datos | Barrios, movilidad, medio ambiente, infraestructura en lenguaje natural |
-| Reproducibilidad y verificación | Cualquier consulta es compartible por URL; el código y los datos son auditables |
+## Sostenibilidad
 
----
+El mantenimiento es asumible porque la arquitectura está basada en conectores pequeños y herramientas independientes. Si cambia una API upstream, los tests record/replay permiten detectar el cambio, actualizar fixtures y corregir la herramienta afectada sin reescribir el sistema completo.
 
-## 8. Atribución y licencia
+## Calidad y trazabilidad de datos
 
-**Código:** MIT License © 2026 Michel Marques — libre uso, modificación y distribución.
+El proyecto aplica las siguientes reglas:
 
-**Datos:** Ajuntament de València · Licencia Creative Commons Atribución 4.0 Internacional (CC BY 4.0)
-- Portal CKAN: opendata.vlci.valencia.es
-- Geoportal ArcGIS: geoportal.valencia.es
+- Usar solo CKAN y Geoportal ArcGIS como fuentes oficiales.
+- Mantener atribución CC BY 4.0 en cada respuesta.
+- Devolver URLs de origen para verificación independiente.
+- Evitar descargas pesadas innecesarias mediante el patrón "puntero, no bytes".
+- Distinguir entre dato disponible, dato no disponible y enlace de consulta externa.
+
+# Carácter colaborativo, transparencia y apertura informativa
+
+valencIA está publicado bajo licencia MIT. Esto permite que cualquier persona, entidad social, universidad, periodista o administración pueda usar, auditar, adaptar o mejorar el proyecto.
+
+La apertura se materializa en:
+
+- Repositorio público con código fuente completo.
+- Paquete npm instalable.
+- Documentación para uso en Claude Desktop, Cursor, Continue.dev y otros clientes MCP.
+- Tests públicos.
+- Licencia abierta del código.
+- Reconocimiento explícito de la licencia de los datos municipales.
+
+El proyecto también tiene potencial colaborativo porque la cobertura de datasets puede ampliarse progresivamente. Nuevas herramientas pueden añadirse para turismo, vivienda, patrimonio, equipamientos, contratación u otras áreas sin cambiar la arquitectura base.
+
+# Relación con los criterios de valoración
+
+| Criterio de valoración | Respuesta del proyecto |
+|---|---|
+| Originalidad e innovación | Uso de MCP e IA conversacional para consultar datos municipales en tiempo real |
+| Valor público e impacto social y urbano | Facilita consultas cotidianas y profesionales sobre movilidad, aire, barrios y datasets |
+| Viabilidad, sostenibilidad y calidad de datos | Proyecto implantado, testado, sin base de datos, con fuentes oficiales y trazabilidad |
+| Carácter colaborativo y transparencia | Código abierto, paquete npm, documentación pública y atribución permanente |
+
+# Enlaces y anexos
+
+## Enlaces principales
+
+- Interfaz conversacional: <https://valencia-mcp.vercel.app>
+- Repositorio: <https://github.com/iMark21/valencia-opendata>
+- npm: <https://www.npmjs.com/package/valencia-opendata>
+- Portal CKAN del Ayuntamiento de València: <https://opendata.vlci.valencia.es>
+- Geoportal ArcGIS: <https://geoportal.valencia.es>
+
+## Herramientas implementadas
+
+| Herramienta | Descripción |
+|---|---|
+| `list_datasets` | Catálogo CKAN con filtros |
+| `get_dataset` | Metadatos, recursos y capas relacionadas |
+| `get_dataset_resource` | URL, esquema y frescura del recurso |
+| `full_text_search` | Búsqueda textual en datasets |
+| `find_geo_layers` | Descubrimiento de servicios y capas ArcGIS |
+| `query_geo_layer` | Consulta genérica de capas |
+| `get_air_quality` | Calidad del aire en tiempo real |
+| `get_valenbisi_availability` | Bicicletas y muelles libres |
+| `get_traffic_state` | Estado de tráfico |
+| `get_neighborhood_info` | Información de barrios |
+| `get_neighborhood_pulse` | Indicador ambiental compuesto |
+| `get_emt_stops` | Paradas EMT y líneas |
+
+## Declaración de licencia y atribución
+
+El código del proyecto se publica bajo licencia MIT.
+
+Los datos reutilizados pertenecen al Ayuntamiento de València y se emplean conforme a la licencia Creative Commons Atribución 4.0 Internacional indicada por las fuentes municipales.
+
+En València, a 28 de mayo de 2026.
+
+**Michel Marques**

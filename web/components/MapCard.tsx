@@ -69,14 +69,14 @@ function MapCardInner({ points, height = 220 }: MapCardProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const mapRef = useRef<any>(null);
-  const pointsRef = useRef(points);
-  pointsRef.current = points;
 
   // Stable key — only changes when actual coordinates change, not on array re-allocation
-  const pointsKey = points.map((p) => `${p.lat},${p.lng},${p.type}`).join("|");
+  const pointsKey = points
+    .map((p) => `${p.lat},${p.lng},${p.type},${p.label},${p.detail ?? ""}`)
+    .join("|");
 
   useEffect(() => {
-    const pts = pointsRef.current;
+    const pts = points;
     if (!containerRef.current || pts.length === 0) return;
 
     let cancelled = false;

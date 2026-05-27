@@ -345,32 +345,6 @@ function Spinner() {
   );
 }
 
-function ToolPill({ tool }: { tool: ToolCallState }) {
-  const done = tool.summary !== undefined;
-  const meta = TOOL_META[tool.name] ?? { label: tool.name };
-  return (
-    <span style={{
-      display: "inline-flex", alignItems: "center", gap: "4px",
-      padding: "2px 8px 2px 6px",
-      fontFamily: MONO, fontSize: "10px", fontWeight: 500,
-      marginRight: "4px", marginBottom: "3px",
-      transition: "all 0.35s",
-      background: done ? "rgba(22,163,74,0.07)" : "rgba(230,168,0,0.08)",
-      border: `1px solid ${done ? "rgba(22,163,74,0.2)" : "rgba(230,168,0,0.25)"}`,
-      color: done ? "#16a34a" : "#A07800",
-      borderRadius: "3px",
-    }}>
-      {done ? <span style={{ fontSize: "8px", fontWeight: 900, color: "#16a34a" }}>✓</span> : <Spinner />}
-      <span>{meta.label}</span>
-      {done && tool.summary && (
-        <span style={{ color: "rgba(22,163,74,0.5)", marginLeft: "2px" }}>
-          · {tool.summary}
-        </span>
-      )}
-    </span>
-  );
-}
-
 function TypingCursor() {
   return (
     <span style={{ display: "flex", alignItems: "center", gap: "5px" }}>
@@ -553,7 +527,7 @@ export default function ChatPage() {
       patch((m) => ({ ...m, content: `⚠️ Error de connexió: ${String(err)}`, isStreaming: false }));
       setIsLoading(false);
     }
-  }, [messages, isLoading]);
+  }, [messages, isLoading, userLocation]);
 
   useEffect(() => { sendMessageRef.current = sendMessage; }, [sendMessage]);
 
@@ -575,7 +549,6 @@ export default function ChatPage() {
       setLang(persisted.lang);
       setMessages(persisted.messages);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Persist conversation on changes (skip while streaming to avoid noisy writes)

@@ -1,6 +1,6 @@
-# valencIA — web demo
+# valencIA — chatbot web
 
-Interfaz de chat Next.js para el servidor MCP `valencia-opendata`. Consume los 294 datasets abiertos del Ayuntamiento de València en tiempo real vía OpenRouter.
+Interfaz conversacional Next.js para el servidor MCP `valencia-opendata`. Consume los 294 datasets abiertos del Ayuntamiento de València en tiempo real vía OpenRouter.
 
 ## Requisitos
 
