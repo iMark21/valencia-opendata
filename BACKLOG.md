@@ -51,13 +51,13 @@
 |----|-------|-----------|
 | VALMCP-52 | ~~`web/AGENTS.md` — context completo para agentes IA (arq, bridge, restricciones, convenciones)~~ · **completado 27 may** | ✅ |
 
-### 2 jun — Publish day (repo público + npm + Vercel)
+### 28 may — Publish day (repo público + npm + Vercel) ✅
 
 | ID | Tarea | Prioridad |
 |----|-------|-----------|
-| VALMCP-35 | Hacer repo `iMark21/valencia-mcp` público en GitHub | P0 — BLOQUEANTE candidatura |
-| VALMCP-36 | `npm publish` (requiere VALMCP-30..32 + VALMCP-35) | P0 |
-| VALMCP-28 | Deploy web demo en Vercel (env var OPENROUTER_API_KEY, build cmd monorepo) | P0 |
+| VALMCP-35 | ~~Hacer repo `iMark21/valencia-mcp` público en GitHub~~ · **completado 28 may** | ✅ |
+| VALMCP-36 | ~~`npm publish` → `valencia-opendata@1.0.0` en npm~~ · **completado 28 may** | ✅ |
+| VALMCP-28 | ~~Deploy web demo en Vercel — https://valencia-mcp.vercel.app~~ · **completado 28 may** | ✅ |
 
 ### 31 may — Cards visuales ✅
 
@@ -84,7 +84,7 @@
 | ID | Tarea | Prioridad |
 |----|-------|-----------|
 | VALMCP-42 | ~~Redactar memoria de candidatura (descripción técnica, impacto, open data)~~ · **completado 27 may** | ✅ |
-| VALMCP-43 | Adjuntos: link repo público, link web demo, link npm — pendiente de publish day (2 jun) | ⏳ |
+| VALMCP-43 | ~~Adjuntos: link repo público, link web demo, link npm — URLs definitivas en memoria~~ · **completado 28 may** | ✅ |
 
 ### 4 jun — Buffer review
 
@@ -120,4 +120,4 @@
 
 ---
 
-_Actualizado: 28 may 2026 — VALMCP-46/47/49 completados; pendientes publish day (2 jun): VALMCP-35/36/28/43/44/45_
+_Actualizado: 28 may 2026 — VALMCP-28/35/36/43/46/47/49 completados; pendiente: VALMCP-44 (review 4 jun) + VALMCP-45 (presentación 5 jun)_
