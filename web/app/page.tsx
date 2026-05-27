@@ -397,8 +397,11 @@ export default function ChatPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [sidebarSearch, setSidebarSearch] = useState("");
   const [openCategory, setOpenCategory] = useState<string | null>(null);
+  const [shareCopied, setShareCopied] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const sharedQueryFiredRef = useRef(false);
+  const sendMessageRef = useRef<((text: string) => void) | null>(null);
   const t = T[lang];
 
   const requestGeolocation = () => {
@@ -428,6 +431,7 @@ export default function ChatPage() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [sidebarOpen]);
+
 
   const adjustHeight = () => {
     const ta = textareaRef.current;
@@ -516,6 +520,37 @@ export default function ChatPage() {
       setIsLoading(false);
     }
   }, [messages, isLoading]);
+
+  useEffect(() => { sendMessageRef.current = sendMessage; }, [sendMessage]);
+
+  // Auto-load query from URL on first mount (?q=...&lang=val|es)
+  useEffect(() => {
+    if (sharedQueryFiredRef.current) return;
+    const params = new URLSearchParams(window.location.search);
+    const sharedLang = params.get("lang");
+    if (sharedLang === "val" || sharedLang === "es") setLang(sharedLang);
+    const q = params.get("q");
+    if (q && q.trim()) {
+      sharedQueryFiredRef.current = true;
+      // Defer so sendMessageRef is populated and lang state has propagated
+      setTimeout(() => sendMessageRef.current?.(q.trim()), 0);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const shareConversation = useCallback(async () => {
+    const lastUser = [...messages].reverse().find((m) => m.role === "user");
+    if (!lastUser) return;
+    const params = new URLSearchParams({ q: lastUser.content, lang });
+    const url = `${window.location.origin}${window.location.pathname}?${params.toString()}`;
+    try {
+      await navigator.clipboard.writeText(url);
+      setShareCopied(true);
+      window.setTimeout(() => setShareCopied(false), 1800);
+    } catch {
+      window.prompt(lang === "val" ? "Copia l'enllaç:" : "Copia el enlace:", url);
+    }
+  }, [messages, lang]);
 
   const exportConversation = useCallback(() => {
     const locale = lang === "val" ? "ca-ES" : "es-ES";
@@ -630,6 +665,31 @@ export default function ChatPage() {
               ))}
             </div>
 
+            {messages.length > 0 && (
+              <button
+                onClick={shareConversation}
+                title={shareCopied ? (lang === "val" ? "Enllaç copiat" : "Enlace copiado") : (lang === "val" ? "Compartir consulta" : "Compartir consulta")}
+                aria-label={shareCopied ? (lang === "val" ? "Enllaç copiat al portapapers" : "Enlace copiado al portapapeles") : (lang === "val" ? "Compartir esta consulta" : "Compartir esta consulta")}
+                style={{
+                  background: shareCopied ? "rgba(22,163,74,0.1)" : "transparent",
+                  border: `1px solid ${shareCopied ? "rgba(22,163,74,0.35)" : "rgba(0,0,0,0.1)"}`,
+                  color: shareCopied ? "#16a34a" : "#6B6560",
+                  padding: "4px 9px", borderRadius: "4px",
+                  cursor: "pointer", display: "flex", alignItems: "center", transition: "all 0.15s",
+                }}
+              >
+                {shareCopied ? (
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                ) : (
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" />
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" /><line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+                  </svg>
+                )}
+              </button>
+            )}
             {messages.length > 0 && (
               <button
                 onClick={exportConversation}
