@@ -8,13 +8,14 @@
   --accent-red: #C8102E;
   --accent-yellow: #E6A800;
   --text-primary: #1A1918;
-  --text-dim: #5A5550;
-  --text-muted: #757069;
-  --text-faint: #8A857F;
+  --text-dim: #3A3530;
+  --text-muted: #4A453F;
+  --text-faint: #6B6560;
   --border: rgba(0, 0, 0, 0.08);
   --success: #16a34a;
   --focus-ring: #0050A0;
   --mono: 'Courier New', ui-monospace, 'Cascadia Code', monospace;
+  --sans: var(--font-sans), 'Raleway', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 * {
@@ -33,7 +34,9 @@ body {
     radial-gradient(rgba(0, 0, 0, 0.025) 1px, transparent 1px);
   background-size: 100% 100%, 24px 24px;
   color: var(--text-primary);
-  font-family: var(--mono);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* ── A11y: visible focus ring for keyboard users ────────────────────────── */
