@@ -70,6 +70,7 @@ const T = {
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 const MONO = "'Courier New', ui-monospace, 'Cascadia Code', monospace";
+const SANS = "var(--font-sans), 'Raleway', system-ui, -apple-system, 'Segoe UI', sans-serif";
 const BLUE = "#0050A0";
 const RED = "#C8102E";
 const YELLOW = "#E6A800";
@@ -242,7 +243,7 @@ function renderInline(text: string): React.ReactNode {
     if (m[0].startsWith("**")) {
       parts.push(<strong key={m.index} style={{ fontWeight: 700, color: "#111" }}>{m[2]}</strong>);
     } else {
-      parts.push(<em key={m.index} style={{ color: "#555" }}>{m[3]}</em>);
+      parts.push(<em key={m.index} style={{ color: "#3A3530" }}>{m[3]}</em>);
     }
     last = m.index + m[0].length;
   }
@@ -284,7 +285,7 @@ function renderMarkdown(text: string): React.ReactNode {
                   {rows.map((row, ri) => (
                     <tr key={ri} style={{ background: ri % 2 === 0 ? "transparent" : "rgba(0,80,160,0.025)", transition: "background 0.1s" }}>
                       {row.map((cell, ci) => (
-                        <td key={ci} style={{ padding: "7px 12px", borderBottom: "1px solid rgba(0,0,0,0.05)", lineHeight: 1.5, fontFamily: MONO, fontSize: "11.5px" }}>
+                        <td key={ci} style={{ padding: "8px 13px", borderBottom: "1px solid rgba(0,0,0,0.05)", lineHeight: 1.5, fontFamily: SANS, fontSize: "13.5px", color: "#1A1918" }}>
                           {renderInline(cell)}
                         </td>
                       ))}
@@ -300,9 +301,9 @@ function renderMarkdown(text: string): React.ReactNode {
         if (lines.length === 1 && /^#{1,3}\s/.test(lines[0].trim())) {
           const level = (lines[0].match(/^#+/) ?? [""])[0].length;
           const content = lines[0].replace(/^#+\s/, "");
-          const fs = level === 1 ? "15px" : level === 2 ? "13.5px" : "12.5px";
+          const fs = level === 1 ? "17px" : level === 2 ? "15.5px" : "14.5px";
           return (
-            <p key={bi} style={{ margin: bi > 0 ? "14px 0 4px" : "0 0 4px", fontWeight: 700, fontSize: fs, color: "#1A1918", lineHeight: 1.4 }}>
+            <p key={bi} style={{ margin: bi > 0 ? "14px 0 6px" : "0 0 6px", fontWeight: 700, fontSize: fs, color: "#1A1918", lineHeight: 1.35 }}>
               {renderInline(content)}
             </p>
           );
@@ -814,7 +815,7 @@ export default function ChatPage() {
                     <div style={{ fontFamily: MONO, fontSize: "8.5px", color: RED, letterSpacing: "1.5px", textTransform: "uppercase", marginBottom: "7px", fontWeight: 600 }}>
                       {s.tag}
                     </div>
-                    <div style={{ fontFamily: MONO, fontSize: "12.5px", lineHeight: 1.5, color: "#3A3530" }}>
+                    <div style={{ fontFamily: SANS, fontSize: "15px", lineHeight: 1.45, color: "#1A1918", fontWeight: 500 }}>
                       {s.text}
                     </div>
                   </button>
@@ -861,11 +862,12 @@ export default function ChatPage() {
                         key={q}
                         onClick={() => { setOpenCategory(null); sendMessage(q); }}
                         style={{
-                          fontFamily: MONO, fontSize: "11.5px", lineHeight: 1.5,
-                          padding: "6px 10px", cursor: "pointer",
+                          fontFamily: SANS, fontSize: "13.5px", lineHeight: 1.5,
+                          padding: "7px 11px", cursor: "pointer",
                           background: "transparent",
                           border: `1px solid ${cat.color}30`,
-                          borderRadius: "4px", color: "#3A3530",
+                          borderRadius: "4px", color: "#1A1918",
+                          fontWeight: 500,
                           textAlign: "left", transition: "all 0.12s",
                         }}
                         onMouseEnter={(e) => { e.currentTarget.style.background = `${cat.color}0e`; e.currentTarget.style.borderColor = `${cat.color}60`; }}
@@ -895,15 +897,16 @@ export default function ChatPage() {
                   /* User bubble */
                   <div className="msg-bubble" style={{
                     maxWidth: "min(72%, 520px)",
-                    padding: "10px 16px",
+                    padding: "11px 17px",
                     background: "#FFFFFF",
                     border: "1px solid rgba(0,0,0,0.08)",
                     borderRadius: "16px 16px 4px 16px",
                     boxShadow: "0 1px 3px rgba(0,0,0,0.07)",
-                    fontFamily: MONO,
-                    fontSize: "13.5px",
-                    lineHeight: 1.6,
+                    fontFamily: SANS,
+                    fontSize: "15px",
+                    lineHeight: 1.55,
                     color: "#1A1918",
+                    fontWeight: 500,
                     overflowWrap: "break-word",
                     wordBreak: "break-word",
                   }}>
@@ -913,16 +916,17 @@ export default function ChatPage() {
                   /* Assistant card */
                   <div style={{ width: "100%", minWidth: 0 }}>
                     <div className="msg-card" style={{
-                      padding: "14px 18px",
+                      padding: "15px 19px",
                       background: "#FFFFFF",
                       border: "1px solid rgba(0,0,0,0.07)",
                       borderLeft: `3px solid ${BLUE}`,
                       borderRadius: "4px 14px 14px 14px",
                       boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
-                      fontFamily: MONO,
-                      fontSize: "13.5px",
-                      lineHeight: 1.75,
-                      color: "#2A2724",
+                      fontFamily: SANS,
+                      fontSize: "15px",
+                      lineHeight: 1.65,
+                      color: "#1A1918",
+                      fontWeight: 400,
                       overflowWrap: "break-word",
                       wordBreak: "break-word",
                     }}>
@@ -1076,7 +1080,7 @@ export default function ChatPage() {
               placeholder={t.placeholder}
               disabled={isLoading}
               rows={1}
-              style={{ flex: 1, background: "transparent", border: "none", outline: "none", fontFamily: MONO, fontSize: "13.5px", lineHeight: 1.6, color: "#1A1918", minHeight: "22px", maxHeight: "140px", padding: "12px 14px", caretColor: RED, opacity: isLoading ? 0.4 : 1 }}
+              style={{ flex: 1, background: "transparent", border: "none", outline: "none", fontFamily: SANS, fontSize: "15px", lineHeight: 1.55, color: "#1A1918", fontWeight: 500, minHeight: "22px", maxHeight: "140px", padding: "13px 15px", caretColor: RED, opacity: isLoading ? 0.4 : 1 }}
             />
 
             {/* Geolocation button */}
@@ -1197,10 +1201,11 @@ export default function ChatPage() {
               placeholder="Buscar tema o query…"
               style={{
                 width: "100%", boxSizing: "border-box",
-                fontFamily: MONO, fontSize: "11.5px",
-                padding: "6px 10px 6px 26px",
+                fontFamily: SANS, fontSize: "13px",
+                padding: "7px 10px 7px 28px",
                 background: "#FFFFFF", border: "1px solid rgba(0,0,0,0.1)", borderRadius: "6px",
                 outline: "none", color: "#1A1918",
+                fontWeight: 500,
               }}
             />
           </div>
@@ -1243,10 +1248,11 @@ export default function ChatPage() {
                         onClick={() => { setSidebarOpen(false); setOpenCategory(null); sendMessage(q); }}
                         style={{
                           width: "100%", textAlign: "left", display: "block",
-                          fontFamily: MONO, fontSize: "11px", lineHeight: 1.5,
-                          padding: "5px 8px", marginBottom: "3px", cursor: "pointer",
+                          fontFamily: SANS, fontSize: "13px", lineHeight: 1.5,
+                          padding: "7px 10px", marginBottom: "4px", cursor: "pointer",
                           background: "transparent", border: `1px solid ${cat.color}22`,
-                          borderRadius: "4px", color: "#3A3530",
+                          borderRadius: "4px", color: "#1A1918",
+                          fontWeight: 500,
                           transition: "all 0.1s",
                         }}
                         onMouseEnter={(e) => { e.currentTarget.style.background = `${cat.color}0e`; e.currentTarget.style.borderColor = `${cat.color}55`; }}
