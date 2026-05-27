@@ -1,6 +1,7 @@
 "use client";
 
 const MONO = "'Courier New', ui-monospace, 'Cascadia Code', monospace";
+const SANS = "var(--font-sans), 'Raleway', system-ui, -apple-system, 'Segoe UI', sans-serif";
 
 export type ValenBisiStation = {
   id: number | null;
@@ -43,7 +44,7 @@ function GaugeBar({ available, total }: { available: number | null; total: numbe
 export default function ValenBisiCard({ stations }: { stations: ValenBisiStation[] }) {
   return (
     <div style={{ marginTop: "14px" }}>
-      <div style={{ fontFamily: MONO, fontSize: "8px", color: "#6B6560", letterSpacing: "1.8px", textTransform: "uppercase", marginBottom: "8px" }}>
+      <div style={{ fontFamily: MONO, fontSize: "10.5px", color: "#4A453F", letterSpacing: "1.5px", textTransform: "uppercase", marginBottom: "10px", fontWeight: 600 }}>
         ValenBisi · Disponibilitat en temps real
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(145px, 1fr))", gap: "8px" }}>
@@ -58,8 +59,8 @@ export default function ValenBisiCard({ stations }: { stations: ValenBisiStation
               padding: "10px 12px",
             }}>
               <div style={{
-                fontFamily: MONO, fontSize: "10px", fontWeight: 600,
-                color: "#3A3530", lineHeight: 1.3, marginBottom: "7px",
+                fontFamily: SANS, fontSize: "13px", fontWeight: 700,
+                color: "#1A1918", lineHeight: 1.3, marginBottom: "8px",
                 overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap",
               }} title={s.name}>
                 {s.name}
@@ -68,18 +69,18 @@ export default function ValenBisiCard({ stations }: { stations: ValenBisiStation
                 <span style={{ fontFamily: MONO, fontSize: "24px", fontWeight: 700, color, lineHeight: 1 }}>
                   {s.bikes_available ?? "—"}
                 </span>
-                <span style={{ fontFamily: MONO, fontSize: "10px", color: "#5A5550", paddingBottom: "1px" }} aria-hidden="true">🚲</span>
+                <span style={{ fontFamily: MONO, fontSize: "12px", color: "#3A3530", paddingBottom: "1px" }} aria-hidden="true">🚲</span>
               </div>
               <GaugeBar available={s.bikes_available} total={s.bikes_total} />
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "6px" }}>
                 {s.docks_free !== null && (
-                  <span style={{ fontFamily: MONO, fontSize: "9px", color: "#5A5550" }}>
+                  <span style={{ fontFamily: MONO, fontSize: "11px", color: "#3A3530", fontWeight: 600 }}>
                     <span aria-hidden="true">🅿️ </span>{s.docks_free}
                     <span className="sr-only"> espacios libres</span>
                   </span>
                 )}
                 {s.distance_m !== undefined && (
-                  <span style={{ fontFamily: MONO, fontSize: "9px", color: "#6B6560", marginLeft: "auto" }}>
+                  <span style={{ fontFamily: MONO, fontSize: "11px", color: "#4A453F", marginLeft: "auto" }}>
                     {s.distance_m < 1000 ? `${s.distance_m}m` : `${(s.distance_m / 1000).toFixed(1)}km`}
                   </span>
                 )}
