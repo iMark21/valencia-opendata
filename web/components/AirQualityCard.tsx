@@ -36,7 +36,7 @@ const LEVELS = {
   fair: { bg: "rgba(217,119,6,0.09)",  border: "rgba(217,119,6,0.22)",  text: "#d97706" },
   poor: { bg: "rgba(234,88,12,0.09)",  border: "rgba(234,88,12,0.22)",  text: "#ea580c" },
   bad:  { bg: "rgba(220,38,38,0.09)",  border: "rgba(220,38,38,0.22)",  text: "#dc2626" },
-  n_a:  { bg: "rgba(0,0,0,0.04)",      border: "rgba(0,0,0,0.09)",      text: "#9A9590" },
+  n_a:  { bg: "rgba(0,0,0,0.04)",      border: "rgba(0,0,0,0.09)",      text: "#5A5550" },
 } as const;
 
 type Level = keyof typeof LEVELS;
@@ -76,7 +76,7 @@ export default function AirQualityCard({ stations, lang = "val" }: { stations: A
   const noData = lang === "val" ? "Sense lectures disponibles" : "Sin lecturas disponibles";
   return (
     <div style={{ marginTop: "14px" }}>
-      <div style={{ fontFamily: MONO, fontSize: "8px", color: "#B0ABA5", letterSpacing: "1.8px", textTransform: "uppercase", marginBottom: "8px" }}>
+      <div style={{ fontFamily: MONO, fontSize: "8px", color: "#6B6560", letterSpacing: "1.8px", textTransform: "uppercase", marginBottom: "8px" }}>
         {header}
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
@@ -121,7 +121,7 @@ export default function AirQualityCard({ stations, lang = "val" }: { stations: A
                   })}
                 </div>
               ) : (
-                <span style={{ fontFamily: MONO, fontSize: "10px", color: "#C0BCB6" }}>{noData}</span>
+                <span style={{ fontFamily: MONO, fontSize: "10px", color: "#6B6560" }}>{noData}</span>
               )}
             </div>
           );

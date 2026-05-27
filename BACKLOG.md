@@ -100,6 +100,14 @@
 
 ---
 
+### 28 may — Accesibilidad WCAG ✅
+
+| ID | Tarea | Prioridad |
+|----|-------|-----------|
+| VALMCP-49 | ~~WCAG 2.1 AA audit + fixes: focus visible, aria-labels, contraste, sidebar dialog, reduced-motion, lang sync~~ · **completado 28 may** | ✅ |
+
+---
+
 ## 🧊 Backlog (post-concurso o si hay tiempo)
 
 | ID | Tarea |
@@ -107,10 +115,9 @@
 | VALMCP-46 | Historial conversación en localStorage |
 | VALMCP-47 | Share link (query param en URL) |
 | VALMCP-48 | Dark mode (`prefers-color-scheme`) |
-| VALMCP-49 | WCAG 2.1 AA accessibility audit |
 | VALMCP-50 | Turismo category en dataset panel |
 | VALMCP-51 | SSE keep-alive / reconexión automática |
 
 ---
 
-_Actualizado: 27 may 2026 (noche) — VALMCP-29..34 + 39/40 + 42 + 52 completados; vídeo descartado (no requerido); VALMCP-35/36/28/43/44/45 pendientes publish day (2 jun)_
+_Actualizado: 28 may 2026 — VALMCP-49 completado (a11y AA); pendientes VALMCP-35/36/28/43/44/45 publish day (2 jun)_

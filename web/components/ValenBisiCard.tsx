@@ -43,7 +43,7 @@ function GaugeBar({ available, total }: { available: number | null; total: numbe
 export default function ValenBisiCard({ stations }: { stations: ValenBisiStation[] }) {
   return (
     <div style={{ marginTop: "14px" }}>
-      <div style={{ fontFamily: MONO, fontSize: "8px", color: "#B0ABA5", letterSpacing: "1.8px", textTransform: "uppercase", marginBottom: "8px" }}>
+      <div style={{ fontFamily: MONO, fontSize: "8px", color: "#6B6560", letterSpacing: "1.8px", textTransform: "uppercase", marginBottom: "8px" }}>
         ValenBisi · Disponibilitat en temps real
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(145px, 1fr))", gap: "8px" }}>
@@ -68,17 +68,18 @@ export default function ValenBisiCard({ stations }: { stations: ValenBisiStation
                 <span style={{ fontFamily: MONO, fontSize: "24px", fontWeight: 700, color, lineHeight: 1 }}>
                   {s.bikes_available ?? "—"}
                 </span>
-                <span style={{ fontFamily: MONO, fontSize: "10px", color: "#9A9590", paddingBottom: "1px" }}>🚲</span>
+                <span style={{ fontFamily: MONO, fontSize: "10px", color: "#5A5550", paddingBottom: "1px" }} aria-hidden="true">🚲</span>
               </div>
               <GaugeBar available={s.bikes_available} total={s.bikes_total} />
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "6px" }}>
                 {s.docks_free !== null && (
-                  <span style={{ fontFamily: MONO, fontSize: "9px", color: "#9A9590" }}>
-                    🅿️ {s.docks_free}
+                  <span style={{ fontFamily: MONO, fontSize: "9px", color: "#5A5550" }}>
+                    <span aria-hidden="true">🅿️ </span>{s.docks_free}
+                    <span className="sr-only"> espacios libres</span>
                   </span>
                 )}
                 {s.distance_m !== undefined && (
-                  <span style={{ fontFamily: MONO, fontSize: "9px", color: "#C0BCB6", marginLeft: "auto" }}>
+                  <span style={{ fontFamily: MONO, fontSize: "9px", color: "#6B6560", marginLeft: "auto" }}>
                     {s.distance_m < 1000 ? `${s.distance_m}m` : `${(s.distance_m / 1000).toFixed(1)}km`}
                   </span>
                 )}

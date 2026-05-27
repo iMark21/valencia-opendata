@@ -8,10 +8,12 @@
   --accent-red: #C8102E;
   --accent-yellow: #E6A800;
   --text-primary: #1A1918;
-  --text-dim: #6B6560;
-  --text-muted: #A8A49E;
+  --text-dim: #5A5550;
+  --text-muted: #757069;
+  --text-faint: #8A857F;
   --border: rgba(0, 0, 0, 0.08);
   --success: #16a34a;
+  --focus-ring: #0050A0;
   --mono: 'Courier New', ui-monospace, 'Cascadia Code', monospace;
 }
 
@@ -25,13 +27,55 @@ html, body {
 }
 
 body {
-  background-color: #F2EFE9;
+  background-color: var(--bg-base);
   background-image:
     radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0, 60, 140, 0.06) 0%, transparent 55%),
     radial-gradient(rgba(0, 0, 0, 0.025) 1px, transparent 1px);
   background-size: 100% 100%, 24px 24px;
   color: var(--text-primary);
   font-family: var(--mono);
+}
+
+/* ── A11y: visible focus ring for keyboard users ────────────────────────── */
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+button:focus-visible,
+a:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+textarea:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 1px;
+}
+
+/* ── A11y: screen-reader-only utility ───────────────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── A11y: respect prefers-reduced-motion ───────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 ::-webkit-scrollbar { width: 3px; }
