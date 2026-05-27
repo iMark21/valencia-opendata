@@ -4,9 +4,21 @@ import { geocodeAddress } from "@/lib/geocoder";
 import { OR_TOOLS } from "@/lib/openrouter-tools";
 import type { ChatMessage, SSEEvent } from "@/lib/types";
 
+// Vercel: extend serverless function budget (Hobby default is 10s, which
+// truncates multi-round tool conversations mid-stream). 60s is the Hobby cap.
+export const runtime = "nodejs";
+export const maxDuration = 60;
+
 const SYSTEM_PROMPT = `Eres un asistente de datos abiertos del Ayuntamiento de València.
 Tienes acceso a datos en tiempo real: calidad del aire, ValenBisi, tráfico, paradas EMT, barrios y el catálogo completo de 294 datasets.
-Responde siempre en el mismo idioma que usa el usuario (español o valenciano).
+
+IDIOMA — REGLA CRÍTICA:
+Detecta el idioma del ÚLTIMO mensaje del usuario y responde EXACTAMENTE en ese idioma.
+- Si el usuario escribe en castellano/español → responde en castellano (NO en valenciano).
+- Si el usuario escribe en valencià/català → respon en valencià.
+- Nunca mezcles idiomas en la misma respuesta.
+- Los nombres propios (Russafa, Cabanyal, l'Albereda, Ajuntament de València) se mantienen en su forma original aunque escribas en castellano.
+
 Usa las herramientas disponibles para responder con datos reales y actuales.
 Cuando uses datos, menciona brevemente la fuente (Ajuntament de València, CC BY 4.0).
 Sé conciso y útil.
@@ -54,6 +66,12 @@ const MODELS = [
 ];
 
 const MAX_TOOL_ROUNDS = 8;
+// Each model call timeout. Keep well below `maxDuration` so we can always emit
+// a graceful answer + `done` event before the platform kills the function.
+const MODEL_TIMEOUT_MS = 22_000;
+// Hard wall-clock budget for the whole request (leave 5s headroom below the
+// 60s Vercel cap so the SSE stream can flush its final events).
+const TOTAL_BUDGET_MS = 55_000;
 
 const SPATIAL_TOOLS = new Set([
   "get_valenbisi_availability",
@@ -153,22 +171,30 @@ export async function POST(req: Request) {
 
         let modelIndex = 0;
         let round = 0;
+        const startedAt = Date.now();
+        const budgetLeft = () => TOTAL_BUDGET_MS - (Date.now() - startedAt);
 
         while (round < MAX_TOOL_ROUNDS) {
-          // Try models in order on quota errors
+          if (budgetLeft() < 5_000) {
+            emit(controller, { type: "answer_chunk", text: "He tardado más de lo esperado al consultar los datos. Por favor, reformula la consulta o inténtalo de nuevo." });
+            break;
+          }
+          // Try models in order on quota / network errors
           let completion: OpenAI.Chat.Completions.ChatCompletion | null = null;
           while (modelIndex < MODELS.length) {
             try {
+              const timeout = Math.min(MODEL_TIMEOUT_MS, Math.max(6_000, budgetLeft() - 4_000));
               completion = await client.chat.completions.create({
                 model: MODELS[modelIndex]!,
                 messages: chatMessages,
                 tools: OR_TOOLS,
                 tool_choice: "auto",
-              }, { timeout: 30_000 });
+              }, { timeout });
               break;
             } catch (err) {
               const msg = String(err);
-              if ((msg.includes("429") || msg.includes("quota") || msg.includes("rate")) && modelIndex < MODELS.length - 1) {
+              const transient = msg.includes("429") || msg.includes("quota") || msg.includes("rate") || msg.includes("timeout") || msg.includes("ECONN") || msg.includes("503") || msg.includes("502");
+              if (transient && modelIndex < MODELS.length - 1) {
                 modelIndex++;
                 continue;
               }

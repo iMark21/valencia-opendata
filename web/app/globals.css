@@ -133,11 +133,18 @@ textarea { resize: none; }
 @media (max-width: 640px) {
   .header-tagline   { display: none; }
   .datasets-label   { display: none; }
-  .new-query-btn    { display: none !important; }
+  .new-query-label  { display: none; }
   .export-btn       { display: none !important; }
   .suggestions-grid { grid-template-columns: 1fr !important; }
   .input-footer     { display: none !important; }
   .sidebar-panel    { width: 100% !important; }
+
+  /* New-query becomes an icon-only square button on mobile */
+  .new-query-btn {
+    padding: 6px 8px !important;
+    min-width: 32px;
+    justify-content: center;
+  }
 
   /* prevent long words / URLs from breaking layout */
   .msg-bubble,
@@ -145,5 +152,28 @@ textarea { resize: none; }
     overflow-wrap: break-word;
     word-break: break-word;
     min-width: 0;
+  }
+
+  /* Activity-log lines must wrap, not push the card wider */
+  .activity-line {
+    flex-wrap: wrap;
+    min-width: 0;
+  }
+  .activity-line > span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /* Input row buttons: smaller footprint to give the textarea more room */
+  .input-row { gap: 0; }
+  .input-row textarea { padding: 11px 12px !important; max-height: 110px !important; }
+  .input-row .icon-btn {
+    width: 38px !important;
+    min-height: 44px !important;
+  }
+  .input-row .send-btn {
+    width: 44px !important;
+    min-height: 44px !important;
   }
 }
