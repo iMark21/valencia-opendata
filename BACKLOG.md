@@ -93,6 +93,13 @@
 | VALMCP-44 | ~~Review final: repo público ✓, npm ✓, chatbot web live ✓, memoria ✓~~ · **completado 28 may** | ✅ |
 | VALMCP-45 | ~~Cargar solicitud en sede.valencia.es · Procedimiento: **AD.TR.15**~~ · **presentado 28 may** | ✅ |
 
+### 28 may — GitFlow + polish post-entrega (v1.0.1) ✅
+
+| ID | Tarea | Prioridad |
+|----|-------|-----------|
+| VALMCP-53 | ~~Rama `main` creada desde `develop`, tags v1.0.0/v1.0.1, Vercel production branch → `main` via GitHub default branch~~ · **completado 28 may** | ✅ |
+| VALMCP-54 | ~~v1.0.1 — responsive mobile (`overflow-wrap`, `min-width`, export btn oculto) + OG/Twitter card (`opengraph-image.tsx`, `metadataBase`, `twitter:card`)~~ · **completado 28 may** | ✅ |
+
 ---
 
 ### 28 may — Accesibilidad + Share + Historial ✅
