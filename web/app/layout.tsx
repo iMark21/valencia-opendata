@@ -2,13 +2,23 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://valencia-mcp.vercel.app"),
   title: "Pregunta a València — Dades Obertes",
   description:
     "Consulta dades en temps real de l'Ajuntament de València: qualitat de l'aire, trànsit, ValenBisi, barris i molt més. Powered by IA.",
   openGraph: {
-    title: "Pregunta a València",
-    description: "Dades obertes de l'Ajuntament de València a través d'IA",
-    siteName: "Pregunta a València",
+    title: "valencIA — Pregunta a les dades obertes de València",
+    description:
+      "294 datasets oberts de l'Ajuntament de València a través d'IA. Qualitat de l'aire, trànsit, ValenBisi, barris i molt més.",
+    siteName: "valencIA",
+    type: "website",
+    locale: "ca_ES",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "valencIA — Pregunta a les dades obertes de València",
+    description:
+      "294 datasets oberts de l'Ajuntament de València a través d'IA. Qualitat de l'aire, trànsit, ValenBisi i molt més.",
   },
 };
 
